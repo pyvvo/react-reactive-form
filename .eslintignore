@@ -1,0 +1,8 @@
+node_modules/
+build/
+scripts/
+packages/**/dist
+.pnp.cjs
+.pnp.loader.mjs
+*.css
+*.svg
