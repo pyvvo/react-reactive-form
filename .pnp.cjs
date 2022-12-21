@@ -788,6 +788,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jsdom", "virtual:6237db6f962b2cd3608028865f10739047de489568268e893d68a60cf5fc500a65702b0ef44ca429dcb5af3bb049b48cb416ded4c34e12ed342fd02173ea304b#npm:20.0.3"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:1e70a0bfbaecc623b2daf11e93b27f488c18c5b45114c357f32221f247fc22ab8f3b9cac6a31d4c055657e69e5a42b7e730f19d151aa2c6f2c360f0b0e7977e7#npm:18.2.0"],\
+            ["react-hook-form", "virtual:6237db6f962b2cd3608028865f10739047de489568268e893d68a60cf5fc500a65702b0ef44ca429dcb5af3bb049b48cb416ded4c34e12ed342fd02173ea304b#npm:7.41.0"],\
             ["rollup-plugin-visualizer", "virtual:6237db6f962b2cd3608028865f10739047de489568268e893d68a60cf5fc500a65702b0ef44ca429dcb5af3bb049b48cb416ded4c34e12ed342fd02173ea304b#npm:5.8.3"],\
             ["tsconfig-paths", "npm:4.1.1"],\
             ["typescript", "patch:typescript@npm%3A4.9.4#~builtin<compat/typescript>::version=4.9.4&hash=ad5954"],\
@@ -818,6 +819,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@vitejs/plugin-react", "virtual:6237db6f962b2cd3608028865f10739047de489568268e893d68a60cf5fc500a65702b0ef44ca429dcb5af3bb049b48cb416ded4c34e12ed342fd02173ea304b#npm:3.0.0"],\
             ["c8", "npm:7.12.0"],\
             ["jsdom", "virtual:6237db6f962b2cd3608028865f10739047de489568268e893d68a60cf5fc500a65702b0ef44ca429dcb5af3bb049b48cb416ded4c34e12ed342fd02173ea304b#npm:20.0.3"],\
+            ["react-hook-form", "virtual:1b7e0d7eda141d3535df2168a95c8a0d6ae37a9adf889463ae37ce0457060e7b7f9ca9cfcc5c58a56c67b66f5f68cab7d088386f353a680ce9a87f90de712479#npm:7.41.0"],\
             ["rollup-plugin-visualizer", "virtual:6237db6f962b2cd3608028865f10739047de489568268e893d68a60cf5fc500a65702b0ef44ca429dcb5af3bb049b48cb416ded4c34e12ed342fd02173ea304b#npm:5.8.3"],\
             ["tsconfig-paths", "npm:4.1.1"],\
             ["typescript", "patch:typescript@npm%3A4.9.4#~builtin<compat/typescript>::version=4.9.4&hash=ad5954"],\
@@ -6762,6 +6764,41 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["loose-envify", "npm:1.4.0"],\
             ["react", "npm:18.2.0"],\
             ["scheduler", "npm:0.23.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["react-hook-form", [\
+        ["npm:7.41.0", {\
+          "packageLocation": "./.yarn/cache/react-hook-form-npm-7.41.0-b815279fe3-72107a7f2f.zip/node_modules/react-hook-form/",\
+          "packageDependencies": [\
+            ["react-hook-form", "npm:7.41.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:1b7e0d7eda141d3535df2168a95c8a0d6ae37a9adf889463ae37ce0457060e7b7f9ca9cfcc5c58a56c67b66f5f68cab7d088386f353a680ce9a87f90de712479#npm:7.41.0", {\
+          "packageLocation": "./.yarn/__virtual__/react-hook-form-virtual-0fdfbcf451/0/cache/react-hook-form-npm-7.41.0-b815279fe3-72107a7f2f.zip/node_modules/react-hook-form/",\
+          "packageDependencies": [\
+            ["react-hook-form", "virtual:1b7e0d7eda141d3535df2168a95c8a0d6ae37a9adf889463ae37ce0457060e7b7f9ca9cfcc5c58a56c67b66f5f68cab7d088386f353a680ce9a87f90de712479#npm:7.41.0"],\
+            ["@types/react", "npm:18.0.26"],\
+            ["react", null]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["virtual:6237db6f962b2cd3608028865f10739047de489568268e893d68a60cf5fc500a65702b0ef44ca429dcb5af3bb049b48cb416ded4c34e12ed342fd02173ea304b#npm:7.41.0", {\
+          "packageLocation": "./.yarn/__virtual__/react-hook-form-virtual-60f868824c/0/cache/react-hook-form-npm-7.41.0-b815279fe3-72107a7f2f.zip/node_modules/react-hook-form/",\
+          "packageDependencies": [\
+            ["react-hook-form", "virtual:6237db6f962b2cd3608028865f10739047de489568268e893d68a60cf5fc500a65702b0ef44ca429dcb5af3bb049b48cb416ded4c34e12ed342fd02173ea304b#npm:7.41.0"],\
+            ["@types/react", "npm:18.0.26"],\
+            ["react", "npm:18.2.0"]\
           ],\
           "packagePeers": [\
             "@types/react",\

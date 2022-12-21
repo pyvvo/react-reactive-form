@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import PropTypes from 'prop-types';
 import isArray from 'lodash/isArray';
 import castArray from 'lodash/castArray';
@@ -7,21 +7,9 @@ import has from 'lodash/has';
 import { Col, Row, Form } from 'antd';
 import FormBuilderField from './FormBuilderField';
 import './FormBuilder.css';
+import { FormProps, IReactiveField } from './types';
 
-const widgetMap = {};
-
-function getWidget(widget) {
-  if (!widget) return null;
-  if (typeof widget === 'string') {
-    if (!widgetMap[widget] || !widgetMap[widget].widget) {
-      throw new Error(
-        `Widget '${widget}' not found, did you defined it by FormBuilder.defineComponent?`
-      );
-    }
-    return widgetMap[widget].widget;
-  }
-  return widget;
-}
+const widgetMap: Record<string, JSX.Element> = {};
 
 function normalizeMeta(meta) {
   let fields = isArray(meta) ? meta : meta.fields || meta.elements;
@@ -57,9 +45,16 @@ function normalizeMeta(meta) {
   };
 }
 
-function FormBuilder(props) {
-  const { getMeta, form } = props;
-  const meta = getMeta ? getMeta(form, props) : props.meta;
+interface IReactiveForm<TValues extends Record<string, any>> {
+  meta: any;
+  form: FormProps<TValues>;
+}
+
+const ReactiveForm = <T extends Record<string, any>>(
+  props: IReactiveForm<T>
+) => {
+  const { meta, form } = props;
+  const fieldMeta = meta;
   return (
     <FormBuilderInner
       {...props}
@@ -67,27 +62,13 @@ function FormBuilder(props) {
       meta={meta}
     />
   );
-  // return (
-  //   <Form.Item shouldUpdate noStyle>
-  //     {() => {
-  //       return <FormBuilderInner {...props} form={form ? form.current || form : null} meta={meta} />
-  //     }}
-  //   </Form.Item>
-  // )
-}
+};
 
 function FormBuilderInner(props) {
-  const {
-    meta,
-    viewMode,
-    initialValues,
-    disabled = false,
-    form = null
-  } = props;
+  const { meta, initialValues, disabled = false, form = null } = props;
   if (!meta) return null;
 
   const newMeta = normalizeMeta(meta);
-  newMeta.viewMode = newMeta.viewMode || viewMode;
   newMeta.initialValues = newMeta.initialValues || initialValues;
   const { fields, columns = 1, gutter = 10 } = newMeta;
   const elements = fields.map((field) => (
@@ -138,23 +119,40 @@ function FormBuilderInner(props) {
   return rows;
 }
 
-FormBuilder.defineWidget = (name, widget, metaConvertor = null) => {
-  if (widgetMap[name]) throw new Error(`Widget "${name}" already defined.`);
-  widgetMap[name] = {
-    widget,
-    metaConvertor
-  };
-};
+type FieldMapType = Record<
+  string,
+  (params: IReactiveField<any>) => JSX.Element
+>;
 
-FormBuilder.useForceUpdate = () => {
-  const [, updateState] = React.useState();
-  const forceUpdate = React.useCallback(() => updateState({}), []);
-  return forceUpdate;
+const fieldMap: FieldMapType = {};
+
+function getField(field: string | React.ElementType) {
+  if (!field) return null;
+  if (typeof field === 'string') {
+    if (!fieldMap[field]) {
+      throw new Error(
+        `Field '${field}' not found, did you defined it by FormBuilder.defineComponent?`
+      );
+    }
+    return fieldMap[field];
+  }
+  return field;
+}
+
+interface IDefineComponent {
+  name: string;
+  component: React.ElementType<IReactiveField<any>>;
+}
+
+const defineWidget = (params: IDefineComponent) => {
+  const { name, component } = params;
+  const ReactiveField = component;
+  if (widgetMap[name]) throw new Error(`Field "${name}" already defined.`);
+  fieldMap[name] = (props) => <ReactiveField {...props} />;
 };
 
 const FormBuilder = {
-
-
-}
+  defineWidget
+};
 
 export default FormBuilder;
