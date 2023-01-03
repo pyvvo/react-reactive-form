@@ -1,13 +1,34 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react/jsx-one-expression-per-line */
-import { deep } from "@hm-ui/reactive-form";
-import { useState } from "react";
-import "./App.css";
-import reactLogo from "./assets/react.svg";
+import { IReactiveFieldMeta, ReactiveForm } from '@hm-ui/reactive-form';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import './App.css';
+import reactLogo from './assets/react.svg';
+
+const defaultValues = {
+  username: '',
+  password: ''
+};
+
+type Data = typeof defaultValues;
 
 function App() {
   const [count, setCount] = useState(0);
+  const form = useForm<Data>({
+    mode: 'onSubmit',
+    reValidateMode: 'onSubmit'
+  });
+
+  const meta: IReactiveFieldMeta<any, Data>[] = [
+    {
+      key: 'username',
+      label: 'Test',
+      type: 'text',
+      customProps: {}
+    }
+  ];
 
   return (
     <div className="App">
@@ -22,7 +43,7 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
-          count is {deep(count)}
+          {/* count is {deep(count)} */}
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
@@ -31,6 +52,9 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <div>
+        <ReactiveForm form={form} meta={meta} />
+      </div>
     </div>
   );
 }

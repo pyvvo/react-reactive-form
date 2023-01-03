@@ -9,7 +9,8 @@
     "ex": "yarn workspace @hm-ui/example",
     "rf": "yarn workspace @hm-ui/reactive-form",
     "dev:rf": "yarn rf dev",
-    "dev:ex": "yarn ex dev"
+    "dev:ex": "yarn ex dev",
+    "build:rf": "yarn rf build"
   },
   "devDependencies": {
     "@types/node": "^18.11.17",
