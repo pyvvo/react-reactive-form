@@ -1,5 +1,6 @@
-import FormBuilder from './form-builder';
-import { FormProps, IReactiveFieldMeta } from './types';
+import FormBuilder from '../form-builder';
+import { FormProps } from '../types';
+import { IReactiveFieldMeta } from './types';
 
 interface IReactiveForm<
   TField extends Record<string, any>,
@@ -22,7 +23,9 @@ const ReactiveForm = <
       {meta.map((field) => {
         const ReactiveField = FormBuilder.getField<TField, TValues>(field.type);
         const { type, ...fieldProps } = field;
-        return <ReactiveField {...fieldProps} form={form} />;
+        return (
+          <ReactiveField key={field.fieldKey} {...fieldProps} form={form} />
+        );
       })}
     </>
   );

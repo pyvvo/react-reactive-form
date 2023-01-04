@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
-import { FC, ElementType, FunctionComponent } from 'react';
+import { ElementType, FunctionComponent } from 'react';
+import { IReactiveField } from './reactive-fields/types';
 // import PropTypes from 'prop-types';
 // import isArray from 'lodash/isArray';
 // import castArray from 'lodash/castArray';
@@ -7,8 +8,6 @@ import { FC, ElementType, FunctionComponent } from 'react';
 // import has from 'lodash/has';
 // import { Col, Row, Form } from 'antd';
 // import FormBuilderField from './FormBuilderField';
-import fieldRegistry from './field-registry';
-import { FormProps, IReactiveField } from './types';
 
 type FieldMapType<
   TField extends Record<string, any>,

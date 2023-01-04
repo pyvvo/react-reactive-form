@@ -1,11 +1,17 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react/jsx-one-expression-per-line */
-import { IReactiveFieldMeta, ReactiveForm } from '@hm-ui/reactive-form';
+import {
+  FormBuilder,
+  IReactiveFieldMeta,
+  ReactiveForm,
+  ReactiveTextField
+} from '@hm-ui/reactive-form';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import './App.css';
 import reactLogo from './assets/react.svg';
+import './register-reactive-fields';
 
 const defaultValues = {
   username: '',
@@ -23,8 +29,14 @@ function App() {
 
   const meta: IReactiveFieldMeta<any, Data>[] = [
     {
-      key: 'username',
+      fieldKey: '',
       label: 'Test',
+      type: 'text',
+      customProps: {}
+    },
+    {
+      fieldKey: 'password',
+      label: 'Test2',
       type: 'text',
       customProps: {}
     }

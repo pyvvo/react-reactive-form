@@ -6,12 +6,12 @@ import { ChangeEvent, ChangeEventHandler, FC, memo, useCallback } from 'react';
 import { Controller } from 'react-hook-form';
 import { TextInput, TextInputProps } from '@mantine/core';
 import { TextFieldCustomProps } from './types';
-import { IReactiveField } from '@/types';
+import { IReactiveField } from '../types';
 
 const ReactiveTextField: FC<IReactiveField<TextFieldCustomProps>> = (props) => {
   const {
     form,
-    key,
+    fieldKey,
     label,
     options,
     customProps = { type: 'text', color: 'primary' }
@@ -23,7 +23,7 @@ const ReactiveTextField: FC<IReactiveField<TextFieldCustomProps>> = (props) => {
   >['0'];
   const { control } = form;
   const fieldProps: TextInputProps = {
-    id: key,
+    id: fieldKey,
     // 'aria-describedby': helperId,
     size,
     disabled,
@@ -56,7 +56,7 @@ const ReactiveTextField: FC<IReactiveField<TextFieldCustomProps>> = (props) => {
   return (
     <Controller
       control={control}
-      name={key}
+      name={fieldKey}
       defaultValue=""
       rules={{ ...options }}
       render={({ field: { onChange, ref, ...rest } }) => (

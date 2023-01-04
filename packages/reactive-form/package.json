@@ -24,6 +24,10 @@
     "lint": "eslint src --max-warnings=0"
   },
   "peerDependencies": {
+    "@emotion/react": ">=11.10.5",
+    "@mantine/core": ">=5.10.0",
+    "@mantine/dates": ">=5.10.0",
+    "@mantine/hooks": ">=5.10.0",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0",
     "react-hook-form": ">=7.41.0"
@@ -31,9 +35,9 @@
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@emotion/react": "^11.10.5",
-    "@mantine/core": "^5.9.6",
-    "@mantine/dates": "^5.9.6",
-    "@mantine/hooks": "^5.9.6",
+    "@mantine/core": "^5.10.0",
+    "@mantine/dates": "^5.10.0",
+    "@mantine/hooks": "^5.10.0",
     "@testing-library/dom": "^8.19.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

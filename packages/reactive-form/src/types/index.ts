@@ -1,3 +1,2 @@
-/* eslint-disable import/export */
 export * from './form';
-export * from './reactive-field-base';
+export * from './nestedProps';

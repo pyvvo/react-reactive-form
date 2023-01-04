@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "composite": true,
     "baseUrl": ".",
@@ -24,7 +25,9 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "@/*":["src/*"]
+      "@/*": [
+        "src/*"
+      ]
     }
   },
   "include": [
@@ -32,6 +35,7 @@
   ],
   "exclude": [
     "**/node_modules",
-    "**/.*"
+    "**/.*",
+    "dist/**/*"
   ]
 }

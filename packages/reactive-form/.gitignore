@@ -3,3 +3,4 @@ Logs
 node_modules
 dist
 stats.html
+tsconfig.tsbuildinfo
