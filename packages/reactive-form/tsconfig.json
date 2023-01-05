@@ -6,6 +6,9 @@
     "target": "es2022",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "types": [
+      "vitest/globals"
+    ],
     "lib": [
       "dom",
       "dom.iterable",

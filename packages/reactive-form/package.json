@@ -19,8 +19,9 @@
   "scripts": {
     "dev": "vite --host --port=3002",
     "build": "tsc && vite build",
-    "serve": " vite preview",
-    "test": "jest",
+    "serve": "vite preview",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
     "lint": "eslint src --max-warnings=0"
   },
   "peerDependencies": {
@@ -28,6 +29,7 @@
     "@mantine/core": ">=5.10.0",
     "@mantine/dates": ">=5.10.0",
     "@mantine/hooks": ">=5.10.0",
+    "dayjs": ">=1.11.7",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0",
     "react-hook-form": ">=7.41.0"
@@ -52,12 +54,12 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.41.3",
     "rollup-plugin-visualizer": "^5.8.3",
-    "tsconfig-paths": "^4.1.0",
     "typescript": "^4.5.3",
     "vite": "^4.0.3",
+    "vite-aliases": "^0.10.0",
     "vite-plugin-dts": "^1.7.1",
     "vite-tsconfig-paths": "^3.3.17",
-    "vitest": "^0.26.1"
+    "vitest": "^0.26.3"
   },
   "engines": {
     "npm": "please-use-yarn",

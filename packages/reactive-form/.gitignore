@@ -4,3 +4,4 @@ node_modules
 dist
 stats.html
 tsconfig.tsbuildinfo
+vite.config.ts.timestamp*

@@ -7,6 +7,7 @@ import {
   ReactiveForm,
   ReactiveTextField
 } from '@hm-ui/reactive-form';
+import { Button } from '@mantine/core';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import './App.css';
@@ -27,21 +28,33 @@ function App() {
     reValidateMode: 'onSubmit'
   });
 
-  const meta: IReactiveFieldMeta<any, Data>[] = [
+  const onSubmit = (submitedData: Data) => {
+    console.log(submitedData);
+  };
+
+  type TT = IReactiveFieldMeta<Data>['fields'];
+
+  const meta: IReactiveFieldMeta<Data>[] = [
     {
-      fieldKey: '',
-      label: 'Test',
-      type: 'text',
-      customProps: {}
-    },
-    {
-      fieldKey: 'password',
-      label: 'Test2',
-      type: 'text',
-      customProps: {}
+      name: 'fddffd',
+      fields: [
+        {
+          fieldKey: 'username',
+          label: 'username',
+          type: 'text',
+      
+        },
+        {
+          fieldKey: 'password',
+          label: 'password',
+          type: 'text'
+          // customProps: {
+          //   label: 'ff'
+          // }
+        }
+      ]
     }
   ];
-
   return (
     <div className="App">
       <div>
@@ -64,9 +77,10 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <div>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
         <ReactiveForm form={form} meta={meta} />
-      </div>
+        <Button type="submit">Submit</Button>
+      </form>
     </div>
   );
 }

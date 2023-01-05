@@ -2,15 +2,22 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { visualizer } from 'rollup-plugin-visualizer';
+import { ViteAliases } from 'vite-aliases';
 import dts from 'vite-plugin-dts';
 import * as path from 'node:path';
+import pkg from './package.json';
+
+const peerDep = Object.keys(pkg.peerDependencies);
 
 // https://vitejs.dev/config//
 export default defineConfig({
   plugins: [
     react(),
     tsconfigPaths(),
+    ViteAliases() as any, // @see https://github.com/qmhc/vite-plugin-dts/issues/60
     dts({
+      // entryRoot: path.join('./src'),
+      tsConfigFilePath: path.join(__dirname, 'tsconfig.json'),
       insertTypesEntry: true,
       skipDiagnostics: true
     })
@@ -23,16 +30,7 @@ export default defineConfig({
       fileName: (format) => `index.${format}.js`
     },
     rollupOptions: {
-      external: [
-        'react',
-        'react-dom',
-        '@emotion/react',
-        '@mantine/core',
-        '@mantine/dates',
-        '@mantine/hooks',
-        'react-hook-form',
-        'react/jsx-runtime'
-      ],
+      external: [...peerDep, 'react/jsx-runtime'],
       output: {
         globals: {
           react: 'React',

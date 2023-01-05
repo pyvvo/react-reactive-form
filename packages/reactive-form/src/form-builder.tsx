@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import { ElementType, FunctionComponent } from 'react';
 import { IReactiveField } from './reactive-fields/types';
+import { JSONData } from './types';
 // import PropTypes from 'prop-types';
 // import isArray from 'lodash/isArray';
 // import castArray from 'lodash/castArray';
@@ -10,21 +11,20 @@ import { IReactiveField } from './reactive-fields/types';
 // import FormBuilderField from './FormBuilderField';
 
 type FieldMapType<
-  TField extends Record<string, any>,
-  TValues extends Record<string, any> = Record<string, any>
+  TField extends JSONData,
+  TFormValues extends JSONData = JSONData
 > = Record<
   string,
   // (params: IReactiveField<any>) => JSX.Element
-  ElementType<IReactiveField<TField, TValues>>
+  ElementType<IReactiveField<TField, TFormValues>>
 >;
 
 const fieldMap: FieldMapType<any> = {};
 
 // function getField(field: string | ElementType<IReactiveField<any>>) {
-function getField<
-  TField extends Record<string, any>,
-  TValues extends Record<string, any>
->(field: string) {
+function getField<TField extends JSONData, TFormValues extends JSONData>(
+  field: string
+) {
   // if (!field) return null;
   // if (typeof field === 'string') {
   if (!fieldMap[field]) {
@@ -33,7 +33,7 @@ function getField<
     );
   }
   const component = fieldMap[field] as ElementType<
-    IReactiveField<TField, TValues>
+    IReactiveField<TField, TFormValues>
   >;
   return component;
   // }
