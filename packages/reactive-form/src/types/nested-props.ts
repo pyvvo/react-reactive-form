@@ -108,6 +108,9 @@ export type DeepOmit<T, K> = T extends Primitive
         : never;
     };
 
+/**
+ * Omit given variable
+ */
 export type DeepOmitVariableKind<
   T,
   U extends VariableKind | Primitive[] | Record<string, any>[] | any[]

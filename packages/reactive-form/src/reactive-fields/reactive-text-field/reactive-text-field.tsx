@@ -14,6 +14,7 @@ const ReactiveTextField: FC<IReactiveField<TextFieldCustomProps>> = (props) => {
     fieldKey,
     label,
     options,
+    error,
     customProps = { type: 'text', color: 'primary' }
   } = props;
   const { type, size, color, disabled, hidden, handleChange } = customProps;
@@ -27,13 +28,14 @@ const ReactiveTextField: FC<IReactiveField<TextFieldCustomProps>> = (props) => {
     // 'aria-describedby': helperId,
     size,
     disabled,
+    required: !!options?.required,
     sx: {
       width: '100%',
       display: hidden ? 'none' : undefined
     },
-    // color: errors ? 'error' : color,
-    type
-    // error: Boolean(errors)
+    color: error ? 'error' : color,
+    type,
+    error: Boolean(error)
   };
   const customHandlechange = useCallback(
     (params: HandleChangeParams) => {

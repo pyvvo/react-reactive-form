@@ -5,7 +5,7 @@ import { visualizer } from 'rollup-plugin-visualizer';
 import { ViteAliases } from 'vite-aliases';
 import dts from 'vite-plugin-dts';
 import * as path from 'node:path';
-import pkg from './package.json';
+import * as pkg from './package.json';
 
 const peerDep = Object.keys(pkg.peerDependencies);
 

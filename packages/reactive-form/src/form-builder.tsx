@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-len */
 import { ElementType, FunctionComponent } from 'react';
 import { IReactiveField } from './reactive-fields/types';

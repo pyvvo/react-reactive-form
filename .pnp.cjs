@@ -1049,6 +1049,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:18.0.9"],\
             ["@types/react-hook-form", null],\
             ["@vitejs/plugin-react", "virtual:1e70a0bfbaecc623b2daf11e93b27f488c18c5b45114c357f32221f247fc22ab8f3b9cac6a31d4c055657e69e5a42b7e730f19d151aa2c6f2c360f0b0e7977e7#npm:3.0.0"],\
+            ["@vitest/ui", "npm:0.26.3"],\
             ["c8", "npm:7.12.0"],\
             ["dayjs", "npm:1.11.7"],\
             ["jsdom", "virtual:6237db6f962b2cd3608028865f10739047de489568268e893d68a60cf5fc500a65702b0ef44ca429dcb5af3bb049b48cb416ded4c34e12ed342fd02173ea304b#npm:20.0.3"],\
@@ -1099,6 +1100,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:18.0.26"],\
             ["@types/react-dom", "npm:18.0.9"],\
             ["@vitejs/plugin-react", "virtual:1e70a0bfbaecc623b2daf11e93b27f488c18c5b45114c357f32221f247fc22ab8f3b9cac6a31d4c055657e69e5a42b7e730f19d151aa2c6f2c360f0b0e7977e7#npm:3.0.0"],\
+            ["@vitest/ui", "npm:0.26.3"],\
             ["c8", "npm:7.12.0"],\
             ["dayjs", "npm:1.11.7"],\
             ["jsdom", "virtual:6237db6f962b2cd3608028865f10739047de489568268e893d68a60cf5fc500a65702b0ef44ca429dcb5af3bb049b48cb416ded4c34e12ed342fd02173ea304b#npm:20.0.3"],\
@@ -1537,6 +1539,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@npmcli/move-file", "npm:2.0.1"],\
             ["mkdirp", "npm:1.0.4"],\
             ["rimraf", "npm:3.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@polka/url", [\
+        ["npm:1.0.0-next.21", {\
+          "packageLocation": "./.yarn/cache/@polka-url-npm-1.0.0-next.21-02342f3d90-c7654046d3.zip/node_modules/@polka/url/",\
+          "packageDependencies": [\
+            ["@polka/url", "npm:1.0.0-next.21"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -2423,6 +2434,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [\
             "@types/vite",\
             "vite"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@vitest/ui", [\
+        ["npm:0.26.3", {\
+          "packageLocation": "./.yarn/cache/@vitest-ui-npm-0.26.3-0052a44ee7-b50b3ca158.zip/node_modules/@vitest/ui/",\
+          "packageDependencies": [\
+            ["@vitest/ui", "npm:0.26.3"],\
+            ["fast-glob", "npm:3.2.12"],\
+            ["flatted", "npm:3.2.7"],\
+            ["sirv", "npm:2.0.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5838,7 +5861,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["npm:0.4.2", {\
           "packageLocation": "./.yarn/cache/local-pkg-npm-0.4.2-534016519b-22be451353.zip/node_modules/local-pkg/",\
           "packageDependencies": [\
-            ["local-pkg", "npm:0.4.2"]\
+            ["local-pkg", "npm:0.4.2"],\
+            ["jsdom", "virtual:6237db6f962b2cd3608028865f10739047de489568268e893d68a60cf5fc500a65702b0ef44ca429dcb5af3bb049b48cb416ded4c34e12ed342fd02173ea304b#npm:20.0.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -6155,6 +6179,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pathe", "npm:1.0.0"],\
             ["pkg-types", "npm:1.0.1"],\
             ["ufo", "npm:1.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["mrmime", [\
+        ["npm:1.0.1", {\
+          "packageLocation": "./.yarn/cache/mrmime-npm-1.0.1-d0aa4f5ddf-cc979da44b.zip/node_modules/mrmime/",\
+          "packageDependencies": [\
+            ["mrmime", "npm:1.0.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -7438,6 +7471,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["sirv", [\
+        ["npm:2.0.2", {\
+          "packageLocation": "./.yarn/cache/sirv-npm-2.0.2-e19a876fae-6982f8ecee.zip/node_modules/sirv/",\
+          "packageDependencies": [\
+            ["sirv", "npm:2.0.2"],\
+            ["@polka/url", "npm:1.0.0-next.21"],\
+            ["mrmime", "npm:1.0.1"],\
+            ["totalist", "npm:3.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["slash", [\
         ["npm:3.0.0", {\
           "packageLocation": "./.yarn/cache/slash-npm-3.0.0-b87de2279a-94a93fff61.zip/node_modules/slash/",\
@@ -7873,6 +7918,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["to-regex-range", "npm:5.0.1"],\
             ["is-number", "npm:7.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["totalist", [\
+        ["npm:3.0.0", {\
+          "packageLocation": "./.yarn/cache/totalist-npm-3.0.0-60426683c2-ec499bddfc.zip/node_modules/totalist/",\
+          "packageDependencies": [\
+            ["totalist", "npm:3.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -8529,7 +8583,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/vitest__browser", null],\
             ["@types/vitest__ui", null],\
             ["@vitest/browser", null],\
-            ["@vitest/ui", null],\
+            ["@vitest/ui", "npm:0.26.3"],\
             ["acorn", "npm:8.8.1"],\
             ["acorn-walk", "npm:8.2.0"],\
             ["chai", "npm:4.3.7"],\

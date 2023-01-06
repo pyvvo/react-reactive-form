@@ -1,3 +1,3 @@
 export * from './form';
-export * from './nestedProps';
+export * from './nested-props';
 export * from './common';

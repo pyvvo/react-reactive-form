@@ -1,4 +1,4 @@
-import { JSONData } from '@/types';
+import { JSONData } from '@types';
 import { TextFieldCustomProps } from '../reactive-text-field';
 import { CommonProps, InputType } from './reactive-field-base';
 

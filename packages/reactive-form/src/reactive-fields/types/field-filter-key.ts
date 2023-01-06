@@ -1,4 +1,4 @@
-import { DeepOmitVariableKind, JSONData, Primitive } from '@/types';
+import { DeepOmitVariableKind, JSONData, Primitive } from '@types';
 import { CustomPropsType } from './field-custom-props';
 
 export interface IFilterKeys<TFormValues extends JSONData>

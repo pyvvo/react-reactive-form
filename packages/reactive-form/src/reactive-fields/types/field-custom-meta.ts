@@ -1,4 +1,4 @@
-import { JSONData } from '@/types';
+import { JSONData } from '@types';
 import { CustomPropsType, ICustomProps } from './field-custom-props';
 import { InputType } from './reactive-field-base';
 

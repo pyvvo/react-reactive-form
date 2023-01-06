@@ -1,17 +1,13 @@
-import { ReactElement, ReactNode } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   FormFieldOption,
   IConditionalProp,
   IFilterKeys,
   InputType,
   IReactiveField
-} from '@/reactive-fields/types';
-import {
-  DeepOmitVariableKind,
-  JSONData,
-  NestedKeyOf,
-  Primitive
-} from '@/types';
+} from '@reactive-fields/types';
+import { JSONData, NestedKeyOf } from '@types';
+import { ReactElement, ReactNode } from 'react';
 
 type PartialOption<TFormValues extends JSONData> = Omit<
   FormFieldOption<TFormValues>,
@@ -52,7 +48,7 @@ interface IPatialReactiveField<
   TInputType extends InputType
 > extends Omit<
     IReactiveField<any, TFormValues>,
-    'form' | 'options' | 'customProps' | 'fieldKey'
+    'form' | 'options' | 'customProps' | 'fieldKey' | 'error'
   > {
   fieldKey: InputKeyType<TFormValues, TInputType>;
   options?: PartialOption<TFormValues>;

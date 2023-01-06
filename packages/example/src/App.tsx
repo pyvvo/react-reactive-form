@@ -8,7 +8,7 @@ import {
   ReactiveTextField
 } from '@hm-ui/reactive-form';
 import { Button } from '@mantine/core';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import './App.css';
 import reactLogo from './assets/react.svg';
@@ -32,29 +32,36 @@ function App() {
     console.log(submitedData);
   };
 
+  console.log('ici');
+
   type TT = IReactiveFieldMeta<Data>['fields'];
 
-  const meta: IReactiveFieldMeta<Data>[] = [
-    {
-      name: 'fddffd',
-      fields: [
-        {
-          fieldKey: 'username',
-          label: 'username',
-          type: 'text',
-      
-        },
-        {
-          fieldKey: 'password',
-          label: 'password',
-          type: 'text'
-          // customProps: {
-          //   label: 'ff'
-          // }
-        }
-      ]
-    }
-  ];
+  const meta: IReactiveFieldMeta<Data>[] = useMemo(
+    () => [
+      {
+        name: 'fddffd',
+        fields: [
+          {
+            fieldKey: 'username',
+            label: 'username',
+            type: 'text',
+            options: {
+              required: true
+            }
+          },
+          {
+            fieldKey: 'password',
+            label: 'password',
+            type: 'text'
+            // customProps: {
+            //   label: 'ff'
+            // }
+          }
+        ]
+      }
+    ],
+    []
+  );
   return (
     <div className="App">
       <div>
