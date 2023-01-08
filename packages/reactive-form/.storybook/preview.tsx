@@ -1,7 +1,7 @@
-import { MantineProvider } from '@mantine/core';
+// import { MantineProvider } from '@mantine/core';
 import React from 'react';
 
-console.log('themeee');
+// console.log('themeee');
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -13,10 +13,10 @@ export const parameters = {
   }
 };
 
-export const decorators = [
-  (Story) => (
-    <MantineProvider withNormalizeCSS withGlobalStyles>
-      <Story />
-    </MantineProvider>
-  )
-];
+// export const decorators = [
+//   (Story) => (
+//     // <MantineProvider withNormalizeCSS withGlobalStyles>
+//       <Story />
+//     // </MantineProvider>
+//   )
+// ];

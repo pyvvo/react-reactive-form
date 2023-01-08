@@ -14,7 +14,7 @@ export default defineConfig({
   plugins: [
     react(),
     tsconfigPaths(),
-    ViteAliases() as any, // @see https://github.com/qmhc/vite-plugin-dts/issues/60
+    // ViteAliases() as any, // @see https://github.com/qmhc/vite-plugin-dts/issues/60
     dts({
       // entryRoot: path.join('./src'),
       tsConfigFilePath: path.join(__dirname, 'tsconfig.json'),
