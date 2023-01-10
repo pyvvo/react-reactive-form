@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-len */
 import { ElementType, FunctionComponent } from 'react';
-import { IReactiveField } from './reactive-fields/types';
+import { InputType, IReactiveField } from './reactive-fields/types';
 import { JSONData } from './types';
 // import PropTypes from 'prop-types';
 // import isArray from 'lodash/isArray';
@@ -42,7 +42,7 @@ function getField<TField extends JSONData, TFormValues extends JSONData>(
 }
 
 interface IDefineComponent {
-  name: string;
+  name: InputType;
   component: FunctionComponent<IReactiveField<any>>;
 }
 

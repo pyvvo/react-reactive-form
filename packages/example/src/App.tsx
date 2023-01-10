@@ -16,7 +16,8 @@ import './register-reactive-fields';
 
 const defaultValues = {
   username: '',
-  password: ''
+  password: '',
+  isActive: true
 };
 
 type Data = typeof defaultValues;
@@ -36,32 +37,38 @@ function App() {
 
   type TT = IReactiveFieldMeta<Data>['fields'];
 
-  const meta: IReactiveFieldMeta<Data>[] = useMemo(
-    () => [
-      {
-        name: 'fddffd',
-        fields: [
-          {
-            fieldKey: 'username',
-            label: 'username',
-            type: 'text',
-            options: {
-              required: true
-            }
-          },
-          {
-            fieldKey: 'password',
-            label: 'password',
-            type: 'text'
-            // customProps: {
-            //   label: 'ff'
-            // }
+  const meta: IReactiveFieldMeta<Data>[] = [
+    {
+      name: 'fddffd',
+      fields: [
+        {
+          fieldKey: 'username',
+          label: 'username',
+          type: 'text',
+          options: {
+            required: true
           }
-        ]
-      }
-    ],
-    []
-  );
+        },
+        {
+          fieldKey: 'password',
+          label: 'password',
+          type: 'text'
+          // customProps: {
+          //   label: 'ff'
+          // }
+        },
+        {
+          fieldKey: 'isActive',
+          label: 'password',
+          type: 'switch'
+          // customProps: {
+          //   label: 'ff'
+          // }
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="App">
       <div>

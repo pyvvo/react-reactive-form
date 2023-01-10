@@ -1,12 +1,8 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import { ElementType, useCallback, useMemo } from 'react';
-import LayoutFlex from '@form-layout/layout-flex';
-import { getError } from '@reactive-fields/utils';
-import {
-  InputType,
-  IReactiveField,
-  ReactiveFieldErrorType
-} from '@reactive-fields/types';
+import { useCallback, useMemo } from 'react';
+import LayoutFlex from '@/form-layout/layout-flex';
+import { InputType, ReactiveFieldErrorType } from '@/reactive-fields/types';
+import { getError } from '@/reactive-fields/utils';
 import FormBuilder from '../form-builder';
 import { FormProps, JSONData } from '../types';
 import FormGroup from './form-group';
@@ -43,7 +39,7 @@ const DynamicField = <TFormValues extends JSONData>(
   );
 };
 
-interface IReactiveForm<TFormValues extends JSONData> {
+export interface IReactiveForm<TFormValues extends JSONData> {
   meta: IReactiveFieldMeta<TFormValues>[];
   form: FormProps<TFormValues>;
   // currentBreakpoint?: string;
@@ -53,6 +49,7 @@ const ReactiveForm = <TFormValues extends JSONData>(
   props: IReactiveForm<TFormValues>
 ) => {
   const { meta, form } = props;
+
   const {
     formState: { errors }
   } = form;

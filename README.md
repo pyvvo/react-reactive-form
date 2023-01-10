@@ -6,4 +6,6 @@ yarn set version latest
 ```
 
 
-# react-reactive-form
+# Storybook typescript installation 
+
+- https://storybook.js.org/docs/7.0/react/configure/overview#configure-story-loading

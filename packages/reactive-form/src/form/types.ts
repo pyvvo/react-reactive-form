@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { ReactElement, ReactNode } from 'react';
+import { JSONData, NestedKeyOf } from '@/types';
 import {
   FormFieldOption,
   IConditionalProp,
   IFilterKeys,
   InputType,
   IReactiveField
-} from '@reactive-fields/types';
-import { JSONData, NestedKeyOf } from '@types';
-import { ReactElement, ReactNode } from 'react';
+} from '@/reactive-fields/types';
 
 type PartialOption<TFormValues extends JSONData> = Omit<
   FormFieldOption<TFormValues>,
@@ -17,28 +17,27 @@ type PartialOption<TFormValues extends JSONData> = Omit<
 type InputKeyType<
   TFormValues extends JSONData,
   TInputType extends InputType
-> = NestedKeyOf<IFilterKeys<TFormValues>[TInputType]>;
+> = NestedKeyOf<TFormValues>;
+// > = NestedKeyOf<IFilterKeys<TFormValues>[TInputType]>;
 
 type Data = {
   username: string;
   password: string;
+  // isActive: boolean;
 };
 
 /* type TTT = InputKeyType<Data, 'text'>;
 
 type TT = IPatialReactiveField<Data, 'text'>['fieldKey'];
 
-type TTTT = FieldMeta<Data, 'text'>['fieldKey'];
+type TTTT = FieldMeta<Data, 'checkbox'>['fieldKey'];
 
 const meta: IReactiveFieldMeta<Data> = {
   fields: [
     {
-      type: 'text',
-      fieldKey: 'username',
-      label:'fdf',
-      customProps:{
-
-      }
+      type: 'switch',
+      fieldKey: 'password',
+      label: 'fdf'
     }
   ]
 }; */

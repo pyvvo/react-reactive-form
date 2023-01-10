@@ -17,7 +17,10 @@ const ReactiveTextField: FC<IReactiveField<TextFieldCustomProps>> = (props) => {
     error,
     customProps = { type: 'text', color: 'primary' }
   } = props;
+
   const { type, size, color, disabled, hidden, handleChange } = customProps;
+  console.log(disabled);
+
   type CustomProps = typeof customProps;
   type HandleChangeParams = Parameters<
     NonNullable<CustomProps['handleChange']>

@@ -1,4 +1,4 @@
-import { JSONData } from '@types';
+import { JSONData } from '@/types';
 import { CustomPropsType, ICustomProps } from './field-custom-props';
 import { InputType } from './reactive-field-base';
 
@@ -17,7 +17,8 @@ type ConditionalProp<
 export interface IConditionalProp<TFormValues extends JSONData>
   extends CustomPropsType {
   text: ConditionalProp<'text', true, TFormValues>;
-  password: ConditionalProp<'password', true, TFormValues>;
+  checkbox: ConditionalProp<'checkbox', true, TFormValues>;
+  switch: ConditionalProp<'switch', true, TFormValues>;
   // range: ConditionalProp<'range'>;
   // switch: ConditionalProp<'switch', true>;
   // select: ConditionalProp<'select'>;

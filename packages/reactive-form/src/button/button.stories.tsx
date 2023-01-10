@@ -1,22 +1,26 @@
 /* eslint-disable react/button-has-type */
-// import { Button } from '@mantine/core';
 import type { Meta, StoryObj } from '@storybook/react';
+import Btn from './button';
 
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof Btn>;
 
-const Button = () => <button>Text</button>;
+// const Button = () => <button>Text</button>;
 
-const meta: Meta<typeof Button> = {
+const name = 'Button';
+const meta: Meta<typeof Btn> = {
   /* 👇 The title prop is optional.
    * See https://storybook.js.org/docs/7.0/react/configure/overview#configure-story-loading
    * to learn how to generate automatic titles
    */
-  title: 'Button',
-  component: Button
+  title: 'Reactive Form/Button',
+  component: Btn
 };
 
 export default meta;
 
-export const Primary: Story = {
-  render: () => <Button />
+export const Button: Story = {
+  args: {
+    disabled: true,
+    children: 'Button'
+  }
 };

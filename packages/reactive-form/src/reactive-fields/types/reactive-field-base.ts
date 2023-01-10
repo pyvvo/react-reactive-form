@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ChangeEvent, Ref } from 'react';
 import { RegisterOptions } from 'react-hook-form';
-import { JSONData } from '@types';
+import { JSONData } from '@/types';
 import { FormProps } from '../../types/form';
 
-export type InputType = 'text' | 'password';
+export type InputType = 'text' | 'checkbox' | 'switch';
+// | 'password'
 // | 'range'
-// | 'switch'
 // | 'select'
 // | 'multi-select'
 // | 'radio'
@@ -43,6 +43,11 @@ export interface IReactiveField<
 
   error?: ReactiveFieldErrorType;
 }
+
+export type ReactiveFieldStoryType<
+  TFieldProps extends JSONData,
+  TFormValues extends JSONData = JSONData
+> = Omit<IReactiveField<TFieldProps, TFormValues>, 'error' | 'form'>;
 
 export type CommonProps<
   // T extends HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement

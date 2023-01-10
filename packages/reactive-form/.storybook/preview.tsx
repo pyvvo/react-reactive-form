@@ -1,5 +1,6 @@
-// import { MantineProvider } from '@mantine/core';
-import React from 'react';
+import { MantineProvider } from '@mantine/core';
+import theme from '../src/theme';
+import React, { FC } from 'react';
 
 // console.log('themeee');
 
@@ -13,10 +14,18 @@ export const parameters = {
   }
 };
 
-// export const decorators = [
-//   (Story) => (
-//     // <MantineProvider withNormalizeCSS withGlobalStyles>
-//       <Story />
-//     // </MantineProvider>
-//   )
-// ];
+const ThemeWrapper: FC<{ children: React.ReactNode }> = (props) => {
+  return (
+    <MantineProvider theme={theme} withGlobalStyles withNormalizeCSS>
+      {props.children}
+    </MantineProvider>
+  );
+};
+
+const MantineDecorator = (Story: Function) => (
+  <ThemeWrapper>
+    <Story />
+  </ThemeWrapper>
+);
+
+export const decorators = [MantineDecorator];
