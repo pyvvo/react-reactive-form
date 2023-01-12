@@ -1,8 +1,11 @@
-import { DeepOmitVariableKind, JSONData, Primitive } from '@/types';
-import { CustomPropsType } from './field-custom-props';
+import { DeepOmitVariableKind, JSONData } from '@/types';
 
-export interface IFilterKeys<TFormValues extends JSONData>
-  extends CustomPropsType {
+// type InputKeyType<
+//   TFormValues extends JSONData,
+//   TInputType extends InputType
+// > = NestedKeyOf<IFilterKeys<TFormValues>[TInputType]>;
+
+export interface IFilterKeys<TFormValues extends JSONData> {
   text: DeepOmitVariableKind<TFormValues, boolean | any[]>;
   checkbox: DeepOmitVariableKind<TFormValues, number | any[] | string>;
   switch: DeepOmitVariableKind<TFormValues, number | any[] | string>;

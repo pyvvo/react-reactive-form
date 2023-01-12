@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ChangeEvent, Ref } from 'react';
 import { RegisterOptions } from 'react-hook-form';
-import { JSONData } from '@/types';
+import { JSONData, Merge } from '@/types';
 import { FormProps } from '../../types/form';
 
 export type InputType = 'text' | 'checkbox' | 'switch';
@@ -53,11 +53,14 @@ export type CommonProps<
   // T extends HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
   TFieldProps extends JSONData,
   TFormValues extends JSONData = JSONData
-> = {
-  disabled?: boolean;
-  hidden?: boolean;
-  handleChange?: (params: {
-    form: FormProps<TFormValues>;
-    event: ChangeEvent<TFieldProps> | any;
-  }) => void;
-} & TFieldProps;
+> = Merge<
+  {
+    disabled?: boolean;
+    hidden?: boolean;
+    handleChange?: (params: {
+      form: FormProps<TFormValues>;
+      event: ChangeEvent<TFieldProps> | any;
+    }) => void;
+  },
+  TFieldProps
+>;
