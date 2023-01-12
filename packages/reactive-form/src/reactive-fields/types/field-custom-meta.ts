@@ -1,12 +1,12 @@
 import { JSONData } from '@/types';
-import { CustomPropsType, ICustomProps } from './field-custom-props';
+import { ICustomProps } from './field-custom-props';
 import { InputType } from './reactive-field-base';
 
 type CustomProps<TInputType extends InputType, TFormValues extends JSONData> = {
   customProps: ICustomProps<TFormValues>[TInputType];
 };
 
-type ConditionalProp<
+export type ConditionalProp<
   TInputType extends InputType,
   IsPartialProps extends boolean = false,
   TFormValues extends JSONData = JSONData
@@ -14,8 +14,7 @@ type ConditionalProp<
   ? Partial<CustomProps<TInputType, TFormValues>>
   : CustomProps<TInputType, TFormValues>;
 
-export interface IConditionalProp<TFormValues extends JSONData>
-  extends CustomPropsType {
+export interface IConditionalProp<TFormValues extends JSONData> {
   text: ConditionalProp<'text', true, TFormValues>;
   checkbox: ConditionalProp<'checkbox', true, TFormValues>;
   switch: ConditionalProp<'switch', true, TFormValues>;

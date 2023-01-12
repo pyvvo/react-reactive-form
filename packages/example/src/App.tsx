@@ -1,14 +1,9 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react/jsx-one-expression-per-line */
-import {
-  FormBuilder,
-  IReactiveFieldMeta,
-  ReactiveForm,
-  ReactiveTextField
-} from '@hm-ui/reactive-form';
+import { IReactiveFieldMeta, ReactiveForm } from '@hm-ui/reactive-form';
 import { Button } from '@mantine/core';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import './App.css';
 import reactLogo from './assets/react.svg';
@@ -61,9 +56,6 @@ function App() {
           fieldKey: 'isActive',
           label: 'password',
           type: 'switch'
-          // customProps: {
-          //   label: 'ff'
-          // }
         }
       ]
     }
