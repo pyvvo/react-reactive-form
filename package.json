@@ -1,16 +1,16 @@
 {
-  "name": "hm-ui",
+  "name": "hm",
   "packageManager": "yarn@3.3.1",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "ex": "yarn workspace @hm-ui/example",
-    "rf": "yarn workspace @hm-ui/reactive-form",
-    "dev:rf": "yarn rf dev",
+    "ex": "yarn workspace @hm/example",
+    "ui": "yarn workspace @hm/ui",
+    "dev:ui": "yarn ui dev",
     "dev:ex": "yarn ex dev",
-    "build:rf": "yarn rf build"
+    "build:rf": "yarn ui build"
   },
   "devDependencies": {
     "@types/node": "^18.11.17",
