@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable react/require-default-props */
 import { action } from '@storybook/addon-actions';
@@ -16,7 +17,7 @@ import { useForm } from 'react-hook-form';
 import { getError } from './reactive-form/reactive-fields/utils';
 import { FieldMeta } from './reactive-form/form/types';
 import { JSONData } from './types';
-import { InputType, IReactiveField } from './reactive-form/reactive-fields/types';
+import { InputType, IReactiveField } from './reactive-form';
 
 // withRHF : https://gist.github.com/shumbo/3bbb8a2dea5ea0a90ecf0b7c103783e8
 

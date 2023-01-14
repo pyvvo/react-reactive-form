@@ -1,7 +1,7 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react/jsx-one-expression-per-line */
-import { IReactiveFieldMeta, ReactiveForm } from '@hm-ui/reactive-form';
+import { IReactiveFieldMeta, ReactiveForm } from '@hm/ui';
 import { Button } from '@mantine/core';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';

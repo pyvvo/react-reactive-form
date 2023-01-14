@@ -1,5 +1,5 @@
 {
-  "name": "@hm-ui/example",
+  "name": "@hm/example",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
-    "@hm-ui/reactive-form": "*",
+    "@hm/ui": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.41.0"

@@ -3,7 +3,7 @@ import {
   ReactiveCheckbox,
   ReactiveSwitch,
   ReactiveTextField
-} from '@hm-ui/reactive-form';
+} from '@hm/ui';
 
 FormBuilder.defineWidget({ name: 'text', component: ReactiveTextField });
 FormBuilder.defineWidget({ name: 'checkbox', component: ReactiveCheckbox });

@@ -1,5 +1,5 @@
 {
-  "name": "@hm-ui/reactive-form",
+  "name": "@hm/ui",
   "type": "module",
   "description": "A react reactive form",
   "version": "0.1.0",
