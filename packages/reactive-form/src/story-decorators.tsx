@@ -13,10 +13,10 @@ import {
   useState
 } from 'react';
 import { useForm } from 'react-hook-form';
-import { getError } from './reactive-fields/utils';
-import { FieldMeta } from './form/types';
+import { getError } from './reactive-form/reactive-fields/utils';
+import { FieldMeta } from './reactive-form/form/types';
 import { JSONData } from './types';
-import { InputType, IReactiveField } from './reactive-fields/types';
+import { InputType, IReactiveField } from './reactive-form/reactive-fields/types';
 
 // withRHF : https://gist.github.com/shumbo/3bbb8a2dea5ea0a90ecf0b7c103783e8
 

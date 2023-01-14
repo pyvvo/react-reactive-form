@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-len */
 import { ElementType, FunctionComponent } from 'react';
-import { InputType, IReactiveField } from './reactive-fields/types';
-import { JSONData } from './types';
+import { JSONData } from '@/types';
+import { InputType, IReactiveField } from './reactive-fields';
 
 type FieldMapType<
   TField extends JSONData,

@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import { useCallback, useMemo } from 'react';
-import LayoutFlex from '@/form-layout/layout-flex';
-import { InputType, ReactiveFieldErrorType } from '@/reactive-fields/types';
-import { getError } from '@/reactive-fields/utils';
+import {
+  getError,
+  InputType,
+  ReactiveFieldErrorType
+} from '@/reactive-form/reactive-fields';
+import { FormProps, JSONData } from '../../types';
 import FormBuilder from '../form-builder';
-import { FormProps, JSONData } from '../types';
+import LayoutFlex from '../form-layout/layout-flex';
 import FormGroup from './form-group';
 import { FieldMeta, IReactiveFieldMeta } from './types';
 
