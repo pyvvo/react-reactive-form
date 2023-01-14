@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { ReactiveFieldErrorType } from '@/reactive-fields/types';
+import { ReactiveFieldErrorType } from '@/reactive-form/reactive-fields/types';
 import { getValuePath } from '@/utils';
 
 export const getError = (fieldKey: string, errors: ReactiveFieldErrorType) => {

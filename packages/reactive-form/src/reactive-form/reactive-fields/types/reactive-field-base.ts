@@ -2,7 +2,7 @@
 import { ChangeEvent, Ref } from 'react';
 import { RegisterOptions } from 'react-hook-form';
 import { JSONData, Merge } from '@/types';
-import { FormProps } from '../../types/form';
+import { FormProps } from '../../../types/form';
 
 export type InputType = 'text' | 'checkbox' | 'switch';
 // | 'password'
