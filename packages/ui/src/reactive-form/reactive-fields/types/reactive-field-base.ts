@@ -26,6 +26,11 @@ export type ErrorFormType = {
 
 export type ReactiveFieldErrorType = ErrorFormType | Record<string, any>;
 
+export type ReactiveFieldProps<TFieldProps extends JSONData> = Merge<
+  { 'data-testid': string },
+  TFieldProps
+>;
+
 export interface IReactiveField<
   TFieldProps extends JSONData,
   TFormValues extends JSONData = JSONData

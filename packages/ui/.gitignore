@@ -6,3 +6,4 @@ stats.html
 tsconfig.tsbuildinfo
 tsconfig.temp.json
 vite.config.ts.timestamp*
+coverage/*

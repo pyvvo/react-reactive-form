@@ -2,11 +2,12 @@ import type { StorybookConfig } from '@storybook/builder-vite';
 import { loadConfigFromFile, mergeConfig, UserConfig } from 'vite';
 
 const config: StorybookConfig = {
+  staticDirs: ['../public'],
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.tsx'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@storybook/addon-interactions'
+    '@storybook/addon-interactions',
   ],
   framework: '@storybook/react-vite',
   features: {

@@ -5,7 +5,7 @@
 import { Checkbox, CheckboxProps } from '@mantine/core';
 import { FC, useCallback } from 'react';
 import { Controller } from 'react-hook-form';
-import { IReactiveField } from '../types';
+import { IReactiveField, ReactiveFieldProps } from '../types';
 import { CheckCustomProps } from './types';
 
 const ReactiveCheckbox: FC<IReactiveField<CheckCustomProps>> = (props) => {
@@ -25,8 +25,9 @@ const ReactiveCheckbox: FC<IReactiveField<CheckCustomProps>> = (props) => {
     NonNullable<CustomProps['handleChange']>
   >['0'];
   const { control } = form;
-  const checkboxProps: CheckboxProps = {
+  const checkboxProps: ReactiveFieldProps<CheckboxProps> = {
     id: fieldKey,
+    'data-testid': fieldKey,
     // 'aria-describedby': helperId,
     size,
     disabled,
@@ -51,7 +52,7 @@ const ReactiveCheckbox: FC<IReactiveField<CheckCustomProps>> = (props) => {
     <Controller
       control={control}
       name={fieldKey}
-      defaultValue={false}
+      // defaultValue={false}
       rules={{ ...options }}
       render={({ field: { onChange, value, ref, name, onBlur } }) => (
         <Checkbox

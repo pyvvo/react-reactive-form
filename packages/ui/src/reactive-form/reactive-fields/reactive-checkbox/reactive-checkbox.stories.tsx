@@ -1,5 +1,8 @@
 /* eslint-disable react/button-has-type */
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect } from '@storybook/jest';
+import { userEvent } from '@storybook/testing-library';
+import { within, waitFor } from '@testing-library/dom';
 import { ReactiveFormDecorator } from '@/story-decorators';
 import { ReactiveFieldStoryType } from '../types';
 import ReactiveField from './reactive-checkbox';
@@ -12,7 +15,7 @@ const meta: Meta<typeof ReactiveField> = {
    * See https://storybook.js.org/docs/7.0/react/configure/overview#configure-story-loading
    * to learn how to generate automatic titles
    */
-  title: 'Reactive Form/ReactiveCheckbox ',
+  title: 'Reactive Field/ReactiveCheckbox ',
   component: ReactiveField,
   decorators: [ReactiveFormDecorator]
 };
@@ -20,8 +23,22 @@ const meta: Meta<typeof ReactiveField> = {
 export default meta;
 
 export const ReactiveCheckbox: Story = {
+  play: async ({ canvasElement, args: { fieldKey } }) => {
+    const canvas = within(canvasElement);
+    const fieldRef = canvas.getByTestId(fieldKey);
+    const submitRef = canvas.getByTestId('submit');
+    const resultRef = canvas.getByTestId<HTMLTextAreaElement>('form-result');
+
+    await userEvent.click(fieldRef);
+    await userEvent.click(submitRef);
+    await waitFor(() => {
+      expect(JSON.parse(resultRef.value)).toEqual({
+        value: true
+      });
+    });
+  },
   args: {
-    fieldKey: 'text',
+    fieldKey: 'value',
     label: 'test',
     options: {
       required: false

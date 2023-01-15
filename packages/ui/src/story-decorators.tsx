@@ -1,62 +1,21 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable react/require-default-props */
-import { action } from '@storybook/addon-actions';
-import type { Decorator, Meta, ReactRenderer } from '@storybook/react';
 import { Button, Flex, JsonInput } from '@mantine/core';
+import type { Meta } from '@storybook/react';
 import {
+  Children,
   cloneElement,
   FC,
-  ReactElement,
-  ReactNode,
-  Children,
   isValidElement,
+  ReactElement,
   useState
 } from 'react';
 import { useForm } from 'react-hook-form';
-import { getError } from './reactive-form/reactive-fields/utils';
-import { FieldMeta } from './reactive-form/form/types';
-import { JSONData } from './types';
 import { InputType, IReactiveField } from './reactive-form';
-
-// withRHF : https://gist.github.com/shumbo/3bbb8a2dea5ea0a90ecf0b7c103783e8
-
-// type ReactiveFormType = ReactElement<{
-//   form: any;
-//   children: ReactNode;
-// }>;
-
-// interface IFormProvider {
-//   children?: ReactNode;
-//   // defaultValues: Record<string, any>;
-// }
-// const StorybookFormProvider: FC<IFormProvider> = (props) => {
-//   const { children } = props;
-//   const form = useForm({
-//     mode: 'onSubmit',
-//     reValidateMode: 'onSubmit'
-//   });
-
-//   console.log(form);
-
-//   const modifiedChildren = Children.map(children, (child) => {
-//     // Checking isValidElement is the safe way and avoids a typescript
-//     // error too.
-//     if (isValidElement(child)) {
-//       return cloneElement(child as ReactiveFormType, {
-//         form
-//       });
-//     }
-//     return child;
-//   });
-
-//   return (
-//     <form onSubmit={form.handleSubmit(action('[React Hooks Form] Submit'))}>
-//       {modifiedChildren}
-//       <Button type="submit">Submit</Button>
-//     </form>
-//   );
-// };
+import { FieldMeta } from './reactive-form/form/types';
+import { getError } from './reactive-form/reactive-fields/utils';
+import { JSONData } from './types';
 
 type DecoratorParameter<T extends 0 | 1> = Parameters<
   NonNullable<Meta<any>['decorators']>[0]
@@ -127,15 +86,20 @@ const ReactiveFieldWrapper: FC<IFormProvider> = (props) => {
         direction="column"
         wrap="wrap">
         {modifiedChildren}
-        <Button type="submit">Submit</Button>
+        <Button type="submit" data-testid="submit">
+          Submit
+        </Button>
         <JsonInput
           label="Result"
           placeholder="Input result"
-          validationError="Invalid json"
+          // validationError="Invalid json"
+          data-testid="form-result"
           formatOnBlur
           autosize
           minRows={4}
+          // defaultValue="tt"
           value={value}
+          onChange={() => {}}
         />
       </Flex>
     </form>

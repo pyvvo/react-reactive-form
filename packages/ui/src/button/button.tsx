@@ -7,7 +7,7 @@ import { forwardRef } from 'react';
 
 // Create intermediate component with default ref type and props
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => (
-  <MButton ref={ref} {...props}>
+  <MButton ref={ref} {...props} data-testid="button">
     {props.children}
   </MButton>
 ));

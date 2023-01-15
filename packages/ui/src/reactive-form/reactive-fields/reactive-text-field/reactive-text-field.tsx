@@ -5,7 +5,7 @@
 import { TextInput, TextInputProps } from '@mantine/core';
 import { FC, useCallback } from 'react';
 import { Controller } from 'react-hook-form';
-import { IReactiveField } from '../types';
+import { IReactiveField, ReactiveFieldProps } from '../types';
 import { TextFieldCustomProps } from './types';
 
 const ReactiveTextField: FC<IReactiveField<TextFieldCustomProps>> = (props) => {
@@ -19,19 +19,21 @@ const ReactiveTextField: FC<IReactiveField<TextFieldCustomProps>> = (props) => {
   } = props;
 
   const { type, size, color, disabled, hidden, handleChange } = customProps;
-  console.log(disabled);
 
   type CustomProps = typeof customProps;
   type HandleChangeParams = Parameters<
     NonNullable<CustomProps['handleChange']>
   >['0'];
   const { control } = form;
-  const fieldProps: TextInputProps = {
+  const fieldProps: ReactiveFieldProps<TextInputProps> = {
     id: fieldKey,
     // 'aria-describedby': helperId,
+    'data-testid': fieldKey,
+    // wrapperProps: {
+    // },
     size,
     disabled,
-    required: !!options?.required,
+    withAsterisk: !!options?.required,
     sx: {
       width: '100%',
       display: hidden ? 'none' : undefined
@@ -53,7 +55,7 @@ const ReactiveTextField: FC<IReactiveField<TextFieldCustomProps>> = (props) => {
     <Controller
       control={control}
       name={fieldKey}
-      defaultValue=""
+      // defaultValue=""
       rules={{ ...options }}
       render={({ field: { onChange, ref, ...rest } }) => (
         <TextInput
