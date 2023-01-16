@@ -1,5 +1,7 @@
 import { JSONData } from '@/types';
 import { CheckCustomProps } from '../reactive-checkbox';
+import { NumberFieldCustomProps } from '../reactive-number-field';
+import { PasswordFieldCustomProps } from '../reactive-password-field';
 import { SelectCustomProps } from '../reactive-select';
 import { SwitchCustomProps } from '../reactive-switch';
 import { TextFieldCustomProps } from '../reactive-text-field';
@@ -9,6 +11,8 @@ export type CustomPropsType = Record<InputType, any>;
 
 export interface ICustomProps<TFormValues extends JSONData> {
   text: CommonProps<TextFieldCustomProps, TFormValues>;
+  password: CommonProps<PasswordFieldCustomProps, TFormValues>;
+  number: CommonProps<NumberFieldCustomProps, TFormValues>;
   checkbox: CommonProps<CheckCustomProps, TFormValues>;
   switch: CommonProps<SwitchCustomProps, TFormValues>;
   select: CommonProps<SelectCustomProps, TFormValues>;

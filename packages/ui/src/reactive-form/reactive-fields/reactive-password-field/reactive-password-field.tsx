@@ -2,13 +2,15 @@
 /* eslint-disable react/display-name */
 /* eslint-disable react/require-default-props */
 // eslint-disable-next-line object-curly-newline
-import { TextInput, TextInputProps } from '@mantine/core';
+import { PasswordInput, PasswordInputProps } from '@mantine/core';
 import { FC, useCallback } from 'react';
 import { Controller } from 'react-hook-form';
 import { IReactiveField, ReactiveFieldProps } from '../types';
-import { TextFieldCustomProps } from './types';
+import { PasswordFieldCustomProps } from './types';
 
-const ReactiveTextField: FC<IReactiveField<TextFieldCustomProps>> = (props) => {
+const ReactivePasswordField: FC<IReactiveField<PasswordFieldCustomProps>> = (
+  props
+) => {
   const {
     form,
     fieldKey,
@@ -18,19 +20,27 @@ const ReactiveTextField: FC<IReactiveField<TextFieldCustomProps>> = (props) => {
     customProps = { color: undefined }
   } = props;
 
-  const { size, color, disabled, hidden, handleChange } = customProps;
+  const {
+    size,
+    color,
+    disabled,
+    hidden,
+    handleChange,
+    visibilityToggleIcon,
+    icon
+  } = customProps;
 
   type CustomProps = typeof customProps;
   type HandleChangeParams = Parameters<
     NonNullable<CustomProps['handleChange']>
   >['0'];
   const { control } = form;
-  const fieldProps: ReactiveFieldProps<TextInputProps> = {
+  const fieldProps: ReactiveFieldProps<PasswordInputProps> = {
     id: fieldKey,
     // 'aria-describedby': helperId,
     'data-testid': fieldKey,
-    // wrapperProps: {
-    // },
+    visibilityToggleIcon,
+    icon,
     size,
     disabled,
     withAsterisk: !!options?.required,
@@ -57,7 +67,7 @@ const ReactiveTextField: FC<IReactiveField<TextFieldCustomProps>> = (props) => {
       // defaultValue=""
       rules={{ ...options }}
       render={({ field: { onChange, ref, ...rest } }) => (
-        <TextInput
+        <PasswordInput
           {...fieldProps}
           onChange={(event) => {
             customHandlechange({ form, event });
@@ -71,4 +81,4 @@ const ReactiveTextField: FC<IReactiveField<TextFieldCustomProps>> = (props) => {
     />
   );
 };
-export default ReactiveTextField;
+export default ReactivePasswordField;

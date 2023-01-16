@@ -4,7 +4,13 @@ import { RegisterOptions } from 'react-hook-form';
 import { JSONData, Merge, Simplify } from '@/types';
 import { FormProps } from '../../../types/form';
 
-export type InputType = 'text' | 'checkbox' | 'switch' | 'select';
+export type InputType =
+  | 'text'
+  | 'number'
+  | 'password'
+  | 'checkbox'
+  | 'switch'
+  | 'select';
 // | 'password'
 // | 'range'
 // | 'multi-select'
