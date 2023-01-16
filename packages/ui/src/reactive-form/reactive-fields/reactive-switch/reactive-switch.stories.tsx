@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { userEvent } from '@storybook/testing-library';
 import { waitFor, within } from '@testing-library/dom';
 import { expect } from '@storybook/jest';
-import { ReactiveFormDecorator } from '@/story-decorators';
+import { getReactiveRef, ReactiveFormDecorator } from '@/story-utils';
 import { ReactiveFieldStoryType } from '../types';
 import ReactiveField from './reactive-switch';
 import { SwitchCustomProps } from './types';
@@ -24,10 +24,10 @@ export default meta;
 
 export const ReactiveSwitch: Story = {
   play: async ({ canvasElement, args: { fieldKey } }) => {
-    const canvas = within(canvasElement);
-    const fieldRef = canvas.getByTestId(fieldKey);
-    const submitRef = canvas.getByTestId('submit');
-    const resultRef = canvas.getByTestId<HTMLTextAreaElement>('form-result');
+    const { fieldRef, submitRef, resultRef } = getReactiveRef(
+      canvasElement,
+      fieldKey
+    );
 
     await userEvent.click(fieldRef);
     await userEvent.click(submitRef);

@@ -3,7 +3,6 @@
 import { MantineSize } from '@mantine/core';
 
 export type SwitchCustomProps = {
-  label?: string;
   size?: MantineSize;
   color?:
     | 'default'

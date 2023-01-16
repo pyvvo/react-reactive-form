@@ -12,10 +12,10 @@ import {
   useState
 } from 'react';
 import { useForm } from 'react-hook-form';
-import { InputType, IReactiveField } from './reactive-form';
-import { FieldMeta } from './reactive-form/form/types';
-import { getError } from './reactive-form/reactive-fields/utils';
-import { JSONData } from './types';
+import { InputType, IReactiveField } from '../reactive-form';
+import { FieldMeta } from '../reactive-form/form/types';
+import { getError } from '../reactive-form/reactive-fields/utils';
+import { JSONData } from '../types';
 
 type DecoratorParameter<T extends 0 | 1> = Parameters<
   NonNullable<Meta<any>['decorators']>[0]

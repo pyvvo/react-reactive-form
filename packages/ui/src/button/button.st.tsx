@@ -4,7 +4,7 @@ import { userEvent, within } from '@storybook/testing-library';
 import { TextInput } from '@mantine/core';
 import { wait } from '@/utils';
 import Btn from './button';
-import { ReactiveFormDecorator } from '@/story-decorators';
+import { ReactiveFormDecorator } from '@/story-utils/story-decorators';
 
 type Story = StoryObj<typeof Btn>;
 

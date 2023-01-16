@@ -8,6 +8,7 @@ const config: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
+    '@storybook/addon-a11y'
   ],
   framework: '@storybook/react-vite',
   features: {
@@ -32,7 +33,7 @@ const config: StorybookConfig = {
       //   alias: {
       //     // Native support for tsconfig's paths resolution : https://github.com/vitejs/vite/issues/6828
       //     '@mantine/core': '@mantine/core',
-      //     react: 'react', 
+      //     react: 'react',
       //     'react-hook-form': 'react-hook-form'
       //   }
       // }

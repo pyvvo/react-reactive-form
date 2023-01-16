@@ -25,9 +25,10 @@ const ReactiveSwitch: FC<IReactiveField<SwitchCustomProps>> = (props) => {
     NonNullable<CustomProps['handleChange']>
   >['0'];
   const { control } = form;
-  const switchProps: ReactiveFieldProps<SwitchProps> = {
+  const fieldProps: ReactiveFieldProps<SwitchProps> = {
     id: fieldKey,
     'data-testid': fieldKey,
+    label,
     // 'aria-describedby': helperId,
     size,
     disabled,
@@ -55,7 +56,7 @@ const ReactiveSwitch: FC<IReactiveField<SwitchCustomProps>> = (props) => {
       rules={{ ...options }}
       render={({ field: { onChange, value, ...rest } }) => (
         <Switch
-          {...switchProps}
+          {...fieldProps}
           onChange={(event) => {
             customHandlechange({ form, event });
             onChange(event);

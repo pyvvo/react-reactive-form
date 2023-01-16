@@ -1,12 +1,11 @@
 /* eslint-disable react/button-has-type */
-import type { Meta, StoryObj } from '@storybook/react';
-import { userEvent, waitFor, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
-import { ReactiveFormDecorator } from '@/story-decorators';
+import type { Meta, StoryObj } from '@storybook/react';
+import { userEvent, waitFor } from '@storybook/testing-library';
+import { getReactiveRef, ReactiveFormDecorator } from '@/story-utils';
 import { ReactiveFieldStoryType } from '../types';
 import RTF from './reactive-text-field';
 import { TextFieldCustomProps } from './types';
-import { wait } from '@/utils';
 
 type Story = StoryObj<ReactiveFieldStoryType<TextFieldCustomProps>>;
 
@@ -24,10 +23,10 @@ export default meta;
 
 export const ReactiveTextField: Story = {
   play: async ({ canvasElement, args: { fieldKey } }) => {
-    const canvas = within(canvasElement);
-    const fieldRef = canvas.getByTestId(fieldKey);
-    const submitRef = canvas.getByTestId('submit');
-    const resultRef = canvas.getByTestId<HTMLTextAreaElement>('form-result');
+    const { fieldRef, submitRef, resultRef } = getReactiveRef(
+      canvasElement,
+      fieldKey
+    );
 
     await userEvent.type(fieldRef, 'example');
     await userEvent.click(submitRef);

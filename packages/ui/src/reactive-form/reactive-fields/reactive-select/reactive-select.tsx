@@ -2,42 +2,40 @@
 /* eslint-disable react/display-name */
 /* eslint-disable react/require-default-props */
 // eslint-disable-next-line object-curly-newline
-import { Checkbox, CheckboxProps } from '@mantine/core';
+import { Select, SelectProps } from '@mantine/core';
 import { FC, useCallback } from 'react';
 import { Controller } from 'react-hook-form';
 import { IReactiveField, ReactiveFieldProps } from '../types';
-import { CheckCustomProps } from './types';
+import { SelectCustomProps } from './types';
 
-const ReactiveCheckbox: FC<IReactiveField<CheckCustomProps>> = (props) => {
-  const {
-    form,
-    fieldKey,
-    label,
-    options,
-    error,
-    customProps = { color: 'primary' }
-  } = props;
+const ReactiveSelect: FC<IReactiveField<SelectCustomProps>> = (props) => {
+  const { form, fieldKey, label, options, error, customProps } = props;
 
-  const { size, color, disabled, hidden, handleChange } = customProps;
+  const { size, color, disabled, hidden, handleChange, onDropdownOpen } =
+    customProps;
 
   type CustomProps = typeof customProps;
   type HandleChangeParams = Parameters<
     NonNullable<CustomProps['handleChange']>
   >['0'];
   const { control } = form;
-  const fieldProps: ReactiveFieldProps<CheckboxProps> = {
+  const fieldProps: ReactiveFieldProps<SelectProps> = {
     id: fieldKey,
     'data-testid': fieldKey,
     label,
     // 'aria-describedby': helperId,
     size,
     disabled,
-    required: !!options?.required,
+    withAsterisk: !!options?.required,
     sx: {
       width: '100%',
       display: hidden ? 'none' : undefined
     },
+    onDropdownOpen,
     color: error ? 'error' : color,
+    data: customProps.options,
+    searchable: true,
+    clearable: true,
     error: Boolean(error)
   };
   const customHandlechange = useCallback(
@@ -55,20 +53,18 @@ const ReactiveCheckbox: FC<IReactiveField<CheckCustomProps>> = (props) => {
       name={fieldKey}
       // defaultValue={false}
       rules={{ ...options }}
-      render={({ field: { onChange, value, ref, name, onBlur } }) => (
-        <Checkbox
+      render={({ field: { onChange, value, ...rest } }) => (
+        <Select
           {...fieldProps}
           onChange={(event) => {
             customHandlechange({ form, event });
             onChange(event);
           }}
           checked={value}
-          ref={ref}
-          name={name}
-          onBlur={onBlur}
+          {...rest}
         />
       )}
     />
   );
 };
-export default ReactiveCheckbox;
+export default ReactiveSelect;

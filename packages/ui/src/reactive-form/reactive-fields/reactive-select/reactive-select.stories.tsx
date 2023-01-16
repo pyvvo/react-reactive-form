@@ -1,76 +1,58 @@
 /* eslint-disable react/button-has-type */
 import type { Meta, StoryObj } from '@storybook/react';
+import { userEvent } from '@storybook/testing-library';
+import { waitFor, within } from '@testing-library/dom';
 import { expect } from '@storybook/jest';
-import { userEvent, waitFor, within } from '@storybook/testing-library';
 import { getReactiveRef, ReactiveFormDecorator } from '@/story-utils';
 import { ReactiveFieldStoryType } from '../types';
-import ReactiveField from './reactive-checkbox';
-import { CheckCustomProps } from './types';
+import ReactiveField from './reactive-select';
+import { SelectCustomProps } from './types';
+import { wait } from '@/utils';
 
-type Story = StoryObj<ReactiveFieldStoryType<CheckCustomProps>>;
+type Story = StoryObj<ReactiveFieldStoryType<SelectCustomProps>>;
 
 const meta: Meta<typeof ReactiveField> = {
   /* 👇 The title prop is optional.
    * See https://storybook.js.org/docs/7.0/react/configure/overview#configure-story-loading
    * to learn how to generate automatic titles
    */
-  title: 'Reactive Field/ReactiveCheckbox ',
+  title: 'Reactive Field/ReactiveSelect',
   component: ReactiveField,
   decorators: [ReactiveFormDecorator]
 };
 
 export default meta;
 
-export const ReactiveCheckbox: Story = {
+export const ReactiveSelect: Story = {
   play: async ({ canvasElement, args: { fieldKey } }) => {
     const { fieldRef, submitRef, resultRef } = getReactiveRef(
       canvasElement,
       fieldKey
     );
 
+    const canvas = within(canvasElement);
+
     await userEvent.click(fieldRef);
+    await wait(200);
+
+    const optionRef = canvas.getByText('React');
+    await userEvent.click(optionRef);
     await userEvent.click(submitRef);
     await waitFor(() => {
       expect(JSON.parse(resultRef.value)).toEqual({
-        value: true
+        value: 'React'
       });
     });
   },
   args: {
     fieldKey: 'value',
-    label: 'test',
+    label: 'select',
     options: {
       required: false
     },
     customProps: {
-      disabled: false
+      disabled: false,
+      options: ['React', 'Angular', 'Svelte', 'Vue']
     }
   }
 };
-
-// const defaultValues = {
-//   username: '',
-//   password: ''
-// };
-
-// type Data = typeof defaultValues;
-
-// export const ReactiveText: Story<Data> = {
-//   args: {
-//     meta: [
-//       {
-//         name: 'fddffd',
-//         fields: [
-//           {
-//             fieldKey: 'username',
-//             label: 'username',
-//             type: 'text',
-//             options: {
-//               required: true
-//             }
-//           }
-//         ]
-//       }
-//     ]
-//   }
-// };

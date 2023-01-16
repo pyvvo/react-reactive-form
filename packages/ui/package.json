@@ -17,14 +17,13 @@
     }
   },
   "scripts": {
-    "dev": "vite --host --port=3002",
+    "dev": "storybook dev -p 3002",
     "build": "tsc && vite build",
     "serve": "vite preview",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:storybook": "test-storybook",
     "lint": "eslint src --max-warnings=0",
-    "storybook": "storybook dev -p 6006",
     "typecheck": "vitest typecheck"
   },
   "peerDependencies": {
@@ -46,6 +45,7 @@
     "@mantine/core": "^5.10.0",
     "@mantine/dates": "^5.10.0",
     "@mantine/hooks": "^5.10.0",
+    "@storybook/addon-a11y": "^7.0.0-beta.20",
     "@storybook/addon-actions": "^7.0.0-beta.20",
     "@storybook/addon-essentials": "^7.0.0-beta.20",
     "@storybook/addon-interactions": "^7.0.0-beta.20",
