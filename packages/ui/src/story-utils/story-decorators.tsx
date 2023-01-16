@@ -84,9 +84,13 @@ const ReactiveFieldWrapper: FC<IFormProvider> = (props) => {
         justify="flex-start"
         align="flex-start"
         direction="column"
+        style={{ marginTop: '18px' }}
         wrap="wrap">
         {modifiedChildren}
-        <Button type="submit" data-testid="submit">
+        <Button
+          styles={{ root: { marginTop: '12px' } }}
+          type="submit"
+          data-testid="submit">
           Submit
         </Button>
         <JsonInput

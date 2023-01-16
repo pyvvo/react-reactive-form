@@ -14,7 +14,7 @@ const meta: Meta<typeof RTF> = {
    * See https://storybook.js.org/docs/7.0/react/configure/overview#configure-story-loading
    * to learn how to generate automatic titles
    */
-  title: 'Reactive Field/ReactiveNumberField ',
+  title: 'Reactive Field/ReactiveNumberField',
   component: RTF,
   decorators: [ReactiveFormDecorator]
 };
