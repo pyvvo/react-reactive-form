@@ -1,5 +1,6 @@
 import { JSONData } from '@/types';
 import { CheckCustomProps } from '../reactive-checkbox';
+import { MultiSelectCustomProps } from '../reactive-multi-select';
 import { NumberFieldCustomProps } from '../reactive-number-field';
 import { PasswordFieldCustomProps } from '../reactive-password-field';
 import { RadioCustomProps } from '../reactive-radio';
@@ -20,6 +21,7 @@ export interface ICustomProps<TFormValues extends JSONData> {
   select: CommonProps<SelectCustomProps, TFormValues>;
   radio: CommonProps<RadioCustomProps, TFormValues>;
   range: CommonProps<RangeCustomProps, TFormValues>;
+  'multi-select': CommonProps<MultiSelectCustomProps, TFormValues>;
 
   // range: never;
   // 'multi-select': never;

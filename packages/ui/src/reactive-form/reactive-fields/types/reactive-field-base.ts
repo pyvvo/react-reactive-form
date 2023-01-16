@@ -11,9 +11,10 @@ export type InputType =
   | 'checkbox'
   | 'switch'
   | 'select'
+  | 'multi-select'
   | 'radio'
   | 'range';
-// | 'multi-select'
+
 // // | 'list'
 // | 'datepicker'
 // | 'autocomplete';
