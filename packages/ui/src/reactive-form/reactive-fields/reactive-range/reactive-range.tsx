@@ -48,6 +48,8 @@ const ReactiveRange: FC<IReactiveField<RangeCustomProps>> = (props) => {
   const wrapperProps: ReactiveFieldProps<InputWrapperProps> = {
     label,
     sx: {
+      marginTop: '12px',
+      marginBottom: '14px',
       width: '100%',
       display: hidden ? 'none' : undefined
     },

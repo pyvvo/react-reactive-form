@@ -40,7 +40,11 @@ const ReactiveRadio: FC<IReactiveField<RadioCustomProps>> = (props) => {
     id: fieldKey,
     orientation,
     spacing,
-    offset
+    offset,
+    sx: {
+      marginTop: '14px',
+      marginBottom: '12px'
+    }
   };
 
   const fieldProps: ReactiveFieldProps<RadioProps> = {
@@ -52,7 +56,6 @@ const ReactiveRadio: FC<IReactiveField<RadioCustomProps>> = (props) => {
     disabled,
     required: !!options?.required,
     sx: {
-      // width: '100%',
       display: hidden ? 'none' : undefined
     },
     color: error ? 'error' : color,

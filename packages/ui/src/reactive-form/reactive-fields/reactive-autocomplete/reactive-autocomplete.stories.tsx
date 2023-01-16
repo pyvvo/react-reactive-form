@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { userEvent } from '@storybook/testing-library';
 import { waitFor, within } from '@testing-library/dom';
 import { expect } from '@storybook/jest';
-import { getReactiveRef, ReactiveFormDecorator } from '@/story-utils';
+import { getReactiveRef, ReactiveFieldDecorator } from '@/story-utils';
 import { ReactiveFieldStoryType } from '../types';
 import ReactiveField from './reactive-autocomplete';
 import { AutocompleteCustomProps } from './types';
@@ -19,7 +19,7 @@ const meta: Meta<typeof ReactiveField> = {
    */
   title: 'Reactive Field/ReactiveAutocomplete',
   component: ReactiveField,
-  decorators: [ReactiveFormDecorator]
+  decorators: [ReactiveFieldDecorator]
 };
 
 export default meta;

@@ -2,7 +2,7 @@
 import { expect } from '@storybook/jest';
 import type { Meta, StoryObj } from '@storybook/react';
 import { userEvent, waitFor } from '@storybook/testing-library';
-import { getReactiveRef, ReactiveFormDecorator } from '@/story-utils';
+import { getReactiveRef, ReactiveFieldDecorator } from '@/story-utils';
 import { ReactiveFieldStoryType } from '../types';
 import RTF from './reactive-text-field';
 import { TextFieldCustomProps } from './types';
@@ -16,7 +16,7 @@ const meta: Meta<typeof RTF> = {
    */
   title: 'Reactive Field/ReactiveTextField ',
   component: RTF,
-  decorators: [ReactiveFormDecorator]
+  decorators: [ReactiveFieldDecorator]
 };
 
 export default meta;

@@ -1,2 +1,2 @@
-export * from './story-decorators';
+export * from './decorators';
 export * from './story-utils';

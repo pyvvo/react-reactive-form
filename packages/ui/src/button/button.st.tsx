@@ -1,10 +1,9 @@
 /* eslint-disable react/button-has-type */
+import { TextInput } from '@mantine/core';
 import type { Meta, StoryObj } from '@storybook/react';
 import { userEvent, within } from '@storybook/testing-library';
-import { TextInput } from '@mantine/core';
 import { wait } from '@/utils';
 import Btn from './button';
-import { ReactiveFormDecorator } from '@/story-utils/story-decorators';
 
 type Story = StoryObj<typeof Btn>;
 

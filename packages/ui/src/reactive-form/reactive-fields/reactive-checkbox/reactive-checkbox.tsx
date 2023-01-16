@@ -34,6 +34,7 @@ const ReactiveCheckbox: FC<IReactiveField<CheckCustomProps>> = (props) => {
     disabled,
     required: !!options?.required,
     sx: {
+      marginBlock: '12px',
       width: '100%',
       display: hidden ? 'none' : undefined
     },

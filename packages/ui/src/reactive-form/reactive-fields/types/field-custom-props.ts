@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { JSONData } from '@/types';
 import { AutocompleteCustomProps } from '../reactive-autocomplete';
 import { CheckCustomProps } from '../reactive-checkbox';

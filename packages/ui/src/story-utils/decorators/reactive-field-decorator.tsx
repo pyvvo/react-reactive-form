@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable prettier/prettier */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable react/require-default-props */
@@ -12,19 +13,14 @@ import {
   useState
 } from 'react';
 import { useForm } from 'react-hook-form';
-import { InputType, IReactiveField } from '../reactive-form';
-import { FieldMeta } from '../reactive-form/form/types';
-import { getError } from '../reactive-form/reactive-fields/utils';
-import { JSONData } from '../types';
-
-type DecoratorParameter<T extends 0 | 1> = Parameters<
-  NonNullable<Meta<any>['decorators']>[0]
->[T];
-
-interface IDecoratorParams {
-  Story: DecoratorParameter<0>;
-  props: DecoratorParameter<1>;
-}
+import { JSONData } from '@/types';
+import {
+  getError,
+  InputType,
+  IReactiveField,
+  FieldMeta
+} from '@/reactive-form';
+import { IDecoratorParams } from "./common";
 
 interface IFormProvider {
   field: FieldMeta<JSONData, InputType>;
@@ -113,7 +109,7 @@ const ReactiveFieldWrapper: FC<IFormProvider> = (props) => {
   );
 };
 
-export const ReactiveFormDecorator = (
+export const ReactiveFieldDecorator = (
   Story: IDecoratorParams['Story'],
   props: IDecoratorParams['props']
 ) => {
@@ -122,21 +118,7 @@ export const ReactiveFormDecorator = (
 
   return (
     <ReactiveFieldWrapper field={{ ...args }}>
-      {/* <Story args={{ fieldKey: 'dda' }} /> */}
       <Story />
     </ReactiveFieldWrapper>
   );
 };
-
-// export const ReactiveFieldDecorator = (props: IFormProvider) => (Story: FC) =>
-//   (
-//     <ReactiveFieldWrapper>
-//       <Story />
-//     </ReactiveFieldWrapper>
-//   );
-// export const ReactiveFormDecorator = (props: IFormProvider) => (Story: FC) =>
-//   (
-//     <StorybookFormProvider>
-//       <Story />
-//     </StorybookFormProvider>
-//   );

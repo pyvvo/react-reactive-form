@@ -33,6 +33,7 @@ const ReactiveSwitch: FC<IReactiveField<SwitchCustomProps>> = (props) => {
     size,
     disabled,
     sx: {
+      marginBlock: '12px',
       width: '100%',
       display: hidden ? 'none' : undefined
     },

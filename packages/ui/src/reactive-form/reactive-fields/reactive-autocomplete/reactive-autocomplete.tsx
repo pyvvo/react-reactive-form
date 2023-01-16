@@ -2,14 +2,7 @@
 /* eslint-disable react/display-name */
 /* eslint-disable react/require-default-props */
 // eslint-disable-next-line object-curly-newline
-import {
-  Autocomplete,
-  AutocompleteProps,
-  MultiSelect,
-  MultiSelectProps,
-  Select,
-  SelectProps
-} from '@mantine/core';
+import { Autocomplete, AutocompleteProps } from '@mantine/core';
 import { FC, useCallback } from 'react';
 import { Controller } from 'react-hook-form';
 import { IReactiveField, ReactiveFieldProps } from '../types';

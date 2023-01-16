@@ -1,3 +1,5 @@
+export * from './reactive-multi-select';
+export * from './reactive-autocomplete';
 export * from './reactive-checkbox';
 export * from './reactive-number-field';
 export * from './reactive-password-field';
