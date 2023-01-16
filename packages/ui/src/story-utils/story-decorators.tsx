@@ -76,7 +76,7 @@ const ReactiveFieldWrapper: FC<IFormProvider> = (props) => {
 
   return (
     <form
-      style={{ maxWidth: '300px' }}
+      style={{ maxWidth: '400px' }}
       onSubmit={form.handleSubmit(handleSubmit)}>
       <Flex
         mih={50}

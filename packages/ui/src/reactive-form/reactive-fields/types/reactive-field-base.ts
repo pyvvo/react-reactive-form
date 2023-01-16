@@ -10,12 +10,10 @@ export type InputType =
   | 'password'
   | 'checkbox'
   | 'switch'
-  | 'select';
-// | 'password'
+  | 'select'
+  | 'radio';
 // | 'range'
 // | 'multi-select'
-// | 'radio'
-// | 'checkbox'
 // // | 'list'
 // | 'datepicker'
 // | 'autocomplete';
