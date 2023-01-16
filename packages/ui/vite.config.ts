@@ -40,7 +40,8 @@ export default defineConfig({
           'react-dom': 'ReactDOM',
           '@mantine/core': 'Mantine',
           // 'react/jsx-runtime': 'JsxRuntime',
-          'react-hook-form': 'ReactHookForm'
+          'react-hook-form': 'ReactHookForm',
+          '@tabler/icons': 'TablerIcons'
         }
       },
       plugins: [
