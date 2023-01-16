@@ -1,4 +1,5 @@
 import { JSONData } from '@/types';
+import { AutocompleteCustomProps } from '../reactive-autocomplete';
 import { CheckCustomProps } from '../reactive-checkbox';
 import { MultiSelectCustomProps } from '../reactive-multi-select';
 import { NumberFieldCustomProps } from '../reactive-number-field';
@@ -13,6 +14,7 @@ import { CommonProps, InputType } from './reactive-field-base';
 export type CustomPropsType = Record<InputType, any>;
 
 export interface ICustomProps<TFormValues extends JSONData> {
+  autocomplete: CommonProps<AutocompleteCustomProps, TFormValues>;
   text: CommonProps<TextFieldCustomProps, TFormValues>;
   password: CommonProps<PasswordFieldCustomProps, TFormValues>;
   number: CommonProps<NumberFieldCustomProps, TFormValues>;
@@ -22,10 +24,7 @@ export interface ICustomProps<TFormValues extends JSONData> {
   radio: CommonProps<RadioCustomProps, TFormValues>;
   range: CommonProps<RangeCustomProps, TFormValues>;
   'multi-select': CommonProps<MultiSelectCustomProps, TFormValues>;
-
   // range: never;
-  // 'multi-select': never;
-  // checkbox: never;
   // list: never;
   // datepicker: never;
   // autocomplete: never;

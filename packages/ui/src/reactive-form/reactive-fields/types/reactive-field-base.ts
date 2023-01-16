@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ChangeEvent, Ref } from 'react';
 import { RegisterOptions } from 'react-hook-form';
-import { JSONData, Merge, Simplify } from '@/types';
+import { JSONData, Simplify } from '@/types';
 import { FormProps } from '../../../types/form';
 
 export type InputType =
@@ -13,11 +13,11 @@ export type InputType =
   | 'select'
   | 'multi-select'
   | 'radio'
-  | 'range';
+  | 'range'
+  | 'autocomplete';
 
 // // | 'list'
 // | 'datepicker'
-// | 'autocomplete';
 
 export type FormFieldOption<TFieldValues extends JSONData> =
   RegisterOptions<TFieldValues>;
