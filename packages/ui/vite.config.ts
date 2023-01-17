@@ -41,7 +41,11 @@ export default defineConfig({
           '@mantine/core': 'Mantine',
           // 'react/jsx-runtime': 'JsxRuntime',
           'react-hook-form': 'ReactHookForm',
-          '@tabler/icons': 'TablerIcons'
+          '@tabler/icons': 'TablerIcons',
+          'react-router-dom': 'ReactRouterDom',
+          '@emotion/styled': 'EmotionStyled',
+          dayjs: 'DayJS',
+          '@mantine/hooks': 'MantineHooks'
         }
       },
       plugins: [

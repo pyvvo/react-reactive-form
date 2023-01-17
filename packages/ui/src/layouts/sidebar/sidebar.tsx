@@ -30,7 +30,12 @@ const SideBar: FC<ISideBar> = (props) => {
   );
 
   return (
-    <Navbar height={750} width={{ base: 80 }} p="md">
+    <Navbar
+      height="100vh"
+      fixed
+      sx={{ top: 0, paddingBlock: '18px' }}
+      width={{ base: 80 }}
+      px="md">
       <Center>
         <CNDIcon />
       </Center>

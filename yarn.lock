@@ -1519,6 +1519,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ebay/nice-modal-react@npm:^1.2.8":
+  version: 1.2.8
+  resolution: "@ebay/nice-modal-react@npm:1.2.8"
+  peerDependencies:
+    react: ">16.8.0"
+    react-dom: ">16.8.0"
+  checksum: 8f21874d532849336cc960ab60da91b879955f74de40f87d3ba1aa904d99c854e08c636fd6e6d9bcec61c050c47b80fe70a1892fb3594e85ba9afdc48c9cbefe
+  languageName: node
+  linkType: hard
+
 "@emotion/babel-plugin@npm:^11.10.5":
   version: 11.10.5
   resolution: "@emotion/babel-plugin@npm:11.10.5"
@@ -1558,6 +1568,15 @@ __metadata:
   version: 0.9.0
   resolution: "@emotion/hash@npm:0.9.0"
   checksum: b63428f7c8186607acdca5d003700cecf0ded519d0b5c5cc3b3154eafcad6ff433f8361bd2bac8882715b557e6f06945694aeb6ba8b25c6095d7a88570e2e0bb
+  languageName: node
+  linkType: hard
+
+"@emotion/is-prop-valid@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@emotion/is-prop-valid@npm:1.2.0"
+  dependencies:
+    "@emotion/memoize": ^0.8.0
+  checksum: cc7a19850a4c5b24f1514665289442c8c641709e6f7711067ad550e05df331da0692a16148e85eda6f47e31b3261b64d74c5e25194d053223be16231f969d633
   languageName: node
   linkType: hard
 
@@ -1609,6 +1628,29 @@ __metadata:
   version: 1.2.1
   resolution: "@emotion/sheet@npm:1.2.1"
   checksum: ce78763588ea522438156344d9f592203e2da582d8d67b32e1b0b98eaba26994c6c270f8c7ad46442fc9c0a9f048685d819cd73ca87e544520fd06f0e24a1562
+  languageName: node
+  linkType: hard
+
+"@emotion/styled@npm:^11.10.5":
+  version: 11.10.5
+  resolution: "@emotion/styled@npm:11.10.5"
+  dependencies:
+    "@babel/runtime": ^7.18.3
+    "@emotion/babel-plugin": ^11.10.5
+    "@emotion/is-prop-valid": ^1.2.0
+    "@emotion/serialize": ^1.1.1
+    "@emotion/use-insertion-effect-with-fallbacks": ^1.0.0
+    "@emotion/utils": ^1.2.0
+  peerDependencies:
+    "@babel/core": ^7.0.0
+    "@emotion/react": ^11.0.0-rc.0
+    react: ">=16.8.0"
+  peerDependenciesMeta:
+    "@babel/core":
+      optional: true
+    "@types/react":
+      optional: true
+  checksum: 1cec5f6aeb227a7255141031e8594f38ad83902413472aae0a46c27e5f9769c01e23c1ad39adee408d8a2168a697464314d1a0c4f50b31a5d25ea506b2d7bbc8
   languageName: node
   linkType: hard
 
@@ -1889,12 +1931,14 @@ __metadata:
   resolution: "@hm/example@workspace:packages/example"
   dependencies:
     "@babel/core": ^7.20.5
+    "@ebay/nice-modal-react": ^1.2.8
     "@emotion/react": ^11.10.5
     "@hm/ui": "*"
     "@mantine/core": ^5.10.0
     "@mantine/dates": ^5.10.0
     "@mantine/hooks": ^5.10.0
     "@mantine/notifications": ^5.10.0
+    "@tabler/icons": ^1.119.0
     "@types/react": ^18.0.26
     "@types/react-dom": ^18.0.9
     "@vitejs/plugin-react": ^3.0.0
@@ -1902,6 +1946,7 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     react-hook-form: ^7.41.0
+    react-router-dom: ^6.6.2
     typescript: ^4.9.4
     vite: ^4.0.3
     vite-tsconfig-paths: ^4.0.3
@@ -1917,6 +1962,7 @@ __metadata:
     "@babel/preset-react": ^7.18.6
     "@babel/preset-typescript": ^7.18.6
     "@emotion/react": ^11.10.5
+    "@emotion/styled": ^11.10.5
     "@mantine/core": ^5.10.0
     "@mantine/dates": ^5.10.0
     "@mantine/hooks": ^5.10.0
@@ -1944,6 +1990,7 @@ __metadata:
     dayjs: ^1.11.7
     jsdom: ^20.0.3
     react: ^18.2.0
+    react-data-grid: ^7.0.0-beta.20
     react-dom: ^18.2.0
     react-hook-form: ^7.41.3
     react-router-dom: ^6.6.2
@@ -1965,6 +2012,7 @@ __metadata:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
     react-hook-form: ">=7.41.0"
+    react-router-dom: ">=6.6.2"
   languageName: unknown
   linkType: soft
 
@@ -6190,6 +6238,13 @@ __metadata:
   version: 1.1.1
   resolution: "clsx@npm:1.1.1"
   checksum: ff052650329773b9b245177305fc4c4dc3129f7b2be84af4f58dc5defa99538c61d4207be7419405a5f8f3d92007c954f4daba5a7b74e563d5de71c28c830063
+  languageName: node
+  linkType: hard
+
+"clsx@npm:^1.1.1":
+  version: 1.2.1
+  resolution: "clsx@npm:1.2.1"
+  checksum: 30befca8019b2eb7dbad38cff6266cf543091dae2825c856a62a8ccf2c3ab9c2907c4d12b288b73101196767f66812365400a227581484a05f968b0307cfaf12
   languageName: node
   linkType: hard
 
@@ -12497,6 +12552,18 @@ __metadata:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
   checksum: e432b7cb0df57e8f0bcdc3b012d2e93fcbcb6092c9e0f85654788d5ebfc4442536d8cc35b2418061ba3c4afb8b7788cc101c606d86a1732407921de7a9244c8d
+  languageName: node
+  linkType: hard
+
+"react-data-grid@npm:^7.0.0-beta.20":
+  version: 7.0.0-canary.49
+  resolution: "react-data-grid@npm:7.0.0-canary.49"
+  dependencies:
+    clsx: ^1.1.1
+  peerDependencies:
+    react: ^16.14 || ^17.0
+    react-dom: ^16.14 || ^17.0
+  checksum: fe57d441a5e56dac39a0f7e06979a27d5606515653ead31fc06f9c2fe08ebaf88ff4ab70f1565dd356b343cf4612137dea2d188a40a7e246b85dd5aa2589da04
   languageName: node
   linkType: hard
 

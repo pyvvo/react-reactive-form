@@ -4,24 +4,24 @@ import { FC, useCallback, useEffect } from 'react';
 import { IModuleLink } from '../types';
 import NavbarButton from './bottom-bar-button';
 
-interface ISideBar {
+interface IBottomBar {
   modules: IModuleLink[];
   visible: boolean;
 }
 
-const BottomBar: FC<ISideBar> = (props) => {
+const BottomBar: FC<IBottomBar> = (props) => {
   const { modules, visible } = props;
   const container = document.createElement('div');
-  const containerId = '#hm-overlay';
+  const containerId = '#hm-overlay-bottom';
   container.id = containerId;
   // const isMobile = useMediaQuery('(min-width: 648px)');
 
   useEffect(() => {
     if (visible) {
       document.body.appendChild(container);
-      return;
     }
-    document.getElementById(containerId)?.remove();
+    // eslint-disable-next-line consistent-return
+    // return () => document.getElementById(containerId)?.remove();
   }, [visible]);
 
   const menu = useCallback(
