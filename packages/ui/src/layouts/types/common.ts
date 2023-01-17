@@ -7,7 +7,4 @@ export interface IModuleLink {
   color?: MantineColor;
   to?: string;
   isBottom?: boolean;
-  BottomProps?: {
-    order: number;
-  };
 }
