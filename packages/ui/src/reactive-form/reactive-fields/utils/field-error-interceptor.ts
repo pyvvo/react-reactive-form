@@ -3,7 +3,7 @@ import { ReactiveFieldErrorType } from '@/reactive-form/reactive-fields/types';
 import { getValuePath } from '@/utils';
 
 export const getError = (fieldKey: string, errors: ReactiveFieldErrorType) => {
-  const paths = fieldKey.split('.');
+  const paths = fieldKey ? fieldKey.split('.') : [];
 
   const hasErrors = errors ? getValuePath(paths, errors) : undefined;
   return hasErrors;

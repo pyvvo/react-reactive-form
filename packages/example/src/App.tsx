@@ -1,13 +1,15 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react/jsx-one-expression-per-line */
-import { IReactiveFieldMeta, ReactiveForm } from '@hm/ui';
-import { Button } from '@mantine/core';
+import { IReactiveFieldMeta, theme } from '@hm/ui';
+import { MantineProvider } from '@mantine/core';
+import { NotificationsProvider } from '@mantine/notifications';
+import NiceModal from '@ebay/nice-modal-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import './App.css';
-import reactLogo from './assets/react.svg';
+// import './App.css';
 import './register-reactive-fields';
+import AppRouting from './app.routing';
 
 const defaultValues = {
   username: '',
@@ -18,7 +20,7 @@ const defaultValues = {
 type Data = typeof defaultValues;
 
 function App() {
-  const [count, setCount] = useState(0);
+  /*   const [count, setCount] = useState(0);
   const form = useForm<Data>({
     mode: 'onSubmit',
     reValidateMode: 'onSubmit'
@@ -59,35 +61,16 @@ function App() {
         }
       ]
     }
-  ];
+  ]; */
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          {/* count is {deep(count)} */}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
-        <ReactiveForm form={form} meta={meta} />
-        <Button type="submit">Submit</Button>
-      </form>
-    </div>
+    <MantineProvider withNormalizeCSS withGlobalStyles theme={theme}>
+      <NotificationsProvider>
+        <NiceModal.Provider>
+          <AppRouting />
+        </NiceModal.Provider>
+      </NotificationsProvider>
+    </MantineProvider>
   );
 }
 

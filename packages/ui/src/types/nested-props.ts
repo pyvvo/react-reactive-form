@@ -56,30 +56,6 @@ type NestedKeyOf5<DynamicValue extends object> = {
   [Key in keyof DynamicValue & (string | number)]: `${Key}`;
 }[keyof DynamicValue & (string | number)];
 
-export const flattenObj = <T extends Record<string, any>>(
-  obj: T,
-  parent?: string,
-  res = {} as any,
-  index = 0
-): NestedKeyOf<T> => {
-  // eslint-disable-next-line no-param-reassign
-  index += 1;
-  if (index > 5) {
-    // eslint-disable-next-line @typescript-eslint/no-throw-literal
-    throw 'object is too deep, maximum authorized level is 6';
-  }
-  // eslint-disable-next-line no-restricted-syntax
-  for (const key of Object.keys(obj)) {
-    const propName = parent ? `${parent}.${key}` : key;
-    if (typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
-      flattenObj(obj[key], propName, res, index);
-    } else {
-      res[propName] = obj[key];
-    }
-  }
-  return res;
-};
-
 /** Union of primitives to skip with deep omit utilities. */
 export type Primitive = string | number | boolean | undefined | null;
 /** Variable Kind */

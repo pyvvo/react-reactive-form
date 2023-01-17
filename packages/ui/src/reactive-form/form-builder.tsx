@@ -42,7 +42,9 @@ interface IDefineComponent {
 const defineWidget = (params: IDefineComponent) => {
   const { name, component: ReactiveField } = params;
 
-  if (fieldMap[name]) throw new Error(`Field "${name}" already defined.`);
+  // if (fieldMap[name]) throw new Error(`Field "${name}" already defined.`);
+  if (fieldMap[name]) return;
+
   fieldMap[name] = ReactiveField;
 };
 

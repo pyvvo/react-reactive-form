@@ -1,19 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ChangeEvent, Ref } from 'react';
 import { RegisterOptions } from 'react-hook-form';
-import { JSONData, Merge } from '@/types';
+import { JSONData, Simplify } from '@/types';
 import { FormProps } from '../../../types/form';
 
-export type InputType = 'text' | 'checkbox' | 'switch';
-// | 'password'
-// | 'range'
-// | 'select'
-// | 'multi-select'
-// | 'radio'
-// | 'checkbox'
+export type InputType =
+  | 'text'
+  | 'number'
+  | 'password'
+  | 'checkbox'
+  | 'switch'
+  | 'select'
+  | 'multi-select'
+  | 'radio'
+  | 'range'
+  | 'autocomplete';
+
 // // | 'list'
 // | 'datepicker'
-// | 'autocomplete';
 
 export type FormFieldOption<TFieldValues extends JSONData> =
   RegisterOptions<TFieldValues>;
@@ -25,6 +29,10 @@ export type ErrorFormType = {
 };
 
 export type ReactiveFieldErrorType = ErrorFormType | Record<string, any>;
+
+export type ReactiveFieldProps<TFieldProps extends JSONData> = Simplify<
+  { 'data-testid': string } & TFieldProps
+>;
 
 export interface IReactiveField<
   TFieldProps extends JSONData,
@@ -53,14 +61,11 @@ export type CommonProps<
   // T extends HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
   TFieldProps extends JSONData,
   TFormValues extends JSONData = JSONData
-> = Merge<
-  {
-    disabled?: boolean;
-    hidden?: boolean;
-    handleChange?: (params: {
-      form: FormProps<TFormValues>;
-      event: ChangeEvent<TFieldProps> | any;
-    }) => void;
-  },
-  TFieldProps
->;
+> = {
+  disabled?: boolean;
+  hidden?: boolean;
+  handleChange?: (params: {
+    form: FormProps<TFormValues>;
+    event: ChangeEvent<TFieldProps> | any;
+  }) => void;
+} & TFieldProps;

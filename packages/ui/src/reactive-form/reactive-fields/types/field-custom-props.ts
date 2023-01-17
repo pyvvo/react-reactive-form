@@ -1,5 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { JSONData } from '@/types';
+import { AutocompleteCustomProps } from '../reactive-autocomplete';
 import { CheckCustomProps } from '../reactive-checkbox';
+import { MultiSelectCustomProps } from '../reactive-multi-select';
+import { NumberFieldCustomProps } from '../reactive-number-field';
+import { PasswordFieldCustomProps } from '../reactive-password-field';
+import { RadioCustomProps } from '../reactive-radio';
+import { RangeCustomProps } from '../reactive-range';
+import { SelectCustomProps } from '../reactive-select';
 import { SwitchCustomProps } from '../reactive-switch';
 import { TextFieldCustomProps } from '../reactive-text-field';
 import { CommonProps, InputType } from './reactive-field-base';
@@ -7,16 +15,17 @@ import { CommonProps, InputType } from './reactive-field-base';
 export type CustomPropsType = Record<InputType, any>;
 
 export interface ICustomProps<TFormValues extends JSONData> {
+  autocomplete: CommonProps<AutocompleteCustomProps, TFormValues>;
   text: CommonProps<TextFieldCustomProps, TFormValues>;
+  password: CommonProps<PasswordFieldCustomProps, TFormValues>;
+  number: CommonProps<NumberFieldCustomProps, TFormValues>;
   checkbox: CommonProps<CheckCustomProps, TFormValues>;
   switch: CommonProps<SwitchCustomProps, TFormValues>;
-
+  select: CommonProps<SelectCustomProps, TFormValues>;
+  radio: CommonProps<RadioCustomProps, TFormValues>;
+  range: CommonProps<RangeCustomProps, TFormValues>;
+  'multi-select': CommonProps<MultiSelectCustomProps, TFormValues>;
   // range: never;
-  // switch: never;
-  // select: never;
-  // 'multi-select': never;
-  // radio: never;
-  // checkbox: never;
   // list: never;
   // datepicker: never;
   // autocomplete: never;
