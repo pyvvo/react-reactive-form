@@ -2004,6 +2004,7 @@ __metadata:
     vitest: ^0.26.3
   peerDependencies:
     "@emotion/react": ">=11.10.5"
+    "@emotion/styled": ">=11.10.5"
     "@mantine/core": ">=5.10.0"
     "@mantine/dates": ">=5.10.0"
     "@mantine/hooks": ">=5.10.0"
