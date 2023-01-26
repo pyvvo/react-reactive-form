@@ -1,8 +1,12 @@
-import { ActionIcon, useMantineColorScheme } from '@mantine/core';
+import {
+  ActionIcon,
+  ActionIconProps,
+  useMantineColorScheme
+} from '@mantine/core';
 import { IconMoonStars, IconSun } from '@tabler/icons';
 import { FC } from 'react';
 
-const ToggleThemeMode: FC = () => {
+const ToggleThemeMode: FC<ActionIconProps> = (props) => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   return (
@@ -10,7 +14,8 @@ const ToggleThemeMode: FC = () => {
       variant="default"
       mx="xs"
       onClick={() => toggleColorScheme()}
-      size={30}>
+      size={30}
+      {...props}>
       {colorScheme === 'dark' ? (
         <IconSun size={16} />
       ) : (

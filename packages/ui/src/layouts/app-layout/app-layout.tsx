@@ -1,5 +1,5 @@
 /* eslint-disable react/require-default-props */
-import { AppShell, Box, Grid } from '@mantine/core';
+import { Box, Grid } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { FC, useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
@@ -14,7 +14,7 @@ interface ILayout {
 }
 
 const AppLayout: FC<ILayout> = (props) => {
-  const { modules } = props;
+  const { modules, ...rest } = props;
   const location = useLocation();
   const [moduleName, setModuleName] = useState('');
   const isMobile = useMediaQuery('(min-width: 648px)');
@@ -27,10 +27,10 @@ const AppLayout: FC<ILayout> = (props) => {
   );
 
   return (
-    <Box {...props}>
+    <Box {...rest}>
       <Grid>
         <Grid.Col>
-          <Header moduleName={moduleName} />
+          <Header moduleName={moduleName} offset={80} />
         </Grid.Col>
         <Grid.Col span="content">
           {!isMobile ? (
@@ -40,7 +40,9 @@ const AppLayout: FC<ILayout> = (props) => {
           )}
         </Grid.Col>
         <Grid.Col span="auto" pt={60} pl={60}>
-          <Outlet />
+          <Box component="main" sx={{ paddingInline: '20px' }}>
+            <Outlet />
+          </Box>
         </Grid.Col>
       </Grid>
     </Box>

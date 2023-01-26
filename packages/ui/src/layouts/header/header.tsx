@@ -1,25 +1,79 @@
 /* eslint-disable react/require-default-props */
-import {
-  Avatar,
-  Box,
-  Flex,
-  Header as MHeader,
-  Portal,
-  Title
-} from '@mantine/core';
+import { Avatar, Box, createStyles, Portal, Title } from '@mantine/core';
 import { FC, useEffect } from 'react';
 import { SearchBar, ToggleThemeMode } from '@/molecules';
 
+interface IStyleParams {
+  offset: number;
+}
+
+const useStyles = createStyles((theme, pr: IStyleParams) => ({
+  header: {
+    display: 'flex',
+    height: '60px',
+    width: `calc(100% - ${pr.offset + 24}px)`,
+    borderRadius: '18px',
+    position: 'fixed',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    top: 5,
+    // width: 'calc(100vw - 65px)',
+    right: '12px',
+    zIndex: 100,
+    // backgroundColor: theme.colorScheme === 'dark' ? theme.black : theme.white,
+    WebkitBackdropFilter: 'blur(10px)',
+    backdropFilter: 'blur(10px)',
+
+    [theme.fn.smallerThan('sm')]: {
+      justifyContent: 'space-around'
+    }
+  },
+
+  featureBar: {
+    boxShadow: '0px 0px 21px 0px #5f5f5f1a',
+    display: 'flex',
+    justify: 'space-around',
+    alignItems: 'center',
+    paddingBlock: '6px',
+    paddingInline: '6px',
+    borderRadius: '22px',
+    backgroundColor: theme.colorScheme === 'dark' ? theme.black : theme.white,
+    [theme.fn.smallerThan('sm')]: {
+      padding: '0px',
+      backgroundColor: 'transparent',
+      boxShadow: 'none'
+    }
+  },
+  title: {
+    color: theme.colors[theme.primaryColor],
+    [theme.fn.smallerThan('sm')]: {
+      fontSize: '24px'
+    }
+  },
+  searchBar: {
+    [theme.fn.smallerThan('sm')]: {
+      display: 'none'
+    }
+  }
+  //   themeToggler: {
+  //   [theme.fn.smallerThan('sm')]: {
+  //     fontSize: theme.fontSizes.xl
+  //   }
+  // }
+}));
+
+const container = document.createElement('div');
+const containerId = '#hm-overlay-header';
+container.id = containerId;
+
 interface IHeader {
   moduleName: string;
+  offset?: number;
 }
 
 const Header: FC<IHeader> = (props) => {
-  const { moduleName } = props;
-  const container = document.createElement('div');
-  const containerId = '#hm-overlay';
-  container.id = containerId;
-  // const isMobile = useMediaQuery('(min-width: 648px)');
+  const { moduleName, offset = 0 } = props;
+  const { classes, cx } = useStyles({ offset });
 
   useEffect(() => {
     if (container) {
@@ -32,38 +86,16 @@ const Header: FC<IHeader> = (props) => {
 
   return (
     <Portal target={container}>
-      <MHeader
-        height={60}
-        sx={(theme) => ({
-          display: 'flex',
-          width: '100%',
-          borderRadius: '18px',
-          position: 'fixed',
-          right: '80px',
-          alignItems: 'center',
-          justifyContent: 'space-evenly',
-          top: 5,
-          left: 100,
-          zIndex: 100,
-          backgroundColor:
-            theme.colorScheme === 'dark' ? theme.black : theme.white,
-          '-webkit-backdrop-filter': 'blur(10px)',
-          'backdrop-filter': 'blur(10px)'
-        })}>
-        <Title size="h1">{moduleName}</Title>
-        <Box
-          sx={(theme) => ({
-            boxShadow: '0px 0px 21px 0px #5f5f5f1a',
-            display: 'flex',
-            justify: 'space-around',
-            alignItems: 'center',
-            paddingBlock: '6px',
-            paddingInline: '6px',
-            borderRadius: '22px',
-            backgroundColor:
-              theme.colorScheme === 'dark' ? theme.black : theme.white
-          })}>
-          <SearchBar />
+      <Box
+        component="header"
+        className={classes.header}
+        // style={{ justifyContent: 'space-around' }}
+      >
+        <Title size="h1" className={classes.title}>
+          {moduleName}
+        </Title>
+        <Box className={classes.featureBar}>
+          <SearchBar className={classes.searchBar} />
           <ToggleThemeMode />
           <Avatar
             radius="xl"
@@ -73,7 +105,7 @@ const Header: FC<IHeader> = (props) => {
             })}
           />
         </Box>
-      </MHeader>
+      </Box>
     </Portal>
   );
 };

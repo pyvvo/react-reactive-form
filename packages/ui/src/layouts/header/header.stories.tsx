@@ -31,6 +31,7 @@ export default meta;
 
 export const Header: Story = {
   args: {
-    moduleName: 'Dashboard'
+    moduleName: 'Dashboard',
+    offset: 0
   }
 };

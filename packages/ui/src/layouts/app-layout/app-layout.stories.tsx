@@ -9,13 +9,21 @@ import {
   IconSettings,
   IconShieldHalfFilled
 } from '@tabler/icons';
+import Chance from 'chance';
 import {
+  IStoryRoutes,
   ReactRouterDecorator,
+  ReactRouterDecoratorWithOutlet,
   ReactRouterLoggerDecorator
 } from '@/story-utils';
 import AL from './app-layout';
+import { Simplify } from '@/types';
 
-type Story = StoryObj<typeof AL>;
+type ComponentProps = Simplify<
+  Parameters<typeof AL>[0] & { routes: IStoryRoutes[]; location?: undefined }
+>;
+
+type Story = StoryObj<ComponentProps>;
 
 const meta: Meta<typeof AL> = {
   /* 👇 The title prop is optional.
@@ -24,10 +32,25 @@ const meta: Meta<typeof AL> = {
    */
   title: 'Layouts/AppLayout',
   component: AL,
-  decorators: [ReactRouterLoggerDecorator, ReactRouterDecorator]
+  decorators: [
+    ReactRouterLoggerDecorator,
+    ReactRouterDecoratorWithOutlet
+    // ReactRouterDecorator
+  ]
 };
 
 export default meta;
+
+const chance = new Chance();
+
+const RandomTextComponent = () => {
+  const text = chance.paragraph({ sentences: 1000 });
+  return (
+    <div>
+      <p>{text}</p>
+    </div>
+  );
+};
 
 export const AppLayout: Story = {
   args: {
@@ -66,6 +89,20 @@ export const AppLayout: Story = {
         label: 'Settings',
         isBottom: true,
         to: '/settings'
+      }
+    ],
+    routes: [
+      {
+        to: '/dashboard',
+        element: <div>dashboard</div>
+      },
+      {
+        to: '/collector',
+        element: <div>Collector</div>
+      },
+      {
+        to: '/dispatcher',
+        element: <RandomTextComponent />
       }
     ]
   }
