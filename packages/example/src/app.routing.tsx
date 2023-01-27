@@ -6,11 +6,17 @@ import {
   IconAffiliate,
   IconShieldHalfFilled,
   IconDots,
-  IconSettings
+  IconSettings,
+  IconDashboard,
+  IconFileText,
+  IconHome
 } from '@tabler/icons';
 import { FC, useState } from 'react';
 import { useRoutes } from 'react-router-dom';
-import CollectorModule from './collector/collector.module.';
+import Chance from 'chance';
+import { SpotlightAction, SpotlightProvider } from '@mantine/spotlight';
+import CollectorModule from './collector/collector.module';
+import DashboardModule from './dashboard/dashboard.module';
 
 const modules = [
   {
@@ -50,23 +56,46 @@ const modules = [
   }
 ];
 
+const chance = new Chance();
+const avatarUrl = chance.avatar({
+  protocol: 'https',
+  email: 'mail@victorquinn.com'
+});
+
+const actions: SpotlightAction[] = [
+  {
+    title: 'Home',
+    description: 'Get to home page',
+    onTrigger: () => console.log('Home'),
+    icon: <IconHome size={18} />
+  },
+  {
+    title: 'Dashboard',
+    description: 'Get full information about current system status',
+    onTrigger: () => console.log('Dashboard'),
+    icon: <IconDashboard size={18} />
+  },
+  {
+    title: 'Documentation',
+    description: 'Visit documentation to lean more about all features',
+    onTrigger: () => console.log('Documentation'),
+    icon: <IconFileText size={18} />
+  }
+];
 const AppRouting: FC = () => {
-  const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
-  const toggleColorScheme = (value?: ColorScheme) =>
-    setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
   const route = useRoutes([
     {
       path: '/',
       // eslint-disable-next-line react/jsx-no-undef
-      element: <AppLayout modules={modules} />,
+      element: (
+        <SpotlightProvider actions={actions}>
+          <AppLayout offset={60} imageSrc={avatarUrl} modules={modules} />
+        </SpotlightProvider>
+      ),
       children: [
         {
           path: 'dashboard',
-          element: (
-            <main style={{ padding: '1rem' }}>
-              <p>Dashboard!</p>
-            </main>
-          )
+          element: <DashboardModule />
         },
         {
           path: 'collector/*',
@@ -103,13 +132,7 @@ const AppRouting: FC = () => {
       ]
     }
   ]);
-  return (
-    <ColorSchemeProvider
-      colorScheme={colorScheme}
-      toggleColorScheme={toggleColorScheme}>
-      {route}
-    </ColorSchemeProvider>
-  );
+  return route;
 };
 
 export default AppRouting;

@@ -1,14 +1,6 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react/button-has-type */
 import type { Meta, StoryObj } from '@storybook/react';
-import {
-  IconAffiliate,
-  IconCloudComputing,
-  IconDots,
-  IconHome2,
-  IconSettings,
-  IconShieldHalfFilled
-} from '@tabler/icons';
 import SB from './index';
 
 type Story = StoryObj<typeof SB>;

@@ -7,7 +7,7 @@ import {
 import { IconSearch, IconArrowRight, IconArrowLeft } from '@tabler/icons';
 import { FC } from 'react';
 
-const SearchBar: FC = (props: TextInputProps) => {
+const SearchBar: FC<TextInputProps> = (props) => {
   const theme = useMantineTheme();
 
   return (
@@ -29,7 +29,7 @@ const SearchBar: FC = (props: TextInputProps) => {
           )}
         </ActionIcon>
       }
-      placeholder="Search questions"
+      placeholder="Search questions Ctrl + K"
       rightSectionWidth={42}
       {...props}
     />

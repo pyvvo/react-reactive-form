@@ -45,7 +45,9 @@ export default defineConfig({
           'react-router-dom': 'ReactRouterDom',
           '@emotion/styled': 'EmotionStyled',
           dayjs: 'DayJS',
-          '@mantine/hooks': 'MantineHooks'
+          '@mantine/hooks': 'MantineHooks',
+          '@mantine/spotlight': 'MantineSpotlights',
+          echarts: 'Echarts'
         }
       },
       plugins: [
