@@ -1938,11 +1938,14 @@ __metadata:
     "@mantine/dates": ^5.10.0
     "@mantine/hooks": ^5.10.0
     "@mantine/notifications": ^5.10.0
+    "@mantine/spotlight": ^5.10.0
     "@tabler/icons": ^1.119.0
     "@types/react": ^18.0.26
     "@types/react-dom": ^18.0.9
     "@vitejs/plugin-react": ^3.0.0
+    chance: ^1.1.9
     dayjs: ^1.11.7
+    echarts: ^5.4.1
     react: ^18.2.0
     react-dom: ^18.2.0
     react-hook-form: ^7.41.0
@@ -1966,6 +1969,7 @@ __metadata:
     "@mantine/core": ^5.10.0
     "@mantine/dates": ^5.10.0
     "@mantine/hooks": ^5.10.0
+    "@mantine/spotlight": ^5.10.0
     "@storybook/addon-a11y": ^7.0.0-beta.20
     "@storybook/addon-actions": ^7.0.0-beta.20
     "@storybook/addon-essentials": ^7.0.0-beta.20
@@ -1990,6 +1994,7 @@ __metadata:
     chance: ^1.1.9
     cross-env: ^7.0.3
     dayjs: ^1.11.7
+    echarts: ^5.4.1
     jsdom: ^20.0.3
     react: ^18.2.0
     react-data-grid: ^7.0.0-beta.20
@@ -2010,8 +2015,10 @@ __metadata:
     "@mantine/core": ">=5.10.0"
     "@mantine/dates": ">=5.10.0"
     "@mantine/hooks": ">=5.10.0"
+    "@mantine/spotlight": ">=5.10.0"
     "@tabler/icons": ">=1.119.0"
     dayjs: ">=1.11.7"
+    echarts: ">=5.4.1"
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
     react-hook-form: ">=7.41.0"
@@ -2514,6 +2521,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mantine/spotlight@npm:^5.10.0":
+  version: 5.10.2
+  resolution: "@mantine/spotlight@npm:5.10.2"
+  dependencies:
+    "@mantine/utils": 5.10.2
+  peerDependencies:
+    "@mantine/core": 5.10.2
+    "@mantine/hooks": 5.10.2
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: 01992d9a9ff7dc18dff64920120feb230b9d1f891ab316a79fd97aa7111dbc944c7eba1dc476b45fb3ff6e9b25d4327e8797e068e35db6d6bd4f8c40eac079b6
+  languageName: node
+  linkType: hard
+
 "@mantine/styles@npm:5.10.0":
   version: 5.10.0
   resolution: "@mantine/styles@npm:5.10.0"
@@ -2534,6 +2555,15 @@ __metadata:
   peerDependencies:
     react: ">=16.8.0"
   checksum: 7fece92e1356af1237154c60b7179c2ce422502df2c968f6ff670f6eba757f2742400aebc7c07f1dd71668dc6c8f87f9036a7c1f0e02fdad48db05ab895cf506
+  languageName: node
+  linkType: hard
+
+"@mantine/utils@npm:5.10.2":
+  version: 5.10.2
+  resolution: "@mantine/utils@npm:5.10.2"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 6d1acdcd58020c26b646adfacd8082a03d17348ab921d741c6dae48312264bfd03afe9b91cb827c48cbc2f0480054a7b3aae808ec39240d0e4067b413cf19ea8
   languageName: node
   linkType: hard
 
@@ -7154,6 +7184,16 @@ __metadata:
   version: 8.6.0
   resolution: "dotenv@npm:8.6.0"
   checksum: 38e902c80b0666ab59e9310a3d24ed237029a7ce34d976796349765ac96b8d769f6df19090f1f471b77a25ca391971efde8a1ea63bb83111bd8bec8e5cc9b2cd
+  languageName: node
+  linkType: hard
+
+"echarts@npm:^5.4.1":
+  version: 5.4.1
+  resolution: "echarts@npm:5.4.1"
+  dependencies:
+    tslib: 2.3.0
+    zrender: 5.4.1
+  checksum: 2868541087045d27691e99950a96896da48be2c758cb9cd6ab57244bfa40967edecc5a215e02f63a48fa9d56aa1dc91c8339982fdb8d2b1323b19852e91d9fa8
   languageName: node
   linkType: hard
 
@@ -14364,6 +14404,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tslib@npm:2.3.0":
+  version: 2.3.0
+  resolution: "tslib@npm:2.3.0"
+  checksum: 8869694c26e4a7b56d449662fd54a4f9ba872c889d991202c74462bd99f10e61d5bd63199566c4284c0f742277736292a969642cc7b590f98727a7cae9529122
+  languageName: node
+  linkType: hard
+
 "tslib@npm:^1.8.1, tslib@npm:^1.9.0":
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
@@ -15510,5 +15557,14 @@ __metadata:
   bin:
     z-schema: bin/z-schema
   checksum: 8a1d66817ae4384dc3f63311f0cccaadd95cc9640eaade5fd3fbf91aa80d6bb82fb95d9b9171fa82ac371a0155b32b7f5f77bbe84dabaca611b66f74c628f0b8
+  languageName: node
+  linkType: hard
+
+"zrender@npm:5.4.1":
+  version: 5.4.1
+  resolution: "zrender@npm:5.4.1"
+  dependencies:
+    tslib: 2.3.0
+  checksum: 9a50cc2cc42ef44a436cfca5a29d6378b92790f50755b4d54f513a55dc7dab9698cecbc5640d731b380ad282aab1c33ae8cc1d14b61c0d51f0e951085a1bf17c
   languageName: node
   linkType: hard

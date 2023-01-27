@@ -10,7 +10,7 @@ interface ISideBar {
 }
 
 const SideBar: FC<ISideBar> = (props) => {
-  const { modules } = props;
+  const { modules, ...rest } = props;
 
   const menu = useCallback(
     (mainModules: IModuleLink[]) =>
@@ -35,7 +35,8 @@ const SideBar: FC<ISideBar> = (props) => {
       fixed
       sx={{ top: 0, paddingBlock: '18px' }}
       width={{ base: 80 }}
-      px="md">
+      px="md"
+      {...rest}>
       <Center>
         <CNDIcon />
       </Center>

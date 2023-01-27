@@ -29,7 +29,7 @@ const SearchBar: FC<TextInputProps> = (props) => {
           )}
         </ActionIcon>
       }
-      placeholder="Search questions"
+      placeholder="Search questions Ctrl + K"
       rightSectionWidth={42}
       {...props}
     />

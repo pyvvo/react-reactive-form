@@ -49,6 +49,7 @@ const BottomBar: FC<IBottomBar> = (props) => {
       <Navbar
         sx={{
           width: '70%',
+          boxShadow: '0px 0px 21px 0px #5f5f5f1a',
           borderRadius: '18px',
           height: '55px',
           position: 'fixed',

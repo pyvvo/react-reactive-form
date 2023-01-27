@@ -44,7 +44,7 @@ const Collectors: FC = () => {
         rows={Store.getRows()}
         onRowClick={({ name }) => navigate(`./${name}`)}
         // selectedRows={adminCompanyStore.selectedRows}
-        onRowSelectionChange={setSelectedRows}
+        // onRowSelectionChange={setSelectedRows}
         selectedRows={selectedRows}
       />
       <Outlet />

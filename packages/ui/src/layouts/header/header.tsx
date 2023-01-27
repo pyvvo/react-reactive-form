@@ -1,6 +1,7 @@
 /* eslint-disable react/require-default-props */
 import { Avatar, Box, createStyles, Portal, Title } from '@mantine/core';
 import { FC, useEffect } from 'react';
+import { useSpotlight } from '@mantine/spotlight';
 import { SearchBar, ToggleThemeMode } from '@/molecules';
 
 interface IStyleParams {
@@ -15,7 +16,7 @@ const useStyles = createStyles((theme, pr: IStyleParams) => ({
     borderRadius: '18px',
     position: 'fixed',
     alignItems: 'center',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-between',
     top: 5,
     // width: 'calc(100vw - 65px)',
     right: '12px',
@@ -24,35 +25,35 @@ const useStyles = createStyles((theme, pr: IStyleParams) => ({
     WebkitBackdropFilter: 'blur(10px)',
     backdropFilter: 'blur(10px)',
 
-    [theme.fn.smallerThan('sm')]: {
-      justifyContent: 'space-around'
+    [theme.fn.largerThan('sm')]: {
+      justifyContent: 'space-evenly'
     }
   },
 
   featureBar: {
-    boxShadow: '0px 0px 21px 0px #5f5f5f1a',
     display: 'flex',
     justify: 'space-around',
     alignItems: 'center',
-    paddingBlock: '6px',
-    paddingInline: '6px',
     borderRadius: '22px',
-    backgroundColor: theme.colorScheme === 'dark' ? theme.black : theme.white,
-    [theme.fn.smallerThan('sm')]: {
-      padding: '0px',
-      backgroundColor: 'transparent',
-      boxShadow: 'none'
+    backgroundColor: 'transparent',
+    padding: '0px',
+    [theme.fn.largerThan('xs')]: {
+      boxShadow: '0px 0px 21px 0px #5f5f5f1a',
+      padding: '6px',
+      backgroundColor: theme.colorScheme === 'dark' ? theme.black : theme.white
     }
   },
   title: {
     color: theme.colors[theme.primaryColor],
-    [theme.fn.smallerThan('sm')]: {
-      fontSize: '24px'
+    fontSize: '24px',
+    [theme.fn.largerThan('xs')]: {
+      fontSize: '30px'
     }
   },
   searchBar: {
-    [theme.fn.smallerThan('sm')]: {
-      display: 'none'
+    display: 'none',
+    [theme.fn.largerThan('xs')]: {
+      display: 'block'
     }
   }
   //   themeToggler: {
@@ -68,12 +69,14 @@ container.id = containerId;
 
 interface IHeader {
   moduleName: string;
+  imageSrc?: string;
   offset?: number;
 }
 
 const Header: FC<IHeader> = (props) => {
-  const { moduleName, offset = 0 } = props;
+  const { moduleName, imageSrc, offset = 0 } = props;
   const { classes, cx } = useStyles({ offset });
+  const spotlight = useSpotlight();
 
   useEffect(() => {
     if (container) {
@@ -95,11 +98,15 @@ const Header: FC<IHeader> = (props) => {
           {moduleName}
         </Title>
         <Box className={classes.featureBar}>
-          <SearchBar className={classes.searchBar} />
+          <SearchBar
+            className={classes.searchBar}
+            onClick={() => spotlight.openSpotlight()}
+          />
           <ToggleThemeMode />
           <Avatar
             radius="xl"
             mx="xs"
+            src={imageSrc}
             sx={(theme) => ({
               color: theme.primaryColor
             })}
