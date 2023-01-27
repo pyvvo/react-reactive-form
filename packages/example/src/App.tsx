@@ -1,6 +1,7 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react/jsx-one-expression-per-line */
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import NiceModal from '@ebay/nice-modal-react';
 import { theme } from '@hm/ui';
 import {
@@ -14,13 +15,10 @@ import { useState } from 'react';
 import AppRouting from './app.routing';
 import './register-reactive-fields';
 
-const defaultValues = {
-  username: '',
-  password: '',
-  isActive: true
-};
-
-type Data = typeof defaultValues;
+const client = new ApolloClient({
+  uri: 'https://flyby-gateway.herokuapp.com/',
+  cache: new InMemoryCache()
+});
 
 function App() {
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
@@ -37,7 +35,9 @@ function App() {
         theme={{ ...theme, colorScheme }}>
         <NotificationsProvider>
           <NiceModal.Provider>
-            <AppRouting />
+            <ApolloProvider client={client}>
+              <AppRouting />
+            </ApolloProvider>
           </NiceModal.Provider>
         </NotificationsProvider>
       </MantineProvider>
