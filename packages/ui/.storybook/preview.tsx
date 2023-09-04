@@ -5,6 +5,7 @@ import {
 } from '@mantine/core';
 import theme from '../src/theme';
 import React, { FC, useState } from 'react';
+import '../src/theme.css'
 
 // console.log('themeee');
 

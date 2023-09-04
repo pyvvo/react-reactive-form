@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import tsconfigPaths from 'vite-tsconfig-paths';
-import { visualizer } from 'rollup-plugin-visualizer';
+// import tsconfigPaths from 'vite-tsconfig-paths';
+// import { visualizer } from 'rollup-plugin-visualizer';
 // import { ViteAliases } from 'vite-aliases';
 import dts from 'vite-plugin-dts';
 import * as path from 'node:path';
@@ -50,10 +50,10 @@ export default defineConfig({
           echarts: 'Echarts'
         }
       },
-      plugins: [
-        // @see https://github.com/doesdev/rollup-plugin-analyzer
-        visualizer()
-      ]
+      // plugins: [
+      //   // @see https://github.com/doesdev/rollup-plugin-analyzer
+      //   visualizer()
+      // ]
     }
   }
 });

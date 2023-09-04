@@ -117,6 +117,7 @@ export const ReactiveFieldDecorator = (
   // console.log({ props });
 
   return (
+    // @ts-ignore
     <ReactiveFieldWrapper field={{ ...args }}>
       <Story />
     </ReactiveFieldWrapper>
