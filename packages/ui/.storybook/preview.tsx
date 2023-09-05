@@ -3,9 +3,12 @@ import {
   ColorSchemeProvider,
   MantineProvider
 } from '@mantine/core';
-import theme from '../src/theme';
+import { IThemeContext, PyvvoThemeProvider } from '../src/theme';
+import theme from '../src/mantine.theme';
 import React, { FC, useState } from 'react';
 import '../src/theme.css'
+
+import { cva, type VariantProps, } from 'class-variance-authority';
 
 // console.log('themeee');
 
@@ -75,6 +78,55 @@ const ThemeWrapper: FC<{ children: React.ReactNode }> = (props) => {
     </ColorSchemeProvider>
   );
 };
+const button = cva('button', {
+  variants: {
+    intent: {
+      primary: [
+        'bg-green-500',
+        'text-white',
+        'border-transparent',
+        'hover:bg-blue-600'
+      ],
+      secondary: [
+        'bg-white',
+        'text-gray-800',
+        'border-gray-400',
+        'hover:bg-gray-100'
+      ]
+    },
+    size: {
+      small: ['text-sm', 'py-1', 'px-2'],
+      medium: ['text-base', 'py-2', 'px-4']
+    }
+  },
+  defaultVariants: {
+    intent: 'primary',
+    size: 'medium'
+  }
+});
+
+
+const pyTheme: any = {
+  button: button
+
+}
+
+const PyvvoThemeWrapper: FC<{ children: React.ReactNode }> = (props) => {
+
+  return (
+
+    <PyvvoThemeProvider theme={{ ...pyTheme }}>
+      {props.children}
+    </PyvvoThemeProvider>
+
+  );
+};
+
+const PyvvoDecorator = (Story: Function) => (
+  <PyvvoThemeWrapper>
+    <Story />
+  </PyvvoThemeWrapper>
+);
 
 const MantineDecorator = (Story: Function) => (
   <ThemeWrapper>
@@ -82,4 +134,4 @@ const MantineDecorator = (Story: Function) => (
   </ThemeWrapper>
 );
 
-export const decorators = [MantineDecorator];
+export const decorators = [MantineDecorator, PyvvoDecorator];
