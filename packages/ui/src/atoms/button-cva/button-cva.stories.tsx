@@ -2,6 +2,7 @@
 /* eslint-disable react/button-has-type */
 import type { Meta, StoryObj } from '@storybook/react';
 import Button from '.';
+import { AuthGuard } from '@/auth';
 
 type Story = StoryObj<typeof Button>;
 
@@ -24,6 +25,8 @@ export default meta;
 
 export const Buttono: Story = {
   args: {
-    intent: 'primary'
+    // intent: 'primary'
+    // size: 'large'
+    className: 'hover:bg-blue-200'
   }
 };

@@ -7,6 +7,7 @@ import { IThemeContext, PyvvoThemeProvider } from '../src/theme';
 import theme from '../src/mantine.theme';
 import React, { FC, useState } from 'react';
 import '../src/theme.css'
+import { AuthGuard, AuthProvider } from '../src/auth'
 
 import { cva, type VariantProps, } from 'class-variance-authority';
 
@@ -78,6 +79,7 @@ const ThemeWrapper: FC<{ children: React.ReactNode }> = (props) => {
     </ColorSchemeProvider>
   );
 };
+
 const button = cva('button', {
   variants: {
     intent: {
@@ -85,10 +87,10 @@ const button = cva('button', {
         'bg-green-500',
         'text-white',
         'border-transparent',
-        'hover:bg-blue-600'
+        'hover:bg-red-600'
       ],
       secondary: [
-        'bg-white',
+        'bg-red-500',
         'text-gray-800',
         'border-gray-400',
         'hover:bg-gray-100'
@@ -96,7 +98,8 @@ const button = cva('button', {
     },
     size: {
       small: ['text-sm', 'py-1', 'px-2'],
-      medium: ['text-base', 'py-2', 'px-4']
+      medium: ['text-base', 'py-2', 'px-4'],
+      large: ['text-xl', 'py-5', 'px-5']
     }
   },
   defaultVariants: {
@@ -115,7 +118,7 @@ const PyvvoThemeWrapper: FC<{ children: React.ReactNode }> = (props) => {
 
   return (
 
-    <PyvvoThemeProvider theme={{ ...pyTheme }}>
+    <PyvvoThemeProvider theme={pyTheme}>
       {props.children}
     </PyvvoThemeProvider>
 
@@ -128,10 +131,34 @@ const PyvvoDecorator = (Story: Function) => (
   </PyvvoThemeWrapper>
 );
 
+
+const KeycloakWrapper: FC<{ children: React.ReactNode }> = (props) => {
+  const keycloakConfig = {
+    url: 'http://localhost:8080',
+    realm: 'pyvvo',
+    clientId: 'pichaa'
+  };
+
+  return (
+    <AuthProvider {...keycloakConfig}>
+      {props.children}
+    </AuthProvider>
+  );
+};
+
+const KeycloakDecorator = (Story: Function) => (
+  <KeycloakWrapper>
+    <AuthGuard>
+      <Story />
+    </AuthGuard>
+  </KeycloakWrapper>
+);
+
+
 const MantineDecorator = (Story: Function) => (
   <ThemeWrapper>
     <Story />
   </ThemeWrapper>
 );
 
-export const decorators = [MantineDecorator, PyvvoDecorator];
+export const decorators = [MantineDecorator, PyvvoDecorator, KeycloakDecorator];

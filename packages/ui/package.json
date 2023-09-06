@@ -80,6 +80,7 @@
     "dayjs": "^1.11.7",
     "echarts": "^5.4.1",
     "jsdom": "^20.0.3",
+    "keycloak-js": "^22.0.1",
     "postcss": "^8.4.29",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -96,6 +97,8 @@
     "vitest": "^0.26.3"
   },
   "dependencies": {
-    "react-data-grid": "^7.0.0-beta.20"
+    "clsx": "^2.0.0",
+    "react-data-grid": "^7.0.0-beta.20",
+    "tailwind-merge": "^1.14.0"
   }
 }

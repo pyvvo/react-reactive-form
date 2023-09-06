@@ -2,9 +2,9 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import { createContext, ReactNode } from 'react';
 
-interface IButtonVariants {
-  intent: 'primary' | 'secondary';
-  size: 'small' | 'medium' | 'large';
+export interface IButtonVariants {
+  intent?: 'primary' | 'secondary';
+  size?: 'small' | 'medium' | 'large';
 }
 
 export interface IThemeContext {

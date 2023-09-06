@@ -2,7 +2,7 @@ import type { V2_MetaFunction } from "@remix-run/node";
 import { CNDIcon, ButtonCva, PyvvoThemeProvider } from '@hm/ui';
 import { cva } from "class-variance-authority";
 import { Theme, useTheme } from '~/utils/theme-provider';
-import { pyTheme } from "~/theming";
+import { pyTheme } from "~/theme";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -15,13 +15,13 @@ export const meta: V2_MetaFunction = () => {
 
 
 export default function Index() {
-  const [, setTheme] = useTheme();
+  // const [, setTheme] = useTheme();
 
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT));
-    console.log('done');
+  // const toggleTheme = () => {
+  //   setTheme((prevTheme) => (prevTheme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT));
+  //   console.log('done');
 
-  };
+  // };
 
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
@@ -33,11 +33,16 @@ export default function Index() {
       </h1>
       <div className="bg-white dark:bg-red-900">
         <h1 className="text-gray-900 dark:text-white">Hello world</h1>
-        <PyvvoThemeProvider theme={pyTheme}>
+        
+          <ButtonCva intent={"primary"} size={"medium"}/>
+          <ButtonCva intent={"secondary"} size={"small"} />
+          <ButtonCva intent={"primary"} size={"large"} />
+          <ButtonCva intent={"secondary"} size={"small"} />
           <ButtonCva intent={"primary"} size={"medium"} />
-        </PyvvoThemeProvider>
+          <ButtonCva intent={"secondary"} size={"large"} />
+      
       </div>
-      <button onClick={toggleTheme}>Toggle</button>
+      {/* <button onClick={toggleTheme}>Toggle</button> */}
       {/* <Button className={ButtonVariants({ intent:"secondary", size:"small", roundness:"round" })}>Click Me</Button> */}
       {/* <CNDIcon className="fill-blue-600" width={200} /> */}
       <ul>

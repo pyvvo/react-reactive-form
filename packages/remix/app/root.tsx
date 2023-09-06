@@ -15,6 +15,8 @@ import darkStyles from "~/styles/dark.css";
 import clsx from 'clsx';
 import { ThemeProvider, useTheme, NonFlashOfWrongThemeEls, Theme } from '~/utils/theme-provider';
 import { getThemeSession } from "./utils/theme.server";
+import { PyvvoThemeProvider } from "@hm/ui";
+import { pyTheme } from "./theme";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
@@ -58,19 +60,21 @@ export const loader: LoaderFunction = async ({ request }) => {
 export default function AppWithProviders() {
   const data = useLoaderData<LoaderData>()
   return (
-    <ThemeProvider specifiedTheme={data.theme}>
+    <PyvvoThemeProvider theme={pyTheme}>
       <App />
-    </ThemeProvider>
+      </PyvvoThemeProvider>
   )
 }
 
+{/* <ThemeProvider specifiedTheme={data.theme}> */}
+{/* </ThemeProvider> */}
 export function App() {
-  const [theme] = useTheme();
+  // const [theme] = useTheme();
   const data = useLoaderData<LoaderData>();
-  console.log(clsx(theme));
+  // console.log(clsx(theme));
 
   return (
-    <html lang="en" className={clsx(theme)}>
+    <html lang="en" > 
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
