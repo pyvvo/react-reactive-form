@@ -2,30 +2,22 @@ import { FC, ReactNode, useEffect, useState } from 'react';
 import Keycloak from 'keycloak-js';
 import KeycloakContext from './auth.context';
 
-interface IKeycloakProviderProps {
-  url: string;
-  realm: string;
-  clientId: string;
-  children: ReactNode;
+export interface IKeycloakProviderProps {
+  keycloak: Keycloak;
+  onLoad?: 'check-sso' | 'login-required';
 }
 
-const KeycloakProvider: FC<IKeycloakProviderProps> = ({
-  url,
-  realm,
-  clientId,
-  children
-}) => {
-  const [keycloak, setKeycloak] = useState<Keycloak | null>(null);
-
+const KeycloakProvider: FC<
+  IKeycloakProviderProps & { children: ReactNode }
+> = ({ keycloak, onLoad, children }) => {
   useEffect(() => {
-    const kc = new Keycloak({
-      url,
-      realm,
-      clientId
-    });
-    // Initialize and configure the Keycloak instance here if needed
-    setKeycloak(kc);
-  }, [url, realm, clientId]);
+    const init = async (onLoad: IKeycloakProviderProps['onLoad']) => {
+      keycloak.init({ onLoad });
+    };
+    if (onLoad) {
+      init(onLoad);
+    }
+  }, [onLoad]);
 
   return (
     <KeycloakContext.Provider value={keycloak}>

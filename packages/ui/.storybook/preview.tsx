@@ -6,10 +6,11 @@ import {
 import { IThemeContext, PyvvoThemeProvider } from '../src/theme';
 import theme from '../src/mantine.theme';
 import React, { FC, useState } from 'react';
-import '../src/theme.css'
-import { AuthGuard, AuthProvider } from '../src/auth'
+import '../src/theme.css';
+import { AuthGuard, AuthProvider, IKeycloakProviderProps } from '../src/auth';
 
-import { cva, type VariantProps, } from 'class-variance-authority';
+import { cva, type VariantProps } from 'class-variance-authority';
+import Keycloak from 'keycloak-js';
 
 // console.log('themeee');
 
@@ -108,20 +109,13 @@ const button = cva('button', {
   }
 });
 
-
 const pyTheme: any = {
   button: button
-
-}
+};
 
 const PyvvoThemeWrapper: FC<{ children: React.ReactNode }> = (props) => {
-
   return (
-
-    <PyvvoThemeProvider theme={pyTheme}>
-      {props.children}
-    </PyvvoThemeProvider>
-
+    <PyvvoThemeProvider theme={pyTheme}>{props.children}</PyvvoThemeProvider>
   );
 };
 
@@ -131,29 +125,29 @@ const PyvvoDecorator = (Story: Function) => (
   </PyvvoThemeWrapper>
 );
 
+const keycloak = new Keycloak({
+  url: 'http://localhost:8080',
+  realm: 'pyvvo',
+  clientId: 'pichaa',
+});
 
 const KeycloakWrapper: FC<{ children: React.ReactNode }> = (props) => {
-  const keycloakConfig = {
-    url: 'http://localhost:8080',
-    realm: 'pyvvo',
-    clientId: 'pichaa'
+  const keycloakConfig: IKeycloakProviderProps = {
+    keycloak,
+    onLoad: 'check-sso'
   };
+console.log("ici");
 
-  return (
-    <AuthProvider {...keycloakConfig}>
-      {props.children}
-    </AuthProvider>
-  );
+  return <AuthProvider {...keycloakConfig}>{props.children}</AuthProvider>;
 };
 
 const KeycloakDecorator = (Story: Function) => (
   <KeycloakWrapper>
-    <AuthGuard>
-      <Story />
-    </AuthGuard>
+    {/* <AuthGuard> */}
+    <Story />
+    {/* </AuthGuard> */}
   </KeycloakWrapper>
 );
-
 
 const MantineDecorator = (Story: Function) => (
   <ThemeWrapper>
