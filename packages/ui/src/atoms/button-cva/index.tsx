@@ -75,14 +75,14 @@ export interface ButtonProps
   size: 'small' | 'medium' | 'large';
 }
 
-export const Button: React.FC<ButtonProps> = ({
+const ButtonCva: React.FC<ButtonProps> = ({
   className,
   intent,
   size,
   ...props
 }) => {
   const variant = useVariant('button');
-  console.log("here");
+  console.log('here');
 
   // eslint-disable-next-line react/button-has-type
   return (
@@ -92,3 +92,5 @@ export const Button: React.FC<ButtonProps> = ({
     </button>
   );
 };
+
+export default ButtonCva;

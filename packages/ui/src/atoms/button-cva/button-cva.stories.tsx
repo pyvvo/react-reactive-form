@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react/button-has-type */
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './button-cva';
+import Button from '.';
 
 type Story = StoryObj<typeof Button>;
 
