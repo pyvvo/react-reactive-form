@@ -1,6 +1,8 @@
 import type { V2_MetaFunction } from "@remix-run/node";
-import { CNDIcon,Button } from '@hm/ui';
+import { CNDIcon, ButtonCva, PyvvoThemeProvider } from '@hm/ui';
 import { cva } from "class-variance-authority";
+import { Theme, useTheme } from '~/utils/theme-provider';
+import { pyTheme } from "~/theme";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -9,46 +11,18 @@ export const meta: V2_MetaFunction = () => {
   ];
 };
 
-const ButtonVariants = cva(
-  /* button base style */
-  "h-fit text-white uppercase transition-colors duration-150",
-  {
-      variants: {
-          /* button colors */
-          intent: {
-              primary:
-                  "bg-green-500 hover:bg-green-600",
-              secondary:
-                  "bg-red-500 hover:bg-red-600",
-              default:
-                  "bg-gray-500 hover:bg-gray-600",
-          },
 
-          /* button sizes */
-          size: {
-              small: ["text-sm", "py-1", "px-2"],
-              medium: ["text-base", "py-2", "px-4"],
-              large: ["text-lg", "py-4", "px-8"],
-          },
 
-          /* button roundness */
-          roundness: {
-              square: "rounded-none",
-              round: "rounded-md",
-              pill: "rounded-full",
-          },
-      },
-
-      // defaults
-      defaultVariants: {
-          intent: "default",
-          size: "medium",
-          roundness: "round"
-      },
-  }
-);
 
 export default function Index() {
+  // const [, setTheme] = useTheme();
+
+  // const toggleTheme = () => {
+  //   setTheme((prevTheme) => (prevTheme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT));
+  //   console.log('done');
+
+  // };
+
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
       <h1>Welcome to Remix</h1>
@@ -57,8 +31,20 @@ export default function Index() {
           Indie Stack
         </span>
       </h1>
+      <div className="bg-white dark:bg-red-900">
+        <h1 className="text-gray-900 dark:text-white">Hello world</h1>
+        
+          <ButtonCva intent={"primary"} size={"medium"}/>
+          <ButtonCva intent={"secondary"} size={"small"} />
+          <ButtonCva intent={"primary"} size={"large"} />
+          <ButtonCva intent={"secondary"} size={"small"} />
+          <ButtonCva intent={"primary"} size={"medium"} />
+          <ButtonCva intent={"secondary"} size={"large"} />
+      
+      </div>
+      {/* <button onClick={toggleTheme}>Toggle</button> */}
       {/* <Button className={ButtonVariants({ intent:"secondary", size:"small", roundness:"round" })}>Click Me</Button> */}
-      <CNDIcon className="fill-blue-600" width={200} />
+      {/* <CNDIcon className="fill-blue-600" width={200} /> */}
       <ul>
         <li>
           <a

@@ -2,27 +2,14 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import { createContext, ReactNode } from 'react';
 
-interface IButtonVariants {
-  intent: {
-    primary: string;
-    secondary: string;
-    default: string;
-  };
-  size: {
-    small: string;
-    medium: string;
-    large: string;
-  };
-  roundness: {
-    square: string;
-    round: string;
-    pill: string;
-  };
+export interface IButtonVariants {
+  intent?: 'primary' | 'secondary';
+  size?: 'small' | 'medium' | 'large';
 }
 
 export interface IThemeContext {
-  button: IButtonVariants;
-  checkbox: any;
+  button: (params: IButtonVariants) => string;
+  // checkbox: any;
   // ... add other variants as needed
 }
 

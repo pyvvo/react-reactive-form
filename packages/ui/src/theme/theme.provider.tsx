@@ -8,9 +8,7 @@ interface IThemeProvider {
   children: ReactNode;
 }
 
-const ThemeProvider: FC<IThemeProvider> = ({ theme, children }) => {
-  return (
-    <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
-  );
-};
+const ThemeProvider: FC<IThemeProvider> = ({ theme, children }) => (
+  <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
+);
 export default ThemeProvider;
