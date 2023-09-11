@@ -73,19 +73,22 @@
     "@types/react-dom": "^18.0.9",
     "@vitejs/plugin-react": "^3.0.0",
     "@vitest/ui": "^0.26.3",
+    "autoprefixer": "^10.4.15",
     "c8": "^7.12.0",
     "chance": "^1.1.9",
     "cross-env": "^7.0.3",
     "dayjs": "^1.11.7",
     "echarts": "^5.4.1",
     "jsdom": "^20.0.3",
+    "keycloak-js": "^22.0.1",
+    "postcss": "^8.4.29",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.41.3",
     "react-router-dom": "^6.6.2",
     "rollup-plugin-visualizer": "^5.8.3",
     "storybook": "7.2.2",
-    "tailwindcss": "3.3.3",
+    "tailwindcss": "^3.3.3",
     "typescript": "^4.9.4",
     "vite": "^4.4.9",
     "vite-aliases": "^0.10.0",
@@ -94,6 +97,10 @@
     "vitest": "^0.26.3"
   },
   "dependencies": {
-    "react-data-grid": "^7.0.0-beta.20"
+    "clsx": "^2.0.0",
+    "react-data-grid": "^7.0.0-beta.20",
+    "remix-auth": "^3.5.1",
+    "remix-auth-keycloak": "^1.2.0",
+    "tailwind-merge": "^1.14.0"
   }
 }
