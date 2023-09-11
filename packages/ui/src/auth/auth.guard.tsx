@@ -4,7 +4,6 @@ import useKeycloak from './auth.hooks';
 
 interface IKeycloakGuard {
   children: ReactNode;
-  // eslint-disable-next-line react/require-default-props
   fallback?: ReactNode;
 }
 const KeycloakGuard: FC<IKeycloakGuard> = ({ children, fallback }) => {
@@ -28,7 +27,6 @@ const KeycloakGuard: FC<IKeycloakGuard> = ({ children, fallback }) => {
     return <>{children}</>;
   }
   return fallback ? (
-    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>{fallback}</>
   ) : (
     <div>Please log in to access this content.</div>

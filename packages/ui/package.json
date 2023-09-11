@@ -99,8 +99,6 @@
   "dependencies": {
     "clsx": "^2.0.0",
     "react-data-grid": "^7.0.0-beta.20",
-    "remix-auth": "^3.5.1",
-    "remix-auth-keycloak": "^1.2.0",
     "tailwind-merge": "^1.14.0"
   }
 }

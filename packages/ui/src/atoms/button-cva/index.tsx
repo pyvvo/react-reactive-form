@@ -22,7 +22,7 @@ const ButtonCva: React.FC<ButtonProps> = ({
   const a = intent ?? defaultProps.intent;
   const b = size ?? defaultProps.size;
   const variant = useVariant('button');
-  // console.log(variant);
+  console.log(variant);
   // const _className = className ?? variant({ intent: a, size: b });
 
   return (
