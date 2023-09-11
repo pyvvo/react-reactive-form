@@ -1,8 +1,12 @@
-import type { V2_MetaFunction } from "@remix-run/node";
+import { json, type LoaderFunction, type V2_MetaFunction } from "@remix-run/node";
 import { CNDIcon, ButtonCva, PyvvoThemeProvider } from '@hm/ui';
 import { cva } from "class-variance-authority";
 import { Theme, useTheme } from '~/utils/theme-provider';
 import { pyTheme } from "~/theme";
+import Login from "./login";
+import Logout from "./logout";
+import { authenticator } from "~/utils/auth.server";
+import { useLoaderData } from "@remix-run/react";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -11,7 +15,14 @@ export const meta: V2_MetaFunction = () => {
   ];
 };
 
-
+export let loader: LoaderFunction = async ({ request }) => {
+  // if the user is not authenticated, redirect to login
+  let user = await authenticator.isAuthenticated(request, {
+    failureRedirect: "/login",
+  });
+  // do something with the user
+  return json( user );
+};
 
 
 export default function Index() {
@@ -23,6 +34,10 @@ export default function Index() {
 
   // };
 
+  // const { user } = useLoaderData();
+  // console.log({ user });
+
+
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
       <h1>Welcome to Remix</h1>
@@ -33,15 +48,17 @@ export default function Index() {
       </h1>
       <div className="bg-white dark:bg-red-900">
         <h1 className="text-gray-900 dark:text-white">Hello world</h1>
-        
-          <ButtonCva intent={"primary"} size={"medium"}/>
-          <ButtonCva intent={"secondary"} size={"small"} />
-          <ButtonCva intent={"primary"} size={"large"} />
-          <ButtonCva intent={"secondary"} size={"small"} />
-          <ButtonCva intent={"primary"} size={"medium"} />
-          <ButtonCva intent={"secondary"} size={"large"} />
-      
+
+        <ButtonCva intent={"primary"} size={"medium"} />
+        <ButtonCva intent={"secondary"} size={"small"} />
+        <ButtonCva intent={"primary"} size={"large"} />
+        <ButtonCva intent={"secondary"} size={"small"} />
+        <ButtonCva intent={"primary"} size={"medium"} />
+        <ButtonCva intent={"secondary"} size={"large"} />
+
       </div>
+      <Login />
+      <Logout />
       {/* <button onClick={toggleTheme}>Toggle</button> */}
       {/* <Button className={ButtonVariants({ intent:"secondary", size:"small", roundness:"round" })}>Click Me</Button> */}
       {/* <CNDIcon className="fill-blue-600" width={200} /> */}
