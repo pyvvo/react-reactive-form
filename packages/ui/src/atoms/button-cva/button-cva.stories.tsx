@@ -1,19 +1,22 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react/button-has-type */
 import type { Meta, StoryObj } from '@storybook/react';
+import { FC, useState } from 'react';
 import Button from '.';
 import { AuthGuard } from '@/auth';
 import useKeycloak from '@/auth/auth.hooks';
-import { FC, useState } from 'react';
 
 type Story = StoryObj<typeof Button>;
 
-const GuardComponent: FC<{setIsAuthenticated:Function}> = ({setIsAuthenticated}) => {
+// eslint-disable-next-line @typescript-eslint/ban-types
+const GuardComponent: FC<{ setIsAuthenticated: Function }> = ({
+  setIsAuthenticated
+}) => {
   const keycloak = useKeycloak();
   const login = async () => {
     await keycloak.login();
-    const {authenticated}= keycloak;
-    setIsAuthenticated(authenticated ?? false)
+    const { authenticated } = keycloak;
+    setIsAuthenticated(authenticated ?? false);
   };
 
   return (
@@ -40,13 +43,14 @@ const meta: Meta<typeof Button> = {
   decorators: [
     (Story) => {
       const keycloak = useKeycloak();
-      const [isAuthenticated, setIsAuthenticated] = useState(false)
+      const [isAuthenticated, setIsAuthenticated] = useState(false);
       const logout = () => {
         keycloak.logout();
       };
 
       return (
-        <AuthGuard fallback={<GuardComponent setIsAuthenticated={setIsAuthenticated} />}>
+        <AuthGuard
+          fallback={<GuardComponent setIsAuthenticated={setIsAuthenticated} />}>
           <button
             style={{
               backgroundColor: 'blueviolet',
