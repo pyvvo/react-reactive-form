@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ThemeContext, IThemeContext } from './theme.context';
-import defaultTheme from './default-theme';
+import defaultTheme from './default.theme';
 
 function useVariant<T extends keyof IThemeContext>(
   componentName: T
@@ -12,10 +12,9 @@ function useVariant<T extends keyof IThemeContext>(
   // }
 
   /* Fusionner le theme envoyer dans le provider et celui du theme par defaut */
-  const theme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext) || defaultTheme;
   // const mergeTheme = { ...defaultTheme, ...theme };
-  // console.log({ mergeTheme });
-  
+  // console.log({ theme });
 
   const variant = theme[componentName];
   // console.log('here');
