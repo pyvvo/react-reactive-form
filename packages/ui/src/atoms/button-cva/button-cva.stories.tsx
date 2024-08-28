@@ -8,12 +8,14 @@ import { FC, useState } from 'react';
 
 type Story = StoryObj<typeof Button>;
 
-const GuardComponent: FC<{setIsAuthenticated:Function}> = ({setIsAuthenticated}) => {
+const GuardComponent: FC<{ setIsAuthenticated: Function }> = ({
+  setIsAuthenticated
+}) => {
   const keycloak = useKeycloak();
   const login = async () => {
     await keycloak.login();
-    const {authenticated}= keycloak;
-    setIsAuthenticated(authenticated ?? false)
+    const { authenticated } = keycloak;
+    setIsAuthenticated(authenticated ?? false);
   };
 
   return (
@@ -40,13 +42,14 @@ const meta: Meta<typeof Button> = {
   decorators: [
     (Story) => {
       const keycloak = useKeycloak();
-      const [isAuthenticated, setIsAuthenticated] = useState(false)
+      const [isAuthenticated, setIsAuthenticated] = useState(false);
       const logout = () => {
         keycloak.logout();
       };
 
       return (
-        <AuthGuard fallback={<GuardComponent setIsAuthenticated={setIsAuthenticated} />}>
+        <AuthGuard
+          fallback={<GuardComponent setIsAuthenticated={setIsAuthenticated} />}>
           <button
             style={{
               backgroundColor: 'blueviolet',

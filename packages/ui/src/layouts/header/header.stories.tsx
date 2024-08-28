@@ -2,7 +2,6 @@
 /* eslint-disable react/button-has-type */
 import type { Meta, StoryObj } from '@storybook/react';
 import Chance from 'chance';
-import { SpotlightAction } from '@mantine/spotlight';
 import { IconHome, IconDashboard, IconFileText } from '@tabler/icons';
 import {
   MantineSpotlightDecorator,
@@ -11,10 +10,11 @@ import {
 } from '@/story-utils';
 import H from './header';
 import { Simplify } from '@/types';
+import { SpotlightActions } from "@mantine/spotlight/lib/Spotlight";
 
 type ComponentProps = Simplify<
   Parameters<typeof H>[0] & {
-    actions: SpotlightAction[];
+    actions: SpotlightActions[];
   }
 >;
 
@@ -37,24 +37,27 @@ const meta: Meta<ComponentProps> = {
 export default meta;
 
 const chance = new Chance();
-const actions: SpotlightAction[] = [
+const actions: SpotlightActions[] = [
   {
+    id: 'home',
     title: 'Home',
     description: 'Get to home page',
-    onTrigger: () => console.log('Home'),
-    icon: <IconHome size={18} />
+    onClick: () => console.log('Home'),
+    leftSection: <IconHome size={18} />
   },
   {
+    id: 'dashboard',
     title: 'Dashboard',
     description: 'Get full information about current system status',
-    onTrigger: () => console.log('Dashboard'),
-    icon: <IconDashboard size={18} />
+    onClick: () => console.log('Dashboard'),
+    leftSection: <IconDashboard size={18} />
   },
   {
+    id: 'documentation',
     title: 'Documentation',
     description: 'Visit documentation to lean more about all features',
-    onTrigger: () => console.log('Documentation'),
-    icon: <IconFileText size={18} />
+    onClick: () => console.log('Documentation'),
+    leftSection: <IconFileText size={18} />
   }
 ];
 

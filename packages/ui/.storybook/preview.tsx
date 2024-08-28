@@ -1,12 +1,15 @@
+import '@mantine/core/styles.css';
+import '../src/theme.css';
+import '@mantine/spotlight/styles.css';
 import {
-  ColorScheme,
-  ColorSchemeProvider,
+  // ColorScheme,
+  // ColorSchemeProvider,
   MantineProvider
 } from '@mantine/core';
+import { emotionTransform, MantineEmotionProvider } from '@mantine/emotion';
 import { IThemeContext, PyvvoThemeProvider } from '../src/theme';
 import theme from '../src/mantine.theme';
 import React, { FC, useState } from 'react';
-import '../src/theme.css';
 import { AuthGuard, AuthProvider, IKeycloakProviderProps } from '../src/auth';
 
 import { cva, type VariantProps } from 'class-variance-authority';
@@ -64,20 +67,22 @@ export const parameters = {
 };
 
 const ThemeWrapper: FC<{ children: React.ReactNode }> = (props) => {
-  const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
-  const toggleColorScheme = (value?: ColorScheme) =>
-    setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
+  // const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
+  // const toggleColorScheme = (value?: ColorScheme) =>
+  //   setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
   return (
-    <ColorSchemeProvider
-      colorScheme={colorScheme}
-      toggleColorScheme={toggleColorScheme}>
-      <MantineProvider
-        theme={{ ...theme, colorScheme }}
-        withGlobalStyles
-        withNormalizeCSS>
-        {props.children}
-      </MantineProvider>
-    </ColorSchemeProvider>
+    // <ColorSchemeProvider
+    //   colorScheme={colorScheme}
+    //   toggleColorScheme={toggleColorScheme}>
+    <MantineProvider
+      theme={{ ...theme }}
+      stylesTransform={emotionTransform}
+      // theme={{ ...theme, colorScheme }}
+      // withGlobalStyles
+      // withNormalizeCSS
+    >
+      <MantineEmotionProvider> {props.children} </MantineEmotionProvider>
+    </MantineProvider>
   );
 };
 
@@ -128,7 +133,7 @@ const PyvvoDecorator = (Story: Function) => (
 const keycloak = new Keycloak({
   url: 'http://localhost:8080',
   realm: 'pyvvo',
-  clientId: 'pichaa',
+  clientId: 'pichaa'
 });
 
 const KeycloakWrapper: FC<{ children: React.ReactNode }> = (props) => {
@@ -136,7 +141,7 @@ const KeycloakWrapper: FC<{ children: React.ReactNode }> = (props) => {
     keycloak,
     onLoad: 'check-sso'
   };
-console.log("ici");
+  console.log('ici');
 
   return <AuthProvider {...keycloakConfig}>{props.children}</AuthProvider>;
 };
@@ -155,4 +160,4 @@ const MantineDecorator = (Story: Function) => (
   </ThemeWrapper>
 );
 
-export const decorators = [MantineDecorator, PyvvoDecorator, KeycloakDecorator];
+export const decorators = [MantineDecorator, PyvvoDecorator];

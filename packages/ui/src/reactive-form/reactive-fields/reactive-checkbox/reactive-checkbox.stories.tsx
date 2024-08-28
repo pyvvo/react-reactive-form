@@ -1,7 +1,7 @@
 /* eslint-disable react/button-has-type */
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect } from '@storybook/jest';
-import { userEvent, waitFor, within } from '@storybook/testing-library';
+import { expect } from '@storybook/test';
+import { userEvent, waitFor, within } from '@storybook/test';
 import { getReactiveRef, ReactiveFieldDecorator } from '@/story-utils';
 import { ReactiveFieldStoryType } from '../types';
 import ReactiveField from './reactive-checkbox';

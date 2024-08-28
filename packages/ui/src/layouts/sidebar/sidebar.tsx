@@ -1,5 +1,5 @@
 /* eslint-disable react/require-default-props */
-import { Center, Navbar, Stack } from '@mantine/core';
+import { Center, AppShell, Stack, Box, Group } from '@mantine/core';
 import { FC, useCallback } from 'react';
 import { CNDIcon } from '@/atoms';
 import NavbarButton from './navbar-button';
@@ -30,18 +30,17 @@ const SideBar: FC<ISideBar> = (props) => {
   );
 
   return (
-    <Navbar
-      height="100vh"
-      fixed
-      sx={{ top: 0, paddingBlock: '18px' }}
-      width={{ base: 80 }}
+    <Box
+      h="100vh"
+      sx={{ top: 0, paddingBlock: '18px',position:"fixed",width:'80px', boxShadow: '0px 0px 21px 0px #5f5f5f1a', }}
+      component="nav"
       px="md"
       {...rest}>
       <Center>
         <CNDIcon />
       </Center>
-      <Navbar.Section grow mt={50}>
-        <Stack justify="center" spacing={0}>
+      <Group grow  component="section" mt={50}>
+        <Stack justify="center" gap="sm">
           {menu(modules).map((link) => (
             <NavbarButton
               to={link.to ?? ''}
@@ -52,9 +51,9 @@ const SideBar: FC<ISideBar> = (props) => {
             />
           ))}
         </Stack>
-      </Navbar.Section>
-      <Navbar.Section>
-        <Stack justify="center" spacing={0}>
+      </Group>
+      <Group grow  component="section">
+        <Stack justify="center" gap="sm">
           {bottomMenu(modules).map((link) => (
             <NavbarButton
               to={link.to ?? ''}
@@ -65,8 +64,8 @@ const SideBar: FC<ISideBar> = (props) => {
             />
           ))}
         </Stack>
-      </Navbar.Section>
-    </Navbar>
+      </Group>
+    </Box>
   );
 };
 

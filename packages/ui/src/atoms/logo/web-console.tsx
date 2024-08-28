@@ -1,10 +1,16 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-import { createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/emotion';
+
 import { FC, SVGProps } from 'react';
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles((theme,_,u) => ({
   default: {
-    fill: theme.colorScheme === 'light' ? '#1d1d1b' : '#ffffff'
+    [u.dark]: {
+      backgroundColor: '#ffffff',
+    },
+    [u.light]: {
+      backgroundColor: '#1d1d1b',
+    },
   }
 }));
 

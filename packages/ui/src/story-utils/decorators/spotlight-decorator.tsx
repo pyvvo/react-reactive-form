@@ -3,7 +3,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable react/require-default-props */
-import { SpotlightProvider } from '@mantine/spotlight';
+import { Spotlight } from '@mantine/spotlight';
 import { IDecoratorParams } from './common';
 
 export const MantineSpotlightDecorator = (
@@ -13,11 +13,12 @@ export const MantineSpotlightDecorator = (
   const {
     args: { actions, ...rest }
   } = props;
-  // console.log({ props });
+  console.log({ props });
 
   return (
-    <SpotlightProvider actions={actions}>
+    <>
+    <Spotlight actions={actions}/>
       <Story args={{ ...rest }} />
-    </SpotlightProvider>
+      </>
   );
 };

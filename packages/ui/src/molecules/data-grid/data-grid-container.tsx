@@ -6,12 +6,12 @@ import styled from '@emotion/styled';
 import {
   Button,
   Text,
-  Global,
-  createStyles,
   Box,
   Paper,
-  MantineTheme
+  MantineTheme,
+  useComputedColorScheme
 } from '@mantine/core';
+import {Global, createStyles} from '@mantine/emotion';
 
 const List = styled('div')`
   width: 100%;
@@ -62,16 +62,19 @@ const EmptyRowsRenderer = () => (
   </div>
 );
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles((theme,_,u) => ({
   root: {
     marginBlock: '8px',
     height: 'auto'
   },
 
   header: {
-    borderBottom: `1px solid ${
-      theme.colorScheme === 'light' ? '#ddd' : ' #444'
-    }`,
+    [u.dark] :{
+      borderBottom: '1px solid #444'
+    },
+    [u.light] :{
+      borderBottom: '1px solid #ddd'
+    },
     borderRadius: '12px 12px 0 0',
     minHeight: '24px',
     display: 'flex',
@@ -105,6 +108,7 @@ interface IDataGridContainer {
 const DataGridContainer: FC<IDataGridContainer> = (props) => {
   const { children, theme, ...rest } = props;
   const { classes } = useStyles();
+  const computedColorScheme = useComputedColorScheme('light');
   let rowCount = 1;
   let selectedRowCount = 0;
   const modifiedChildren = Children.map(children as any, (child) => {
@@ -116,7 +120,7 @@ const DataGridContainer: FC<IDataGridContainer> = (props) => {
         ? child.props.selectedRows.size
         : 0;
       return cloneElement<any>(child, {
-        className: theme.colorScheme === 'dark' ? 'rdg-dark' : 'rdg-light',
+        className: computedColorScheme === 'dark' ? 'rdg-dark' : 'rdg-light',
         components: { noRowsFallback: <EmptyRowsRenderer /> }
       });
     }

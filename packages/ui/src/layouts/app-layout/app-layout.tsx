@@ -2,10 +2,11 @@
 import {
   Box,
   Grid,
-  createStyles,
-  useMantineTheme,
-  Global
+  lighten,
+  useComputedColorScheme,
+  useMantineTheme
 } from '@mantine/core';
+import { Global, createStyles } from '@mantine/emotion';
 import { useMediaQuery } from '@mantine/hooks';
 import { FC, useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
@@ -18,13 +19,13 @@ interface IStyleParams {
   offset: number;
 }
 
-const useStyles = createStyles((theme, pr: IStyleParams) => ({
+const useStyles = createStyles((theme, _: IStyleParams, u) => ({
   mainParent: {
     paddingTop: '60px',
     paddingLeft: `0px`,
     // backgroundColor: theme.colorScheme === 'dark' ? theme.black : theme.white,
-    [theme.fn.largerThan('sm')]: {
-      paddingLeft: `${pr.offset}px`
+    [u.largerThan('sm')]: {
+      paddingLeft: `${_.offset}px`
     }
   },
 
@@ -48,10 +49,13 @@ const AppLayout: FC<ILayout> = (props) => {
   const { modules, imageSrc, offset, ...rest } = props;
   const location = useLocation();
   const [moduleName, setModuleName] = useState('');
+  const computedColorScheme = useComputedColorScheme('light');
   const { classes, cx } = useStyles({ offset });
   const theme = useMantineTheme();
-  const isLaptop = useMediaQuery(`(min-width: ${theme.breakpoints.sm}px)`);
+  const isLaptop = useMediaQuery(`(min-width: ${theme.breakpoints.sm})`);
   const color = theme.colors[theme.primaryColor][0];
+  console.log(theme.breakpoints.sm);
+  
 
   useEffect(
     () =>
@@ -64,14 +68,12 @@ const AppLayout: FC<ILayout> = (props) => {
   return (
     <Box {...rest}>
       <Global
-        styles={{
+        styles={(theme) => ({
           body: {
             backgroundColor:
-              theme.colorScheme === 'dark'
-                ? undefined
-                : theme.fn.lighten(color, 0.6)
+              computedColorScheme === 'dark' ? undefined : lighten(color, 0.6)
           }
-        }}
+        })}
       />
       <Grid>
         <Grid.Col>

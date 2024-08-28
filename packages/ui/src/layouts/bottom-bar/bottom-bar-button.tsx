@@ -1,15 +1,12 @@
 /* eslint-disable react/require-default-props */
-import {
-  createStyles,
-  MantineColor,
-  Tooltip,
-  UnstyledButton
-} from '@mantine/core';
+import { MantineColor, Tooltip, UnstyledButton } from '@mantine/core';
+import { createStyles } from '@mantine/emotion';
+
 import { TablerIcon } from '@tabler/icons';
 import { FC, useState } from 'react';
 import { NavBarLink } from '@/molecules';
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles((theme, _, u) => ({
   link: {
     width: 50,
     height: 50,
@@ -17,27 +14,24 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color:
-      theme.colorScheme === 'dark'
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
-
-    '&:hover': {
-      backgroundColor:
-        theme.colorScheme === 'dark'
-          ? theme.colors.dark[5]
-          : theme.colors.indigo[0]
+    [u.light]: {
+      color: theme.colors.gray[7],
+      '&:hover': {
+        backgroundColor: theme.colors.indigo[0]
+      }
+    },
+    [u.dark]: {
+      color: theme.colors.dark[0],
+      '&:hover': {
+        backgroundColor: theme.colors.dark[5]
+      }
     }
   },
 
   active: {
     '&, &:hover': {
-      backgroundColor: theme.fn.variant({
-        variant: 'light',
-        color: theme.primaryColor
-      }).background,
-      color: theme.fn.variant({ variant: 'light', color: theme.primaryColor })
-        .color
+      backgroundColor: theme.primaryColor[2],
+      color: theme.primaryColor[2]
     }
   }
 }));
@@ -63,7 +57,7 @@ const NavbarButton: FC<INavbarButton> = (props) => {
       <Tooltip
         label={label}
         position="right"
-        transitionDuration={100}
+        transitionProps={{ duration: 100 }}
         color={color}>
         <UnstyledButton
           onClick={onClick}

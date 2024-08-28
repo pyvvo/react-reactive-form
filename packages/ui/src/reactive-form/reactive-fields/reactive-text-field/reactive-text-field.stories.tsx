@@ -1,7 +1,7 @@
 /* eslint-disable react/button-has-type */
-import { expect } from '@storybook/jest';
+import { expect } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/react';
-import { userEvent, waitFor } from '@storybook/testing-library';
+import { userEvent, waitFor } from '@storybook/test';
 import { getReactiveRef, ReactiveFieldDecorator } from '@/story-utils';
 import { ReactiveFieldStoryType } from '../types';
 import RTF from './reactive-text-field';
