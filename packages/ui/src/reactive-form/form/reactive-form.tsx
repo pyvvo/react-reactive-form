@@ -25,20 +25,21 @@ const DynamicField = <TFormValues extends JSONData>(
     const RenderField = FormBuilder.getField<JSONData, TFormValues>(field.type);
     return RenderField;
   }, [field.type])();
-  const { type, customProps, ...fieldProps } = field;
+  const { type, customProps, options, ...fieldProps } = field;
   const error = getError(field.fieldKey, errors);
 
   return useMemo(
     () => (
       <MemoizedRenderField
         {...fieldProps}
+        options={options}
         form={form}
         customProps={customProps as never}
         error={error}
       />
     ),
 
-    [MemoizedRenderField, fieldProps, form, customProps, error]
+    [MemoizedRenderField, options, fieldProps, form, customProps, error]
   );
 };
 

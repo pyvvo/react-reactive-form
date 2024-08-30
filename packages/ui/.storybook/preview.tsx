@@ -6,9 +6,9 @@ import {
   // ColorSchemeProvider,
   MantineProvider
 } from '@mantine/core';
-import { emotionTransform, MantineEmotionProvider } from '@mantine/emotion';
+import { MantineEmotionProvider } from '@mantine/emotion';
 import { IThemeContext, PyvvoThemeProvider } from '../src/theme';
-import theme from '../src/mantine.theme';
+import theme, { cssVarResolver } from '../src/mantine.theme';
 import React, { FC, useState } from 'react';
 import { AuthGuard, AuthProvider, IKeycloakProviderProps } from '../src/auth';
 
@@ -67,20 +67,9 @@ export const parameters = {
 };
 
 const ThemeWrapper: FC<{ children: React.ReactNode }> = (props) => {
-  // const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
-  // const toggleColorScheme = (value?: ColorScheme) =>
-  //   setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
   return (
-    // <ColorSchemeProvider
-    //   colorScheme={colorScheme}
-    //   toggleColorScheme={toggleColorScheme}>
-    <MantineProvider
-      theme={{ ...theme }}
-      stylesTransform={emotionTransform}
-      // theme={{ ...theme, colorScheme }}
-      // withGlobalStyles
-      // withNormalizeCSS
-    >
+
+    <MantineProvider theme={{ ...theme }} cssVariablesResolver={cssVarResolver}>
       <MantineEmotionProvider> {props.children} </MantineEmotionProvider>
     </MantineProvider>
   );

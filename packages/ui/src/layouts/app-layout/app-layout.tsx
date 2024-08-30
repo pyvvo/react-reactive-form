@@ -6,7 +6,6 @@ import {
   useComputedColorScheme,
   useMantineTheme
 } from '@mantine/core';
-import { Global, createStyles } from '@mantine/emotion';
 import { useMediaQuery } from '@mantine/hooks';
 import { FC, useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
@@ -14,31 +13,7 @@ import { BottomBar } from '../bottom-bar';
 import { Header } from '../header';
 import { SideBar } from '../sidebar';
 import { IModuleLink } from '../types';
-
-interface IStyleParams {
-  offset: number;
-}
-
-const useStyles = createStyles((theme, _: IStyleParams, u) => ({
-  mainParent: {
-    paddingTop: '60px',
-    paddingLeft: `0px`,
-    // backgroundColor: theme.colorScheme === 'dark' ? theme.black : theme.white,
-    [u.largerThan('sm')]: {
-      paddingLeft: `${_.offset}px`
-    }
-  },
-
-  main: {
-    paddingInline: '18px'
-  }
-  //   themeToggler: {
-  //   [theme.fn.smallerThan('sm')]: {
-  //     fontSize: theme.fontSizes.xl
-  //   }
-  // }
-}));
-
+import styles from "./app-layout.module.css"
 interface ILayout {
   modules: IModuleLink[];
   imageSrc: string;
@@ -50,7 +25,6 @@ const AppLayout: FC<ILayout> = (props) => {
   const location = useLocation();
   const [moduleName, setModuleName] = useState('');
   const computedColorScheme = useComputedColorScheme('light');
-  const { classes, cx } = useStyles({ offset });
   const theme = useMantineTheme();
   const isLaptop = useMediaQuery(`(min-width: ${theme.breakpoints.sm})`);
   const color = theme.colors[theme.primaryColor][0];
@@ -67,14 +41,14 @@ const AppLayout: FC<ILayout> = (props) => {
 
   return (
     <Box {...rest}>
-      <Global
+      {/* <Global
         styles={(theme) => ({
           body: {
             backgroundColor:
               computedColorScheme === 'dark' ? undefined : lighten(color, 0.6)
           }
         })}
-      />
+      /> */}
       <Grid>
         <Grid.Col>
           <Header
@@ -90,8 +64,8 @@ const AppLayout: FC<ILayout> = (props) => {
             <BottomBar modules={modules} visible />
           )}
         </Grid.Col>
-        <Grid.Col span="auto" className={classes.mainParent}>
-          <Box component="main" className={classes.main}>
+        <Grid.Col span="auto" className={styles.mainParent}>
+          <Box component="main" className={styles.main}>
             <Outlet />
           </Box>
         </Grid.Col>

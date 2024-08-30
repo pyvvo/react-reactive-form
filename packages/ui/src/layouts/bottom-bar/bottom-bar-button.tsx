@@ -1,40 +1,9 @@
 /* eslint-disable react/require-default-props */
+import { NavBarLink } from '@/molecules';
 import { MantineColor, Tooltip, UnstyledButton } from '@mantine/core';
-import { createStyles } from '@mantine/emotion';
-
 import { TablerIcon } from '@tabler/icons';
 import { FC, useState } from 'react';
-import { NavBarLink } from '@/molecules';
-
-const useStyles = createStyles((theme, _, u) => ({
-  link: {
-    width: 50,
-    height: 50,
-    borderRadius: theme.radius.md,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    [u.light]: {
-      color: theme.colors.gray[7],
-      '&:hover': {
-        backgroundColor: theme.colors.indigo[0]
-      }
-    },
-    [u.dark]: {
-      color: theme.colors.dark[0],
-      '&:hover': {
-        backgroundColor: theme.colors.dark[5]
-      }
-    }
-  },
-
-  active: {
-    '&, &:hover': {
-      backgroundColor: theme.primaryColor[2],
-      color: theme.primaryColor[2]
-    }
-  }
-}));
+import styles from './bottom-bar.module.css';
 
 interface INavbarButton {
   icon: TablerIcon;
@@ -46,7 +15,6 @@ interface INavbarButton {
 
 const NavbarButton: FC<INavbarButton> = (props) => {
   const { icon: Icon, label, onClick, color, to } = props;
-  const { classes, cx } = useStyles();
   const [isActive, setIsActive] = useState(false);
   const handleIsactive = (param: boolean) => {
     setIsActive(param);
@@ -61,7 +29,8 @@ const NavbarButton: FC<INavbarButton> = (props) => {
         color={color}>
         <UnstyledButton
           onClick={onClick}
-          className={cx(classes.link, { [classes.active]: isActive })}>
+          mod={[{ active: isActive }]}
+          className={styles.link}>
           <Icon stroke={1.5} />
         </UnstyledButton>
       </Tooltip>

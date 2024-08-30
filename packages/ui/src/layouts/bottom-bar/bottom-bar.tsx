@@ -48,7 +48,7 @@ const BottomBar: FC<IBottomBar> = (props) => {
     <Portal target={container}>
       <Box
       component="nav"
-        sx={{
+        style={{
           width: '70%',
           boxShadow: '0px 0px 21px 0px #5f5f5f1a',
           borderRadius: '18px',
@@ -60,7 +60,7 @@ const BottomBar: FC<IBottomBar> = (props) => {
           zIndex: 200
         }}>
         <Group grow  component="section"
-          sx={{
+          style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center'

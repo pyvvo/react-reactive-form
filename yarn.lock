@@ -4981,11 +4981,11 @@ __metadata:
     postcss: "npm:^8.4.41"
     postcss-preset-mantine: "npm:^1.17.0"
     postcss-simple-vars: "npm:^7.0.1"
-    react: "npm:^18.2.0"
-    react-data-grid: "npm:^7.0.0-beta.20"
-    react-dom: "npm:^18.2.0"
-    react-hook-form: "npm:^7.41.3"
-    react-router-dom: "npm:^6.6.2"
+    react: "npm:^18.3.1"
+    react-data-grid: "npm:^7.0.0-beta.46"
+    react-dom: "npm:^18.3.1"
+    react-hook-form: "npm:^7.53.0"
+    react-router-dom: "npm:^6.26.1"
     rollup-plugin-visualizer: "npm:^5.8.3"
     storybook: "npm:^8.2.9"
     tailwind-merge: "npm:^1.14.0"
@@ -5010,10 +5010,10 @@ __metadata:
     "@tabler/icons": ">=1.119.0"
     dayjs: ">=1.11.7"
     echarts: ">=5.4.1"
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-    react-hook-form: ">=7.41.0"
-    react-router-dom: ">=6.6.2"
+    react: ">=18.3.1"
+    react-dom: ">=18.3.1"
+    react-hook-form: ">=7.53.0"
+    react-router-dom: ">=6.26.1"
   languageName: unknown
   linkType: soft
 
@@ -6345,6 +6345,13 @@ __metadata:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
   checksum: 10/300b5e58a9fd590b1b4af5866616510a5a1480a53a4c6638fc288d9555baa00b8b1830321a368c4f98ab0ce78b964b80257e8bb194fb51d0d3e98a4b7c3fca84
+  languageName: node
+  linkType: hard
+
+"@remix-run/router@npm:1.19.1":
+  version: 1.19.1
+  resolution: "@remix-run/router@npm:1.19.1"
+  checksum: 10/2800c2f6567a982fe942aacc4cb5b170e7cc89bd455960e3bea2424161ff7dac32d01886322d88dd19b88d1bea711f39566d17f02b73eeb74999affb471f8f52
   languageName: node
   linkType: hard
 
@@ -17347,7 +17354,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-data-grid@npm:^7.0.0-beta.20":
+"react-data-grid@npm:^7.0.0-beta.46":
   version: 7.0.0-canary.49
   resolution: "react-data-grid@npm:7.0.0-canary.49"
   dependencies:
@@ -17398,7 +17405,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^16.8.0 || ^17.0.0 || ^18.0.0":
+"react-dom@npm:^16.8.0 || ^17.0.0 || ^18.0.0, react-dom@npm:^18.3.1":
   version: 18.3.1
   resolution: "react-dom@npm:18.3.1"
   dependencies:
@@ -17424,12 +17431,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:^7.41.0, react-hook-form@npm:^7.41.3":
+"react-hook-form@npm:^7.41.0":
   version: 7.41.5
   resolution: "react-hook-form@npm:7.41.5"
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18
   checksum: 10/8400e5744fcce0e47fc4a4d0a843bc37780d7edcc6f20b21ceb30336a67e57fe8c67c74f1e71a31148d270059769b9d1d03358e35531dd32b17cc1e6cf322ae3
+  languageName: node
+  linkType: hard
+
+"react-hook-form@npm:^7.53.0":
+  version: 7.53.0
+  resolution: "react-hook-form@npm:7.53.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18 || ^19
+  checksum: 10/b7d73696b7c10e042f6ea6fcec01f951091146bfbc89d1378327a970bcd724b968e93fae1657bddada75caf648cfaf8693c5ba03c25e96816b755079d29f65da
   languageName: node
   linkType: hard
 
@@ -17568,6 +17584,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-router-dom@npm:^6.26.1":
+  version: 6.26.1
+  resolution: "react-router-dom@npm:6.26.1"
+  dependencies:
+    "@remix-run/router": "npm:1.19.1"
+    react-router: "npm:6.26.1"
+  peerDependencies:
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: 10/1bd255d1ff88f477699c72656e7c07702a907e644388a1bea1c648f2df0c3c86db2e90bea945b1d43eaf84ebab194f3868f3788502965ad5f20c508c6874f1fe
+  languageName: node
+  linkType: hard
+
 "react-router-dom@npm:^6.6.2":
   version: 6.6.2
   resolution: "react-router-dom@npm:6.6.2"
@@ -17589,6 +17618,17 @@ __metadata:
   peerDependencies:
     react: ">=16.8"
   checksum: 10/24ae7d1c9d28c412d0113af085202a2edcc348b35fdf9cd88552b43b1536b9fc0479918674f16b65195386abe842d1f74c593390a02b0abaa082dc0ecbea83fa
+  languageName: node
+  linkType: hard
+
+"react-router@npm:6.26.1":
+  version: 6.26.1
+  resolution: "react-router@npm:6.26.1"
+  dependencies:
+    "@remix-run/router": "npm:1.19.1"
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 10/b3761515c75da65a1678f005d08a6285ceccd9df7237ae6fdd9ab2ab816ef328435b75610f705ecd9ecd41c6878fd22eb9b44c5391cdef2e1ed99ddbc78de8a4
   languageName: node
   linkType: hard
 
@@ -17670,7 +17710,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^16.8.0 || ^17.0.0 || ^18.0.0":
+"react@npm:^16.8.0 || ^17.0.0 || ^18.0.0, react@npm:^18.3.1":
   version: 18.3.1
   resolution: "react@npm:18.3.1"
   dependencies:

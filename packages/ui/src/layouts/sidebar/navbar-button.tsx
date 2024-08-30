@@ -1,47 +1,9 @@
 /* eslint-disable react/require-default-props */
-import {
-  MantineColor,
-  Tooltip,
-  UnstyledButton
-} from '@mantine/core';
-import { createStyles } from '@mantine/emotion';
-
+import { MantineColor, Tooltip, UnstyledButton } from '@mantine/core';
 import { TablerIcon } from '@tabler/icons';
 import { FC, useState } from 'react';
 import { NavBarLink } from '@/molecules';
-
-const useStyles = createStyles((theme,_,u) => ({
-  link: {
-    width: 50,
-    height: 50,
-    borderRadius: theme.radius.md,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    [u.dark]: {
-      color: theme.colors.dark[0]
-    },
-    [u.light]: {
-      color: theme.colors.gray[7]
-    },
-
-    '&:hover': {
-          [u.dark]: {
-            backgroundColor: theme.colors.dark[5]
-          },
-          [u.light]: {
-            backgroundColor: theme.colors.indigo[0]
-          },
-    }
-  },
-
-  active: {
-    '&, &:hover': {
-      backgroundColor: theme.primaryColor[1],
-      color: theme.primaryColor[1]
-    }
-  }
-}));
+import styles from './navbar-button.module.css';
 
 interface INavbarButton {
   icon: TablerIcon;
@@ -53,11 +15,11 @@ interface INavbarButton {
 
 const NavbarButton: FC<INavbarButton> = (props) => {
   const { icon: Icon, label, onClick, color, to } = props;
-  const { classes, cx } = useStyles();
   const [isActive, setIsActive] = useState(false);
   const handleIsactive = (param: boolean) => {
     setIsActive(param);
   };
+  console.log(isActive, label);
 
   return (
     <NavBarLink to={to} handleIsActive={handleIsactive}>
@@ -68,7 +30,8 @@ const NavbarButton: FC<INavbarButton> = (props) => {
         color={color}>
         <UnstyledButton
           onClick={onClick}
-          className={cx(classes.link, { [classes.active]: isActive })}>
+          mod={[{ active: isActive }]}
+          className={styles.link}>
           <Icon stroke={1.5} />
         </UnstyledButton>
       </Tooltip>

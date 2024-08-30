@@ -1,9 +1,9 @@
 /* eslint-disable react/require-default-props */
-import { Center, AppShell, Stack, Box, Group } from '@mantine/core';
-import { FC, useCallback } from 'react';
 import { CNDIcon } from '@/atoms';
-import NavbarButton from './navbar-button';
+import { Box, Center, Group, Stack } from '@mantine/core';
+import { FC, useCallback } from 'react';
 import { IModuleLink } from '../types';
+import NavbarButton from './navbar-button';
 
 interface ISideBar {
   modules: IModuleLink[];
@@ -32,7 +32,7 @@ const SideBar: FC<ISideBar> = (props) => {
   return (
     <Box
       h="100vh"
-      sx={{ top: 0, paddingBlock: '18px',position:"fixed",width:'80px', boxShadow: '0px 0px 21px 0px #5f5f5f1a', }}
+      style={{ top: 0, paddingBlock: '18px',position:"fixed",width:'80px', boxShadow: '0px 0px 21px 0px #5f5f5f1a', }}
       component="nav"
       px="md"
       {...rest}>

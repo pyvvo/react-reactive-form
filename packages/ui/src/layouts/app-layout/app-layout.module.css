@@ -1,0 +1,12 @@
+.mainParent {
+  padding-top: 60px;
+  padding-left: 0px;
+
+  @mixin larger-than $mantine-breakpoint-sm {
+    padding-left: var(--mantine-header-offset);
+  }
+}
+
+.main {
+  padding-inline: 18px;
+}
