@@ -7,6 +7,7 @@ import { FC, useCallback } from 'react';
 import { Controller } from 'react-hook-form';
 import { IReactiveField, ReactiveFieldProps } from '../types';
 import { AutocompleteCustomProps } from './types';
+import { getMantineError } from "../utils";
 
 const ReactiveAutocomplete: FC<IReactiveField<AutocompleteCustomProps>> = (
   props
@@ -15,13 +16,12 @@ const ReactiveAutocomplete: FC<IReactiveField<AutocompleteCustomProps>> = (
 
   const {
     size,
-    color,
     disabled,
     hidden,
     handleChange,
     onDropdownOpen,
-    dropdownPosition,
-    icon,
+    leftSection,
+    rightSection,
     limit,
     maxDropdownHeight,
     placeholder,
@@ -41,19 +41,18 @@ const ReactiveAutocomplete: FC<IReactiveField<AutocompleteCustomProps>> = (
     size,
     disabled,
     withAsterisk: !!options?.required,
-    sx: {
+    style: {
       width: '100%',
       display: hidden ? 'none' : undefined
     },
     onDropdownOpen,
-    color: error ? 'error' : color,
     data,
-    icon,
+    leftSection,
+    rightSection,
     placeholder,
-    dropdownPosition,
     limit,
     maxDropdownHeight,
-    error: Boolean(error)
+    error: getMantineError(error)
   };
   const customHandlechange = useCallback(
     (params: HandleChangeParams) => {
@@ -77,7 +76,6 @@ const ReactiveAutocomplete: FC<IReactiveField<AutocompleteCustomProps>> = (
             customHandlechange({ form, event });
             onChange(event);
           }}
-          checked={value}
           {...rest}
         />
       )}

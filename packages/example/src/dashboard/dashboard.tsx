@@ -6,7 +6,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable no-console */
-import { HMChart, StatsRing, ECOption } from '@hm/ui';
+import { HMChart, StatsRing, ECOption } from '@humaapi/ui';
 import { Box, Paper, SimpleGrid } from '@mantine/core';
 import { FC } from 'react';
 
@@ -119,13 +119,11 @@ const pieChartoption: ECOption = {
 };
 
 const Dashboard: FC = () => (
-  <Box sx={{ marginTop: '24px' }}>
-    <SimpleGrid
-      cols={3}
-      sx={{ marginBottom: '12px' }}
-      breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
+  <Box style={{ marginTop: '24px' }}>
+    <SimpleGrid cols={{ base: 1, sm: 3 }} style={{ marginBottom: '12px' }}>
       {data.map((value) => (
         <StatsRing
+          key={value.label}
           color={value.color}
           icon={value.icon}
           label={value.label}
@@ -134,10 +132,7 @@ const Dashboard: FC = () => (
         />
       ))}
     </SimpleGrid>
-    <SimpleGrid
-      cols={3}
-      sx={{ marginBottom: '12px' }}
-      breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
+    <SimpleGrid cols={{ base: 1, sm: 3 }} style={{ marginBottom: '12px' }}>
       <Paper withBorder radius="md" p="xs">
         <HMChart option={barChartoption} style={{ height: '400px' }} />
       </Paper>

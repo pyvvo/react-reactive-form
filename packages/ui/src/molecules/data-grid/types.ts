@@ -166,7 +166,7 @@ export interface IHMDataGrid<TRow extends TRowBase> {
    * @see  {react-data-grid} https://github.com/adazzle/react-data-grid/blob/921fc3d6b6c8b8778af3017aa1688e650a8994d9/src/DataGrid.tsx#L143
    * @see  {mantine-data-table} https://github.com/icflorescu/mantine-datatable/blob/1799b88de1d99c2aba31ba8b1f20731d7ccdea9f/package/types/DataTableSelectionProps.ts#L16
    */
-  onRowSelectionChange?: (rows: Set<string>) => void;
+  onSelectedRowsChange?: (rows: Set<string>) => void;
 
   /** Callback called when sorting column changed
    * @see  {mantine-data-grid} https://github.com/Kuechlin/mantine-data-grid/blob/18b1fcc5b2b40f6af6ad9e82d3ee49ccb2111642/src/types.ts#L135

@@ -4,7 +4,7 @@ import {
   ActionIcon,
   useMantineTheme
 } from '@mantine/core';
-import { IconSearch, IconArrowRight, IconArrowLeft } from '@tabler/icons';
+import { IconSearch, IconArrowRight, IconArrowLeft } from '@tabler/icons-react';
 import { FC } from 'react';
 
 const SearchBar: FC<TextInputProps> = (props) => {

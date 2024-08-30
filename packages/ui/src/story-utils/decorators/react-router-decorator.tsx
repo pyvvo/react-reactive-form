@@ -31,7 +31,6 @@ export const ReactRouterDecorator = (
   props: IDecoratorParams['props']
 ) => {
   const { args } = props;
-  // console.log({ props });
 
   return (
     <MemoryRouter>

@@ -2,31 +2,17 @@
 /* eslint-disable react/display-name */
 /* eslint-disable react/require-default-props */
 // eslint-disable-next-line object-curly-newline
-import {
-  Input,
-  InputProps,
-  InputWrapperProps,
-  Slider,
-  SliderProps
-} from '@mantine/core';
+import { Input, InputWrapperProps, Slider, SliderProps } from '@mantine/core';
 import { FC, useCallback } from 'react';
 import { Controller } from 'react-hook-form';
 import { IReactiveField, ReactiveFieldProps } from '../types';
 import { RangeCustomProps } from './types';
 
 const ReactiveRange: FC<IReactiveField<RangeCustomProps>> = (props) => {
-  const {
-    form,
-    fieldKey,
-    label,
-    options,
-    error,
-    customProps = { color: undefined }
-  } = props;
+  const { form, fieldKey, label, options, error, customProps = {} } = props;
 
   const {
     size,
-    color,
     disabled,
     hidden,
     handleChange,
@@ -47,7 +33,7 @@ const ReactiveRange: FC<IReactiveField<RangeCustomProps>> = (props) => {
   const { control } = form;
   const wrapperProps: ReactiveFieldProps<InputWrapperProps> = {
     label,
-    sx: {
+    style: {
       marginTop: '12px',
       marginBottom: '14px',
       width: '100%',
@@ -73,11 +59,10 @@ const ReactiveRange: FC<IReactiveField<RangeCustomProps>> = (props) => {
     thumbChildren,
     inverted,
     scale,
-    sx: {
+    style: {
       width: '100%',
       display: hidden ? 'none' : undefined
-    },
-    color: error ? 'error' : color
+    }
   };
   const customHandlechange = useCallback(
     (params: HandleChangeParams) => {

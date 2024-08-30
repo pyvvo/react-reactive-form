@@ -83,7 +83,7 @@ export const ReactiveForm: Story<Data> = {
             label: 'Skills',
             type: 'multi-select',
             customProps: {
-              options: ['Devops', 'Full-stack', 'Management']
+              data: ['Devops', 'Full-stack', 'Management']
             }
           },
           {

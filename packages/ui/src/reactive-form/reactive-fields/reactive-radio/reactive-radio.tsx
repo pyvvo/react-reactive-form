@@ -6,6 +6,7 @@
 import {
   Checkbox,
   CheckboxProps,
+  Group,
   Radio,
   RadioGroupProps,
   RadioProps
@@ -14,6 +15,7 @@ import { FC, useCallback } from 'react';
 import { Controller } from 'react-hook-form';
 import { IReactiveField, ReactiveFieldProps } from '../types';
 import { RadioCustomProps } from './types';
+import { getMantineError } from "../utils";
 
 const ReactiveRadio: FC<IReactiveField<RadioCustomProps>> = (props) => {
   const { form, fieldKey, label, options, error, customProps } = props;
@@ -21,13 +23,9 @@ const ReactiveRadio: FC<IReactiveField<RadioCustomProps>> = (props) => {
   const {
     data,
     size,
-    color,
     disabled,
     hidden,
     handleChange,
-    orientation,
-    spacing,
-    offset
   } = customProps;
 
   type CustomProps = typeof customProps;
@@ -38,10 +36,7 @@ const ReactiveRadio: FC<IReactiveField<RadioCustomProps>> = (props) => {
 
   const radiogroupsprops: Omit<RadioGroupProps, 'children'> = {
     id: fieldKey,
-    orientation,
-    spacing,
-    offset,
-    sx: {
+    style: {
       marginTop: '14px',
       marginBottom: '12px'
     }
@@ -55,11 +50,10 @@ const ReactiveRadio: FC<IReactiveField<RadioCustomProps>> = (props) => {
     size,
     disabled,
     required: !!options?.required,
-    sx: {
+    style: {
       display: hidden ? 'none' : undefined
     },
-    color: error ? 'error' : color,
-    error: Boolean(error)
+    error: getMantineError(error)
   };
   const customHandlechange = useCallback(
     (params: HandleChangeParams) => {
@@ -88,7 +82,8 @@ const ReactiveRadio: FC<IReactiveField<RadioCustomProps>> = (props) => {
           }}
           value={value}
           label={label}>
-          {data?.map(({ label, value }) => (
+            <Group mt="xs">
+          {data.map(({ label, value }) => (
             <Radio
               {...fieldProps}
               key={value}
@@ -97,6 +92,7 @@ const ReactiveRadio: FC<IReactiveField<RadioCustomProps>> = (props) => {
               data-testid={value}
             />
           ))}
+          </Group>
         </Radio.Group>
       )}
     />

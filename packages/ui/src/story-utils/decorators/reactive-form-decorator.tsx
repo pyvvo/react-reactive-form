@@ -124,7 +124,7 @@ const ReactiveFormWrapper: FC<IReactiveFormWrapper> = (props) => {
           formatOnBlur
           autosize
           minRows={4}
-          sx={{
+          style={{
             width: '100%'
           }}
           // defaultValue="tt"
@@ -144,7 +144,7 @@ export const ReactiveFormDecorator =
     } = props;
 
     return (
-      <ReactiveFormWrapper meta={meta} defaultValues={defaultValues}>
+      <ReactiveFormWrapper meta={meta as never} defaultValues={defaultValues}>
         <Story />
       </ReactiveFormWrapper>
     );

@@ -7,11 +7,12 @@ import { FC, useCallback } from 'react';
 import { Controller } from 'react-hook-form';
 import { IReactiveField, ReactiveFieldProps } from '../types';
 import { SelectCustomProps } from './types';
+import { getMantineError } from '../utils';
 
 const ReactiveSelect: FC<IReactiveField<SelectCustomProps>> = (props) => {
   const { form, fieldKey, label, options, error, customProps } = props;
 
-  const { size, color, disabled, hidden, handleChange, onDropdownOpen } =
+  const { size, disabled, hidden, handleChange, onDropdownOpen, data } =
     customProps;
 
   type CustomProps = typeof customProps;
@@ -23,20 +24,20 @@ const ReactiveSelect: FC<IReactiveField<SelectCustomProps>> = (props) => {
     id: fieldKey,
     'data-testid': fieldKey,
     label,
+    placeholder: 'Pick value',
     // 'aria-describedby': helperId,
     size,
     disabled,
     withAsterisk: !!options?.required,
-    sx: {
+    style: {
       width: '100%',
       display: hidden ? 'none' : undefined
     },
     onDropdownOpen,
-    color: error ? 'error' : color,
-    data: customProps.options,
+    data,
     searchable: true,
     clearable: true,
-    error: Boolean(error)
+    error: getMantineError(error)
   };
   const customHandlechange = useCallback(
     (params: HandleChangeParams) => {
@@ -51,7 +52,6 @@ const ReactiveSelect: FC<IReactiveField<SelectCustomProps>> = (props) => {
     <Controller
       control={control}
       name={fieldKey}
-      // defaultValue={false}
       rules={{ ...options }}
       render={({ field: { onChange, value, ...rest } }) => (
         <Select

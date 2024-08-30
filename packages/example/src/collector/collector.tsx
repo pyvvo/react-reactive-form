@@ -6,7 +6,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable no-console */
-import { HMDrawer, IReactiveFieldMeta, ReactiveForm } from '@hm/ui';
+import { HMDrawer, IReactiveFieldMeta, ReactiveForm } from '@humaapi/ui';
 import { Box, Button } from '@mantine/core';
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';

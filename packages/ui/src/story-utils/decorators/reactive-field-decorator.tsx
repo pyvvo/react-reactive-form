@@ -97,7 +97,7 @@ const ReactiveFieldWrapper: FC<IFormProvider> = (props) => {
           formatOnBlur
           autosize
           minRows={4}
-          sx={{
+          style={{
             width: '100%'
           }}
           // defaultValue="tt"

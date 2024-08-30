@@ -8,8 +8,7 @@ import {
   Text,
   useComputedColorScheme
 } from '@mantine/core';
-import styles from "./data-grid.module.css";
-
+import styles from './data-grid.module.css';
 
 const EmptyRowsRenderer = () => (
   <div style={{ textAlign: 'center', gridColumn: '1/-1' }}>
@@ -38,6 +37,8 @@ const DataGridContainer: FC<IDataGridContainer> = (props) => {
       selectedRowCount = child.props.selectedRows
         ? child.props.selectedRows.size
         : 0;
+      console.log(selectedRowCount);
+
       return cloneElement<any>(child, {
         className: computedColorScheme === 'dark' ? 'rdg-dark' : 'rdg-light',
         components: { noRowsFallback: <EmptyRowsRenderer /> }

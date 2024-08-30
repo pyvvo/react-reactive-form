@@ -52,7 +52,7 @@ export const ReactiveSelect: Story = {
     },
     customProps: {
       disabled: false,
-      options: ['React', 'Angular', 'Svelte', 'Vue']
+      data: ['React', 'Angular', 'Svelte', 'Vue']
     }
   }
 };

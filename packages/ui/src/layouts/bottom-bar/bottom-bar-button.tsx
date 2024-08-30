@@ -1,7 +1,7 @@
 /* eslint-disable react/require-default-props */
 import { NavBarLink } from '@/molecules';
 import { MantineColor, Tooltip, UnstyledButton } from '@mantine/core';
-import { TablerIcon } from '@tabler/icons';
+import { TablerIcon } from '@tabler/icons-react';
 import { FC, useState } from 'react';
 import styles from './bottom-bar.module.css';
 

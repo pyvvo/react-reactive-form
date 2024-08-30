@@ -46,7 +46,7 @@ const Header: FC<IHeader> = (props) => {
             radius="xl"
             mx="xs"
             src={imageSrc}
-            sx={(theme) => ({
+            style={(theme) => ({
               color: theme.primaryColor
             })}
           />

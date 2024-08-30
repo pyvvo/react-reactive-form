@@ -6,7 +6,7 @@ const LayoutFlex: FC<{ children?: ReactNode }> = (props) => {
   const { children, ...rest } = props;
 
   const fieldsProps: BoxProps = {
-    sx: () => ({
+    style: () => ({
       display: 'flex',
       minWidth: '100%',
       flexDirection: 'column',

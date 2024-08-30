@@ -32,7 +32,7 @@ const DynamicField = <TFormValues extends JSONData>(
     () => (
       <MemoizedRenderField
         {...fieldProps}
-        options={options}
+        options={options as never}
         form={form}
         customProps={customProps as never}
         error={error}
@@ -46,7 +46,6 @@ const DynamicField = <TFormValues extends JSONData>(
 export interface IReactiveForm<TFormValues extends JSONData> {
   meta: IReactiveFieldMeta<TFormValues>[];
   form: FormProps<TFormValues>;
-  // currentBreakpoint?: string;
 }
 
 const ReactiveForm = <TFormValues extends JSONData>(

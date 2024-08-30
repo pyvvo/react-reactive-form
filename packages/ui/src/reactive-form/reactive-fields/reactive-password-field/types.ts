@@ -5,11 +5,10 @@ import { FC } from 'react';
 
 export type PasswordFieldCustomProps = {
   /** Adds icon on the left side of input */
-  icon?: React.ReactNode;
+  size?: MantineSize;
+  leftSection?: React.ReactNode
+  rightSection?: React.ReactNode;
   visibilityToggleIcon?: FC<{
     reveal: boolean;
-    size: number;
-  }>;
-  size?: MantineSize;
-  color?: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning';
+}>;
 };

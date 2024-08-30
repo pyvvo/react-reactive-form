@@ -3,7 +3,7 @@ import {
   ActionIconProps,
   useMantineColorScheme
 } from '@mantine/core';
-import { IconMoonStars, IconSun } from '@tabler/icons';
+import { IconMoonStars, IconSun } from '@tabler/icons-react';
 import { FC } from 'react';
 
 const ToggleThemeMode: FC<ActionIconProps> = (props) => {

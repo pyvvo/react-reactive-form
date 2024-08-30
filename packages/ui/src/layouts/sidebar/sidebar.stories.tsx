@@ -13,7 +13,7 @@ import {
   IconShieldHalfFilled,
   IconSwitchHorizontal,
   TablerIcon
-} from '@tabler/icons';
+} from '@tabler/icons-react';
 import {
   ReactRouterDecorator,
   ReactRouterLoggerDecorator

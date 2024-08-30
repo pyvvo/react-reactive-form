@@ -54,11 +54,11 @@ export const ReactiveMultiSelect: Story = {
     fieldKey: 'value',
     label: 'Multi select',
     options: {
-      required: false
+      required: { message: 'not empty', value: true }
     },
     customProps: {
       disabled: false,
-      options: ['React', 'Angular', 'Svelte', 'Vue']
+      data: ['React', 'Angular', 'Svelte', 'Vue']
     }
   }
 };

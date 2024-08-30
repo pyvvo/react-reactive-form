@@ -1,11 +1,5 @@
 /* eslint-disable react/require-default-props */
-import {
-  Box,
-  Grid,
-  lighten,
-  useComputedColorScheme,
-  useMantineTheme
-} from '@mantine/core';
+import { Box, Grid, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { FC, useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
@@ -13,7 +7,7 @@ import { BottomBar } from '../bottom-bar';
 import { Header } from '../header';
 import { SideBar } from '../sidebar';
 import { IModuleLink } from '../types';
-import styles from "./app-layout.module.css"
+import styles from './app-layout.module.css';
 interface ILayout {
   modules: IModuleLink[];
   imageSrc: string;
@@ -24,12 +18,8 @@ const AppLayout: FC<ILayout> = (props) => {
   const { modules, imageSrc, offset, ...rest } = props;
   const location = useLocation();
   const [moduleName, setModuleName] = useState('');
-  const computedColorScheme = useComputedColorScheme('light');
   const theme = useMantineTheme();
   const isLaptop = useMediaQuery(`(min-width: ${theme.breakpoints.sm})`);
-  const color = theme.colors[theme.primaryColor][0];
-  console.log(theme.breakpoints.sm);
-  
 
   useEffect(
     () =>
@@ -41,14 +31,6 @@ const AppLayout: FC<ILayout> = (props) => {
 
   return (
     <Box {...rest}>
-      {/* <Global
-        styles={(theme) => ({
-          body: {
-            backgroundColor:
-              computedColorScheme === 'dark' ? undefined : lighten(color, 0.6)
-          }
-        })}
-      /> */}
       <Grid>
         <Grid.Col>
           <Header

@@ -21,7 +21,7 @@ const HMDataGrid = <TRow extends Record<string, any>>(
     headerRowHeight,
     rowHeight = RowHeight.standard,
     onRowClick,
-    onRowSelectionChange,
+    onSelectedRowsChange,
     onSort,
     rowKeyGetter = (row: TRow) => row.id,
     withColumnResizing = false,
@@ -36,7 +36,7 @@ const HMDataGrid = <TRow extends Record<string, any>>(
     headerRowHeight,
     rowHeight,
     onRowClick,
-    onRowSelectionChange,
+    onSelectedRowsChange,
     onSort,
     rowKeyGetter,
     withColumnResizing,
@@ -51,9 +51,9 @@ const HMDataGrid = <TRow extends Record<string, any>>(
   return (
     <>
       <DataGridContainer theme={theme}>
-        <DataGrid {...parsedData} />
+        <DataGrid {...parsedData}  />
       </DataGridContainer>
-      <Pagination total={10} />
+      {/* <Pagination total={10} /> */}
     </>
   );
 };

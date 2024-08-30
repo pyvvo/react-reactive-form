@@ -21,7 +21,7 @@ export const reactDataGridParser = <TRow extends Record<string, any>>(
     onSort,
     setSortColumns,
     selectedRows,
-    onRowSelectionChange
+    onSelectedRowsChange
   } = params;
 
   const parsedParam: DataGridProps<TRow> = {
@@ -65,13 +65,13 @@ export const reactDataGridParser = <TRow extends Record<string, any>>(
       }
     },
     selectedRows,
-    onSelectedRowsChange: onRowSelectionChange
-      ? (rows) => onRowSelectionChange(rows as Set<string>)
+    onSelectedRowsChange: onSelectedRowsChange
+      ? (rows) => onSelectedRowsChange(rows as Set<string>)
       : undefined
   };
 
   if (withRowSelection) {
-    parsedParam.columns = [{ ...SelectColumn }, ...parsedParam.columns];
+    parsedParam.columns = [SelectColumn, ...parsedParam.columns];
   }
 
   return parsedParam;

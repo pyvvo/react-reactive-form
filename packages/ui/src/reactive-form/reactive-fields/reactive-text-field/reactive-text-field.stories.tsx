@@ -30,9 +30,7 @@ export const ReactiveTextField: Story = {
 
     await userEvent.type(fieldRef, 'example');
     await userEvent.click(submitRef);
-    // expect(JSON.parse(resultRef.value)).toEqual({
-    //   value: 'example'
-    // });
+
     await waitFor(() => {
       expect(JSON.parse(resultRef.value)).toEqual({
         value: 'example'
@@ -43,7 +41,11 @@ export const ReactiveTextField: Story = {
     fieldKey: 'value',
     label: 'test',
     options: {
-      required: true
+      // required: { message: 'test', value: true },
+      // required: true,
+      minLength: ((val) => {
+        return { message: `min lenght ${val}`, value: val };
+      })(3)
     },
     customProps: {
       disabled: false

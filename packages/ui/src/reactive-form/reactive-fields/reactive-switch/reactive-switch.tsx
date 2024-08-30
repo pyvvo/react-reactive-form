@@ -7,6 +7,7 @@ import { FC, useCallback } from 'react';
 import { Controller } from 'react-hook-form';
 import { IReactiveField, ReactiveFieldProps } from '../types';
 import { SwitchCustomProps } from './types';
+import { getMantineError } from "../utils";
 
 const ReactiveSwitch: FC<IReactiveField<SwitchCustomProps>> = (props) => {
   const {
@@ -15,10 +16,10 @@ const ReactiveSwitch: FC<IReactiveField<SwitchCustomProps>> = (props) => {
     label,
     options,
     error,
-    customProps = { color: 'primary' }
+    customProps ={}
   } = props;
 
-  const { size, color, disabled, hidden, handleChange } = customProps;
+  const { size, disabled, hidden, handleChange } = customProps;
 
   type CustomProps = typeof customProps;
   type HandleChangeParams = Parameters<
@@ -32,13 +33,12 @@ const ReactiveSwitch: FC<IReactiveField<SwitchCustomProps>> = (props) => {
     // 'aria-describedby': helperId,
     size,
     disabled,
-    sx: {
+    style: {
       marginBlock: '12px',
       width: '100%',
       display: hidden ? 'none' : undefined
     },
-    color: error ? 'error' : color,
-    error: Boolean(error)
+    error:  getMantineError(error)
   };
   const customHandlechange = useCallback(
     (params: HandleChangeParams) => {
@@ -53,7 +53,6 @@ const ReactiveSwitch: FC<IReactiveField<SwitchCustomProps>> = (props) => {
     <Controller
       control={control}
       name={fieldKey}
-      // defaultValue={false}
       rules={{ ...options }}
       render={({ field: { onChange, value, ...rest } }) => (
         <Switch

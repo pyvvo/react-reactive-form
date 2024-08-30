@@ -1,6 +1,6 @@
 /* eslint-disable react/require-default-props */
 import { MantineColor, Tooltip, UnstyledButton } from '@mantine/core';
-import { TablerIcon } from '@tabler/icons';
+import { TablerIcon } from '@tabler/icons-react';
 import { FC, useState } from 'react';
 import { NavBarLink } from '@/molecules';
 import styles from './navbar-button.module.css';
@@ -19,8 +19,6 @@ const NavbarButton: FC<INavbarButton> = (props) => {
   const handleIsactive = (param: boolean) => {
     setIsActive(param);
   };
-  console.log(isActive, label);
-
   return (
     <NavBarLink to={to} handleIsActive={handleIsactive}>
       <Tooltip

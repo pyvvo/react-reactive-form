@@ -7,19 +7,12 @@ import { FC, useCallback } from 'react';
 import { Controller } from 'react-hook-form';
 import { IReactiveField, ReactiveFieldProps } from '../types';
 import { TextFieldCustomProps } from './types';
+import { getMantineError } from '../utils';
 
 const ReactiveTextField: FC<IReactiveField<TextFieldCustomProps>> = (props) => {
-  const {
-    form,
-    fieldKey,
-    label,
-    options,
-    error,
-    customProps = { color: undefined }
-  } = props;
+  const { form, fieldKey, label, options, error, customProps = {} } = props;
 
-  const { size, color, disabled, hidden, handleChange } = customProps;
-
+  const { size, disabled, hidden, handleChange } = customProps;
   type CustomProps = typeof customProps;
   type HandleChangeParams = Parameters<
     NonNullable<CustomProps['handleChange']>
@@ -29,17 +22,14 @@ const ReactiveTextField: FC<IReactiveField<TextFieldCustomProps>> = (props) => {
     id: fieldKey,
     // 'aria-describedby': helperId,
     'data-testid': fieldKey,
-    // wrapperProps: {
-    // },
     size,
     disabled,
     withAsterisk: !!options?.required,
-    sx: {
+    style: {
       width: '100%',
       display: hidden ? 'none' : undefined
     },
-    color: error ? 'error' : color,
-    error: Boolean(error)
+    error: getMantineError(error)
   };
   const customHandlechange = useCallback(
     (params: HandleChangeParams) => {

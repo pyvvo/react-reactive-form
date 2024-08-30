@@ -1,19 +1,16 @@
+import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
-import '../src/theme.css';
 import '@mantine/spotlight/styles.css';
-import {
-  // ColorScheme,
-  // ColorSchemeProvider,
-  MantineProvider
-} from '@mantine/core';
-import { MantineEmotionProvider } from '@mantine/emotion';
-import { IThemeContext, PyvvoThemeProvider } from '../src/theme';
-import theme, { cssVarResolver } from '../src/mantine.theme';
-import React, { FC, useState } from 'react';
-import { AuthGuard, AuthProvider, IKeycloakProviderProps } from '../src/auth';
+import { StoryFn } from '@storybook/react';
+import '../src/theme.css';
 
-import { cva, type VariantProps } from 'class-variance-authority';
-import Keycloak from 'keycloak-js';
+import React, { FC } from 'react';
+import { AuthProvider, IKeycloakProviderProps } from '../src/auth';
+import theme, { cssVarResolver } from '../src/mantine.theme';
+import { HMThemeProvider } from '../src/theme';
+
+import { cva } from 'class-variance-authority';
+// import Keycloak from 'keycloak-js';
 
 // console.log('themeee');
 
@@ -68,9 +65,8 @@ export const parameters = {
 
 const ThemeWrapper: FC<{ children: React.ReactNode }> = (props) => {
   return (
-
     <MantineProvider theme={{ ...theme }} cssVariablesResolver={cssVarResolver}>
-      <MantineEmotionProvider> {props.children} </MantineEmotionProvider>
+      {props.children}
     </MantineProvider>
   );
 };
@@ -103,47 +99,46 @@ const button = cva('button', {
   }
 });
 
-const pyTheme: any = {
+const HmTheme: any = {
   button: button
 };
 
-const PyvvoThemeWrapper: FC<{ children: React.ReactNode }> = (props) => {
+const HMThemeWrapper: FC<{ children: React.ReactNode }> = (props) => {
   return (
-    <PyvvoThemeProvider theme={pyTheme}>{props.children}</PyvvoThemeProvider>
+    <HMThemeProvider theme={HmTheme}>{props.children}</HMThemeProvider>
   );
 };
 
-const PyvvoDecorator = (Story: Function) => (
-  <PyvvoThemeWrapper>
+const PyvvoDecorator = (Story: StoryFn) => (
+  <HMThemeWrapper>
     <Story />
-  </PyvvoThemeWrapper>
+  </HMThemeWrapper>
 );
 
-const keycloak = new Keycloak({
-  url: 'http://localhost:8080',
-  realm: 'pyvvo',
-  clientId: 'pichaa'
-});
+// const keycloak = new Keycloak({
+//   url: 'http://localhost:8080',
+//   realm: 'pyvvo',
+//   clientId: 'pichaa'
+// });
 
-const KeycloakWrapper: FC<{ children: React.ReactNode }> = (props) => {
-  const keycloakConfig: IKeycloakProviderProps = {
-    keycloak,
-    onLoad: 'check-sso'
-  };
-  console.log('ici');
+// const KeycloakWrapper: FC<{ children: React.ReactNode }> = (props) => {
+//   const keycloakConfig: IKeycloakProviderProps = {
+//     keycloak,
+//     onLoad: 'check-sso'
+//   };
 
-  return <AuthProvider {...keycloakConfig}>{props.children}</AuthProvider>;
-};
+//   return <AuthProvider {...keycloakConfig}>{props.children}</AuthProvider>;
+// };
 
-const KeycloakDecorator = (Story: Function) => (
-  <KeycloakWrapper>
-    {/* <AuthGuard> */}
-    <Story />
-    {/* </AuthGuard> */}
-  </KeycloakWrapper>
-);
+// const KeycloakDecorator = (Story: StoryFn) => (
+//   <KeycloakWrapper>
+//     {/* <AuthGuard> */}
+//     <Story />
+//     {/* </AuthGuard> */}
+//   </KeycloakWrapper>
+// );
 
-const MantineDecorator = (Story: Function) => (
+const MantineDecorator = (Story: StoryFn) => (
   <ThemeWrapper>
     <Story />
   </ThemeWrapper>

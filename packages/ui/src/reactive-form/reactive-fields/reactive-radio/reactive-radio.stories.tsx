@@ -51,7 +51,6 @@ export const ReactiveRadio: Story = {
         { value: 'ng', label: 'Angular' },
         { value: 'vue', label: 'Vue' }
       ],
-      orientation: 'horizontal',
       disabled: false
     }
   }

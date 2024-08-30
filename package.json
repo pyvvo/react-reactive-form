@@ -1,34 +1,33 @@
 {
   "name": "hm",
   "packageManager": "yarn@4.4.1",
-  "private": true,
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "ex": "yarn workspace @hm/example",
-    "ui": "yarn workspace @hm/ui",
+    "ex": "yarn workspace @humaapi/example",
+    "ui": "yarn workspace @humaapi/ui",
     "dev:ui": "yarn ui dev",
     "dev:ex": "yarn ex dev",
     "build:rf": "yarn ui build"
   },
   "devDependencies": {
-    "@types/node": "^18.11.17",
-    "@typescript-eslint/eslint-plugin": "^5.47.0",
-    "@typescript-eslint/parser": "^5.47.0",
+    "@types/node": "^22.5.1",
+    "@typescript-eslint/eslint-plugin": "^8.3.0",
+    "@typescript-eslint/parser": "^8.3.0",
     "cross-env": "^7.0.3",
-    "eslint": "^8.30.0",
+    "eslint": "^9.9.1",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-typescript": "^17.0.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.6.1",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.31.11",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-tailwindcss": "^3.7.1",
-    "prettier": "^2.8.1",
-    "typescript": "^5.1.6"
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-prettier": "^8.10.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.9.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-tailwindcss": "^3.17.4",
+    "prettier": "^2.8.8",
+    "typescript": "^5.5.4"
   },
   "engines": {
     "node": ">=18",

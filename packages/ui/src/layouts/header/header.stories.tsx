@@ -2,7 +2,7 @@
 /* eslint-disable react/button-has-type */
 import type { Meta, StoryObj } from '@storybook/react';
 import Chance from 'chance';
-import { IconHome, IconDashboard, IconFileText } from '@tabler/icons';
+import { IconHome, IconDashboard, IconFileText } from '@tabler/icons-react';
 import {
   MantineSpotlightDecorator,
   ReactRouterDecorator,

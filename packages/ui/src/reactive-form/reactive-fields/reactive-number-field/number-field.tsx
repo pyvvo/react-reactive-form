@@ -6,22 +6,15 @@ import { NumberInput, NumberInputProps } from '@mantine/core';
 import { FC, useCallback } from 'react';
 import { Controller } from 'react-hook-form';
 import { IReactiveField, ReactiveFieldProps } from '../types';
+import { getMantineError } from '../utils';
 import { NumberFieldCustomProps } from './types';
 
 const ReactiveNumberField: FC<IReactiveField<NumberFieldCustomProps>> = (
   props
 ) => {
-  const {
-    form,
-    fieldKey,
-    label,
-    options,
-    error,
-    customProps = { color: undefined }
-  } = props;
+  const { form, fieldKey, label, options, error, customProps = {} } = props;
 
-  const { size, color, disabled, hidden, handleChange, parser, formatter } =
-    customProps;
+  const { size, disabled, hidden, handleChange } = customProps;
 
   type CustomProps = typeof customProps;
   type HandleChangeParams = Parameters<
@@ -32,18 +25,14 @@ const ReactiveNumberField: FC<IReactiveField<NumberFieldCustomProps>> = (
     id: fieldKey,
     // 'aria-describedby': helperId,
     'data-testid': fieldKey,
-    parser,
-    formatter,
     size,
     disabled,
     withAsterisk: !!options?.required,
-    sx: {
+    style: {
       width: '100%',
       display: hidden ? 'none' : undefined
     },
-    color: error ? 'error' : color,
-
-    error: Boolean(error)
+    error: getMantineError(error)
   };
   const customHandlechange = useCallback(
     (params: HandleChangeParams) => {

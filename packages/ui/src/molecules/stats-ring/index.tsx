@@ -1,5 +1,5 @@
 import { Box, Center, Group, Paper, RingProgress, Text } from '@mantine/core';
-import { IconArrowDownRight, IconArrowUpRight } from '@tabler/icons';
+import { IconArrowDownRight, IconArrowUpRight } from '@tabler/icons-react';
 import { FC } from 'react';
 
 interface IStatsRing {
@@ -35,10 +35,20 @@ const StatsRing: FC<IStatsRing> = (props) => {
         />
 
         <Box>
-          <Text color="dimmed" size="xs" transform="uppercase" weight={700}>
+          <Text
+            style={{
+              color: 'dimmed',
+              fontWeight: 700
+            }}
+            size="xs"
+            tt="uppercase">
             {label}
           </Text>
-          <Text weight={700} size="xl">
+          <Text
+            style={{
+              fontWeight: 700
+            }}
+            size="xl">
             {stats}
           </Text>
         </Box>

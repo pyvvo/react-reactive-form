@@ -14,7 +14,7 @@ export const renderRows: RenderRowType<RowType> = {
   text: (value: any) => <>{String(value)}</>,
 
   checkbox: (value: boolean) => (
-    <Checkbox color="secondary" defaultChecked={value} />
+    <Checkbox radius="sm"  defaultChecked={value} />
   ),
 
   date: (value: string) => <>{dayjs(value).format('DD/MM/YYYY')}</>

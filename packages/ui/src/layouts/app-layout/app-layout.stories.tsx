@@ -11,7 +11,7 @@ import {
   IconHome2,
   IconSettings,
   IconShieldHalfFilled
-} from '@tabler/icons';
+} from '@tabler/icons-react';
 import Chance from 'chance';
 import {
   IStoryRoutes,
