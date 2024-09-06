@@ -2,12 +2,14 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/require-default-props */
+import 'react-data-grid/lib/styles.css'
 import { Pagination, useMantineTheme } from '@mantine/core';
 import DataGrid from 'react-data-grid';
-import DataGridContainer from './data-grid-container';
-import { IHMDataGrid, RowHeight } from './types';
-import useRGDParser from './use-data-gri-parser.hook';
-import useRenderRow from './use-render-row.hook';
+import DataGridContainer from './hm/data-grid-container';
+import { IHMDataGrid, RowHeight } from './hm/types';
+import useRGDParser from './hm/use-data-gri-parser.hook';
+import useRenderRow from './hm/use-render-row.hook';
+import RenderCheckbox from "./hm/render-checkbox";
 
 const HMDataGrid = <TRow extends Record<string, any>>(
   props: IHMDataGrid<TRow>
@@ -15,7 +17,8 @@ const HMDataGrid = <TRow extends Record<string, any>>(
   const theme = useMantineTheme();
   const {
     columns,
-    // sortColumns,
+    components ={DGSelectComponent:RenderCheckbox},
+    onRowsChange,
     rows,
     selectedRows,
     headerRowHeight,
@@ -30,8 +33,10 @@ const HMDataGrid = <TRow extends Record<string, any>>(
   } = props;
 
   const params = {
+    components,
     columns,
     rows,
+    onRowsChange,
     selectedRows,
     headerRowHeight,
     rowHeight,
@@ -46,12 +51,13 @@ const HMDataGrid = <TRow extends Record<string, any>>(
 
   // this hook is required for flattering row and row render
   const data = useRenderRow<TRow>(params);
+  
   const parsedData = useRGDParser<TRow>(data);
 
   return (
     <>
       <DataGridContainer theme={theme}>
-        <DataGrid {...parsedData}  />
+        <DataGrid  {...parsedData}  />
       </DataGridContainer>
       {/* <Pagination total={10} /> */}
     </>

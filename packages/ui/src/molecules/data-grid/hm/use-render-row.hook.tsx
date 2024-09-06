@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { Flatten } from "@/types";
+import { fieldRegex, flattenObj } from '@/utils';
 import { useMemo } from 'react';
 import { renderRows } from './render-row';
-import { ICellRenderProps, IColumn, IHMDataGrid, RowType } from './types';
-import { fieldRegex, flattenObj } from '@/utils';
+import { IColumn, IHMDataGrid, RowType } from './types';
 
 export default function useRenderRow<TRow extends Record<string, any>>(
   params: IHMDataGrid<TRow>
@@ -11,9 +12,9 @@ export default function useRenderRow<TRow extends Record<string, any>>(
   const parsedData = useMemo(
     () => {
       const { columns, rows } = params;
-      const row = rows[0];
+      const row = rows ? rows[0] : undefined;
       if (!row) {
-        return params;
+        return params as unknown as IHMDataGrid<Flatten<TRow>>;
       }
       const flatedrows = rows.map((row) => flattenObj(row));
 
@@ -26,8 +27,9 @@ export default function useRenderRow<TRow extends Record<string, any>>(
         render: (props) => {
           const rowKey = columnKey as unknown as keyof typeof props.row;
           const value = props.row[rowKey];
-          const render = renderRows[columnType];
-          return render(value);
+
+          const Component = renderRows[columnType];
+          return Component(value);
         }
       });
 
@@ -63,12 +65,12 @@ export default function useRenderRow<TRow extends Record<string, any>>(
       const newData = {
         ...params,
         columns: newColumns,
-        rows: flatedrows as unknown as TRow[]
+        rows: flatedrows as unknown as Flatten<TRow>[]
       };
-      return newData;
+      return newData as IHMDataGrid<Flatten<TRow>>;
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [params.rows, params.columns]
+    [params.rows, params.columns, params.selectedRows]
   );
 
   return parsedData;

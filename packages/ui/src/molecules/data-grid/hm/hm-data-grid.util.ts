@@ -1,13 +1,22 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable import/prefer-default-export */
-import { DataGridProps, SelectColumn } from 'react-data-grid';
+import {
+  CellClickArgs,
+  CellMouseEvent,
+  DataGridProps,
+  RenderCellProps,
+  SelectColumn,
+  SortColumn
+} from 'react-data-grid';
 import { fieldRegex } from '@/utils';
-import { RDGParserParams } from './types';
+import { IColumn, RDGParserParams } from './types';
+import { Flatten } from '@/types';
 
 export const reactDataGridParser = <TRow extends Record<string, any>>(
-  params: RDGParserParams<TRow>
+  params: RDGParserParams<Flatten<TRow>>
 ) => {
   const {
+    components,
     columns,
     withSorting,
     withColumnResizing,
@@ -24,20 +33,40 @@ export const reactDataGridParser = <TRow extends Record<string, any>>(
     onSelectedRowsChange
   } = params;
 
-  const parsedParam: DataGridProps<TRow> = {
+  const renderCell = (column: IColumn<Flatten<TRow>>) => {
+    const dataGridRenderCell = (fProps: RenderCellProps<Flatten<TRow>>) =>
+      column.render!({
+        row: fProps.row,
+        rowIndex: fProps.rowIdx
+      });
+
+    if (column.render !== undefined) {
+      return dataGridRenderCell;
+    }
+
+    return undefined;
+  };
+  const onCellClick = onRowClick
+    ? (
+        ...props: [
+          args: CellClickArgs<NoInfer<Flatten<TRow>>, unknown>,
+          event: CellMouseEvent
+        ]
+      ) => {
+        const [args, event] = props;
+        if (args.column.key === 'select-row') {
+          event.preventGridDefault();
+          return;
+        }
+        return onRowClick(args.row);
+      }
+    : undefined;
+  const parsedParam: DataGridProps<Flatten<TRow>> = {
     columns: columns.map((column) => ({
       name: column.name,
       key: column.key,
       width: column.width,
-      formatter:
-        column.render !== undefined
-          ? (fProps) =>
-              column.render!({
-                // row: fProps.row as TRow,
-                row: fProps.row as any,
-                rowIndex: fProps.rowIdx
-              })
-          : undefined,
+      renderCell: renderCell(column),
       resizable: column.resizable,
       sortable: column.sortable
     })),
@@ -45,29 +74,26 @@ export const reactDataGridParser = <TRow extends Record<string, any>>(
       sortable: withSorting,
       resizable: withColumnResizing
     },
-    // rows: flatedrows as unknown as readonly TRow[],
     rows,
-    // rows: flattenObj(rows) as unknown as readonly TRow[],
     rowHeight,
     headerRowHeight,
     rowKeyGetter: rowKeyGetter as unknown as (row: unknown) => any,
-    onRowClick: onRowClick
-      ? (rowIdx, row, column) =>
-          column.key !== 'select-row' ? onRowClick(row as TRow) : undefined
-      : undefined,
-    // sortColumns: sortColumns as unknown as readonly Readonly<SortColumn>[],
-    sortColumns,
-    // onSortColumnsChange: onSort,
-    onSortColumnsChange: (rows) => {
-      setSortColumns(rows);
+    onCellClick: onCellClick,
+    sortColumns: sortColumns as readonly SortColumn[] | undefined,
+    onSortColumnsChange: (columns) => {
+      const typedColumn = columns as Parameters<typeof setSortColumns>[0];
+      setSortColumns(typedColumn);
       if (onSort) {
-        onSort(rows);
+        onSort(typedColumn);
       }
     },
-    selectedRows,
     onSelectedRowsChange: onSelectedRowsChange
       ? (rows) => onSelectedRowsChange(rows as Set<string>)
-      : undefined
+      : undefined,
+    selectedRows,
+    renderers: {
+      renderCheckbox: components ? components.DGSelectComponent : undefined
+    }
   };
 
   if (withRowSelection) {

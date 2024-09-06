@@ -1,9 +1,9 @@
-import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
 import '@mantine/spotlight/styles.css';
-import { StoryFn } from '@storybook/react';
+// import 'react-data-grid/lib/styles.css';
 import '../src/theme.css';
-
+import { MantineProvider } from '@mantine/core';
+import { StoryFn } from '@storybook/react';
 import React, { FC } from 'react';
 import { AuthProvider, IKeycloakProviderProps } from '../src/auth';
 import theme, { cssVarResolver } from '../src/mantine.theme';

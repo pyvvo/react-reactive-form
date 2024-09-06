@@ -60,4 +60,6 @@ type Collapse<T extends Entry> = {
   ? { [K in keyof O]: O[K] }
   : never;
 
-export type Flatten<T> = Collapse<Explode<T>>;
+type Flat<T> =Collapse<Explode<T>>
+
+export type Flatten<T> = Flat<T>;

@@ -13,9 +13,10 @@ type RenderRowType<TRowType extends RowType> = {
 export const renderRows: RenderRowType<RowType> = {
   text: (value: any) => <>{String(value)}</>,
 
-  checkbox: (value: boolean) => (
-    <Checkbox radius="sm"  defaultChecked={value} />
-  ),
+  checkbox: (value: boolean) => {
+    const onChange = () => undefined;
+    return <Checkbox radius="sm" checked={value} onChange={onChange}  />;
+  },
 
   date: (value: string) => <>{dayjs(value).format('DD/MM/YYYY')}</>
 };

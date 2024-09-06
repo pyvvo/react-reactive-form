@@ -4238,7 +4238,7 @@ __metadata:
     postcss-preset-mantine: "npm:^1.17.0"
     postcss-simple-vars: "npm:^7.0.1"
     react: "npm:^18.3.1"
-    react-data-grid: "npm:^7.0.0-beta.46"
+    react-data-grid: "npm:7.0.0-beta.46"
     react-dom: "npm:^18.3.1"
     react-hook-form: "npm:^7.53.0"
     react-router-dom: "npm:^6.26.1"
@@ -9215,14 +9215,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:^1.1.1":
-  version: 1.2.1
-  resolution: "clsx@npm:1.2.1"
-  checksum: 10/5ded6f61f15f1fa0350e691ccec43a28b12fb8e64c8e94715f2a937bc3722d4c3ed41d6e945c971fc4dcc2a7213a43323beaf2e1c28654af63ba70c9968a8643
-  languageName: node
-  linkType: hard
-
-"clsx@npm:^2.1.1":
+"clsx@npm:^2.0.0, clsx@npm:^2.1.1":
   version: 2.1.1
   resolution: "clsx@npm:2.1.1"
   checksum: 10/cdfb57fa6c7649bbff98d9028c2f0de2f91c86f551179541cf784b1cfdc1562dcb951955f46d54d930a3879931a980e32a46b598acaea274728dbe068deca919
@@ -16994,15 +16987,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-data-grid@npm:^7.0.0-beta.46":
-  version: 7.0.0-canary.49
-  resolution: "react-data-grid@npm:7.0.0-canary.49"
+"react-data-grid@npm:7.0.0-beta.46":
+  version: 7.0.0-beta.46
+  resolution: "react-data-grid@npm:7.0.0-beta.46"
   dependencies:
-    clsx: "npm:^1.1.1"
+    clsx: "npm:^2.0.0"
   peerDependencies:
-    react: ^16.14 || ^17.0
-    react-dom: ^16.14 || ^17.0
-  checksum: 10/18e5241df12e9091f1088c514bfaa2a7b3dc444e9dd82133c548eda9c1593235e730d01d40af8a097276ea15f2d192664648ca4410ef7870fd85199f00bd9275
+    react: ^18.0 || ^19.0
+    react-dom: ^18.0 || ^19.0
+  checksum: 10/d8a679b5e22a07293923894591adcac5ad57b8bd28dcc93f7438563384f6acc2287f14394a3ef360bc1dc901defa00b4030aa9af37c70cf53cf121437e0882bc
   languageName: node
   linkType: hard
 

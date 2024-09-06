@@ -1,20 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { Flatten } from '@/types';
 import { useMemo, useState } from 'react';
-import { SortColumn } from 'react-data-grid';
 import { getComparator, reactDataGridParser } from './hm-data-grid.util';
-import { IHMDataGrid } from './types';
+import { IHMDataGrid, ISortColumn } from './types';
 
 export default function useRGDParser<TRow extends Record<string, any>>(
-  params: IHMDataGrid<TRow>
+  params: IHMDataGrid<Flatten<TRow>>
 ) {
-  const [sortColumns, setSortColumns] = useState<SortColumn[]>([]);
+  const [sortColumns, setSortColumns] = useState<ISortColumn<Flatten<TRow>>[]>(
+    []
+  );
 
   const parsedData = useMemo(
     () => reactDataGridParser({ ...params, setSortColumns, sortColumns }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [params.rows, params.columns, sortColumns, params.selectedRows]
   );
-  const sortedRows = useMemo((): readonly TRow[] => {
+  const sortedRows = useMemo((): readonly Flatten<TRow>[] => {
     if (sortColumns.length === 0) return parsedData.rows;
 
     return [...parsedData.rows].sort((a, b) => {

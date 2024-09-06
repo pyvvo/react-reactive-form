@@ -8,7 +8,7 @@ import {
   Text,
   useComputedColorScheme
 } from '@mantine/core';
-import styles from './data-grid.module.css';
+import styles from './data-grid-container.module.css';
 
 const EmptyRowsRenderer = () => (
   <div style={{ textAlign: 'center', gridColumn: '1/-1' }}>
@@ -27,17 +27,14 @@ interface IDataGridContainer {
 const DataGridContainer: FC<IDataGridContainer> = (props) => {
   const { children, theme, ...rest } = props;
   const computedColorScheme = useComputedColorScheme('light');
-  let rowCount = 1;
   let selectedRowCount = 0;
   const modifiedChildren = Children.map(children as any, (child) => {
     // Checking isValidElement is the safe way and avoids a typescript
     // error too.
     if (isValidElement(child as any)) {
-      rowCount = child.props.rows.length + 1;
       selectedRowCount = child.props.selectedRows
         ? child.props.selectedRows.size
         : 0;
-      console.log(selectedRowCount);
 
       return cloneElement<any>(child, {
         className: computedColorScheme === 'dark' ? 'rdg-dark' : 'rdg-light',

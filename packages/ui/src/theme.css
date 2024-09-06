@@ -1,6 +1,14 @@
+/* Define layers for control over specificity */
+
+/* Import react-data-grid styles */
+/* @import 'react-data-grid/lib/styles.css'; */
+
+@layer base, components, utilities, overrides, rdg;
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 body {
   .rdg {
@@ -17,6 +25,8 @@ body {
     display: flex;
     align-items: center;
     border-right: none;
+    border-bottom: 1px solid lighten(var(--mantine-primary-color-1),0.7);
+    
     /* padding: 0 16px; */
   }
 
@@ -38,6 +48,7 @@ body {
   .rdg-header-row {
     & [aria-selected='true'] {
       box-shadow: none;
+      outline-color: transparent;
     }
   }
 }

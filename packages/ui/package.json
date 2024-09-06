@@ -101,7 +101,7 @@
     "clsx": "^2.1.1",
     "postcss-preset-mantine": "^1.17.0",
     "postcss-simple-vars": "^7.0.1",
-    "react-data-grid": "^7.0.0-beta.46",
+    "react-data-grid": "7.0.0-beta.46",
     "tailwind-merge": "^2.5.2"
   }
 }

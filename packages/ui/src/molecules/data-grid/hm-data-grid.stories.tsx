@@ -3,55 +3,15 @@
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 import HMDG from './hm-data-grid';
-import { IColumn } from './types';
+import { IColumn, IHMDataGrid } from './hm/types';
 import { useState } from 'react';
 import { IDecoratorParams } from '@/story-utils/decorators/common';
+import { SelectColumn } from 'react-data-grid';
+import RenderCheckbox from "./hm/render-checkbox";
 
-type Story = StoryObj<typeof HMDG>;
+type Story = StoryObj<IHMDataGrid<ICollector>>;
 
-const meta: Meta<typeof HMDG> = {
-  /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/7.0/react/configure/overview#configure-story-loading
-   * to learn how to generate automatic titles
-   */
-  title: 'Features/DataGrid',
-  component: HMDG,
-  decorators: [
-    (Story, props: IDecoratorParams['props']) => {
-      const {
-        args: { actions, ...rest }
-      } = props;
-      const [selectedRows, setSelectedRows] = useState(
-        (): ReadonlySet<string> => new Set()
-      );
-      console.log(selectedRows);
-
-      return (
-        <Story
-          args={{
-            selectedRows: selectedRows,
-            onSelectedRowsChange: (row) => setSelectedRows(row),
-            ...rest
-          }}
-        />
-      );
-    }
-  ]
-};
-
-export default meta;
-
-interface ICollector {
-  id: string;
-  name: string;
-  operator: string;
-  subscriber: string;
-  email: string;
-  password: string;
-  isActive: boolean;
-}
-
-const rows: ICollector[] = [
+const _rows: ICollector[] = [
   {
     id: 'sdsds',
     name: 'Test1',
@@ -90,6 +50,27 @@ const rows: ICollector[] = [
   }
 ];
 
+const meta: Meta<typeof HMDG> = {
+  /* 👇 The title prop is optional.
+   * See https://storybook.js.org/docs/7.0/react/configure/overview#configure-story-loading
+   * to learn how to generate automatic titles
+   */
+  title: 'Features/DataGrid',
+  component: HMDG
+};
+
+export default meta;
+
+interface ICollector {
+  id: string;
+  name: string;
+  operator: string;
+  subscriber: string;
+  email: string;
+  password: string;
+  isActive: boolean;
+}
+
 const columns: IColumn<ICollector>[] = [
   {
     key: 'id',
@@ -103,16 +84,30 @@ const columns: IColumn<ICollector>[] = [
   { key: 'subscriber', name: 'Subscriber' },
   { key: 'isActive', name: 'Active' }
 ];
-function rowKeyGetter(row: any) {
-  return row.id;
-}
+
 export const DataGrid: Story = {
+  render: (args) => {
+    const { onRowClick, ...rest } = args;
+    const [rows, setRows] = useState(_rows);
+    const [selectedRows, setSelectedRows] = useState<ReadonlySet<string>>(
+      () => new Set()
+    );
+
+    return (
+      <HMDG
+        withRowSelection
+        withSorting
+        rowKeyGetter={(row) => row.id}
+        columns={columns}
+        rows={rows}
+        onRowsChange={setRows}
+        selectedRows={selectedRows}
+        onSelectedRowsChange={setSelectedRows}
+        onRowClick={onRowClick}
+      />
+    );
+  },
   args: {
-    withRowSelection: true,
-    withSorting: true,
-    rows,
-    columns,
-    rowKeyGetter: rowKeyGetter,
     onRowClick: (row) => action('row')(row)
   }
 };
