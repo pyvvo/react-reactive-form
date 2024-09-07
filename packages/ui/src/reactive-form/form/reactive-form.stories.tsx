@@ -28,7 +28,7 @@ const defaultValues = {
   isActive: true,
   enabled: true,
   country: 'France',
-  skills: [] as string[],
+  skills: ['Devops'],
   billingRate: 20,
   billingPeriod: ''
 };

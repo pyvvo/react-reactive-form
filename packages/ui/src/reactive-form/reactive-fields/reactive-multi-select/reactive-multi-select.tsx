@@ -80,7 +80,7 @@ const ReactiveMultiSelect: FC<IReactiveField<MultiSelectCustomProps>> = (
             customHandlechange({ form, event });
             onChange(event);
           }}
-          checked={value}
+          value={value}
           {...rest}
         />
       )}

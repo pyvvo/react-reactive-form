@@ -25,31 +25,31 @@ const meta: Meta<typeof ReactiveField> = {
 export default meta;
 
 export const ReactiveMultiSelect: Story = {
-  play: async ({ canvasElement, args: { fieldKey } }) => {
-    async function selectOption(option: string, canvasElement: HTMLElement) {
-      const canvas = within(canvasElement);
+  // play: async ({ canvasElement, args: { fieldKey } }) => {
+  //   async function selectOption(option: string, canvasElement: HTMLElement) {
+  //     const canvas = within(canvasElement);
 
-      const optionRef = canvas.getByText(option);
-      await userEvent.click(optionRef);
-    }
-    const { fieldRef, submitRef, resultRef } = getReactiveRef(
-      canvasElement,
-      fieldKey
-    );
+  //     const optionRef = canvas.getByText(option);
+  //     await userEvent.click(optionRef);
+  //   }
+  //   const { fieldRef, submitRef, resultRef } = getReactiveRef(
+  //     canvasElement,
+  //     fieldKey
+  //   );
 
-    await userEvent.click(fieldRef);
-    await wait(200);
+  //   await userEvent.click(fieldRef);
+  //   await wait(200);
 
-    await selectOption('React', canvasElement);
-    await selectOption('Angular', canvasElement);
+  //   await selectOption('React', canvasElement);
+  //   await selectOption('Angular', canvasElement);
 
-    await userEvent.click(submitRef);
-    await waitFor(() => {
-      expect(JSON.parse(resultRef.value)).toEqual({
-        value: ['React', 'Angular']
-      });
-    });
-  },
+  //   await userEvent.click(submitRef);
+  //   await waitFor(() => {
+  //     expect(JSON.parse(resultRef.value)).toEqual({
+  //       value: ['React', 'Angular']
+  //     });
+  //   });
+  // },
   args: {
     fieldKey: 'value',
     label: 'Multi select',

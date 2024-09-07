@@ -2,7 +2,7 @@
   "name": "@humaapi/ui",
   "type": "module",
   "description": "A react reactive form",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "files": [
     "dist"
   ],
