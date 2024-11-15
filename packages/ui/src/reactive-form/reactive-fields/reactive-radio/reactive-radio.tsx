@@ -86,6 +86,7 @@ const ReactiveRadio: FC<IReactiveField<RadioCustomProps>> = (props) => {
           {data.map(({ label, value }) => (
             <Radio
               {...fieldProps}
+              id={`${fieldKey}-${value}`}
               key={value}
               value={value}
               label={label}

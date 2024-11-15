@@ -16,7 +16,7 @@ const meta: Meta<typeof RTF> = {
    */
   title: 'Reactive Field/ReactiveTextField ',
   component: RTF,
-  decorators: [ReactiveFieldDecorator]
+  decorators: [ReactiveFieldDecorator()]
 };
 
 export default meta;

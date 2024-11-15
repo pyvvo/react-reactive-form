@@ -14,10 +14,17 @@ import Store from './store.service';
 
 type Data = ReturnType<typeof Store.getRows>[0];
 
+const defaultValues = {
+  email:"",
+  password:"secret"
+
+}
+
 const Collector: FC = () => {
   const form = useForm<Data>({
     mode: 'onSubmit',
-    reValidateMode: 'onSubmit'
+    reValidateMode: 'onSubmit',
+    defaultValues
   });
   console.log('ici');
 

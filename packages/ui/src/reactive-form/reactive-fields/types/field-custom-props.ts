@@ -11,6 +11,7 @@ import { SelectCustomProps } from '../reactive-select';
 import { SwitchCustomProps } from '../reactive-switch';
 import { TextFieldCustomProps } from '../reactive-text-field';
 import { CommonProps, InputType } from './reactive-field-base';
+import { ListFieldCustomProps } from "../reactive-list";
 
 export type CustomPropsType = Record<InputType, any>;
 
@@ -25,8 +26,8 @@ export interface ICustomProps<TFormValues extends JSONData> {
   radio: CommonProps<RadioCustomProps, TFormValues>;
   range: CommonProps<RangeCustomProps, TFormValues>;
   'multi-select': CommonProps<MultiSelectCustomProps, TFormValues>;
+  list: CommonProps<ListFieldCustomProps<TFormValues>, TFormValues>;
   // range: never;
-  // list: never;
   // datepicker: never;
   // autocomplete: never;
 }

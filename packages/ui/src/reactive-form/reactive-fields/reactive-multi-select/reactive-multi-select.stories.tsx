@@ -19,7 +19,7 @@ const meta: Meta<typeof ReactiveField> = {
    */
   title: 'Reactive Field/ReactiveMultiSelect',
   component: ReactiveField,
-  decorators: [ReactiveFieldDecorator]
+  decorators: [ReactiveFieldDecorator()]
 };
 
 export default meta;

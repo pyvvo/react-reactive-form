@@ -17,7 +17,7 @@ const meta: Meta<typeof ReactiveField> = {
    */
   title: 'Reactive Field/ReactiveSwitch',
   component: ReactiveField,
-  decorators: [ReactiveFieldDecorator]
+  decorators: [ReactiveFieldDecorator()]
 };
 
 export default meta;

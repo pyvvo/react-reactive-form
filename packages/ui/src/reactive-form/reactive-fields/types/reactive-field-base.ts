@@ -14,7 +14,8 @@ export type InputType =
   | 'multi-select'
   | 'radio'
   | 'range'
-  | 'autocomplete';
+  | 'autocomplete'
+  | 'list';
 
 // // | 'list'
 // | 'datepicker'
