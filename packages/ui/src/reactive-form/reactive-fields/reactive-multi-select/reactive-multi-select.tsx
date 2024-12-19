@@ -4,13 +4,12 @@
 // eslint-disable-next-line object-curly-newline
 import {
   MultiSelect,
-  MultiSelectProps,
-  Select,
-  SelectProps
+  MultiSelectProps
 } from '@mantine/core';
 import { FC, useCallback } from 'react';
 import { Controller } from 'react-hook-form';
 import { IReactiveField, ReactiveFieldProps } from '../types';
+import { getMantineError } from "../utils";
 import { MultiSelectCustomProps } from './types';
 
 const ReactiveMultiSelect: FC<IReactiveField<MultiSelectCustomProps>> = (
@@ -20,16 +19,16 @@ const ReactiveMultiSelect: FC<IReactiveField<MultiSelectCustomProps>> = (
 
   const {
     size,
-    color,
     disabled,
     hidden,
     handleChange,
     onDropdownOpen,
-    dropdownPosition,
-    icon,
+    leftSection,
+    rightSection,
     limit,
     maxDropdownHeight,
-    placeholder
+    placeholder,
+    data
   } = customProps;
 
   type CustomProps = typeof customProps;
@@ -45,21 +44,20 @@ const ReactiveMultiSelect: FC<IReactiveField<MultiSelectCustomProps>> = (
     size,
     disabled,
     withAsterisk: !!options?.required,
-    sx: {
+    style: {
       width: '100%',
       display: hidden ? 'none' : undefined
     },
     onDropdownOpen,
-    color: error ? 'error' : color,
-    data: customProps.options,
+    data,
     searchable: true,
     clearable: true,
-    icon,
+    leftSection,
+    rightSection,
     placeholder,
-    dropdownPosition,
     limit,
     maxDropdownHeight,
-    error: Boolean(error)
+    error: getMantineError(error)
   };
   const customHandlechange = useCallback(
     (params: HandleChangeParams) => {
@@ -74,7 +72,6 @@ const ReactiveMultiSelect: FC<IReactiveField<MultiSelectCustomProps>> = (
     <Controller
       control={control}
       name={fieldKey}
-      // defaultValue={false}
       rules={{ ...options }}
       render={({ field: { onChange, value, ...rest } }) => (
         <MultiSelect
@@ -83,7 +80,7 @@ const ReactiveMultiSelect: FC<IReactiveField<MultiSelectCustomProps>> = (
             customHandlechange({ form, event });
             onChange(event);
           }}
-          checked={value}
+          value={value}
           {...rest}
         />
       )}

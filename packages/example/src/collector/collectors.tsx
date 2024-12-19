@@ -6,7 +6,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable no-console */
-import { HMDataGrid, IColumn } from '@hm/ui';
+import { HMDataGrid, IColumn } from '@humaapi/ui';
 import { Box, Button } from '@mantine/core';
 import { FC, useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
@@ -33,19 +33,19 @@ const Collectors: FC = () => {
   ];
 
   return (
-    <Box sx={{ paddingBlock: '12px' }}>
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+    <Box style={{ paddingBlock: '12px' }}>
+      <Box style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <Button>New</Button>
       </Box>
       <HMDataGrid
-        // withRowSelection
+        withRowSelection
         withSorting
+        rowKeyGetter={(row) => row.name}
         columns={columns}
         rows={Store.getRows()}
         onRowClick={({ name }) => navigate(`./${name}`)}
-        // selectedRows={adminCompanyStore.selectedRows}
-        // onRowSelectionChange={setSelectedRows}
         selectedRows={selectedRows}
+        onSelectedRowsChange={setSelectedRows}
       />
       <Outlet />
     </Box>

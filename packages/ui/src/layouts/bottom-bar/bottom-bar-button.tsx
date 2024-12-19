@@ -1,46 +1,9 @@
 /* eslint-disable react/require-default-props */
-import {
-  createStyles,
-  MantineColor,
-  Tooltip,
-  UnstyledButton
-} from '@mantine/core';
-import { TablerIcon } from '@tabler/icons';
-import { FC, useState } from 'react';
 import { NavBarLink } from '@/molecules';
-
-const useStyles = createStyles((theme) => ({
-  link: {
-    width: 50,
-    height: 50,
-    borderRadius: theme.radius.md,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color:
-      theme.colorScheme === 'dark'
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
-
-    '&:hover': {
-      backgroundColor:
-        theme.colorScheme === 'dark'
-          ? theme.colors.dark[5]
-          : theme.colors.indigo[0]
-    }
-  },
-
-  active: {
-    '&, &:hover': {
-      backgroundColor: theme.fn.variant({
-        variant: 'light',
-        color: theme.primaryColor
-      }).background,
-      color: theme.fn.variant({ variant: 'light', color: theme.primaryColor })
-        .color
-    }
-  }
-}));
+import { MantineColor, Tooltip, UnstyledButton } from '@mantine/core';
+import { TablerIcon } from '@tabler/icons-react';
+import { FC, useState } from 'react';
+import styles from './bottom-bar.module.css';
 
 interface INavbarButton {
   icon: TablerIcon;
@@ -52,7 +15,6 @@ interface INavbarButton {
 
 const NavbarButton: FC<INavbarButton> = (props) => {
   const { icon: Icon, label, onClick, color, to } = props;
-  const { classes, cx } = useStyles();
   const [isActive, setIsActive] = useState(false);
   const handleIsactive = (param: boolean) => {
     setIsActive(param);
@@ -63,11 +25,12 @@ const NavbarButton: FC<INavbarButton> = (props) => {
       <Tooltip
         label={label}
         position="right"
-        transitionDuration={100}
+        transitionProps={{ duration: 100 }}
         color={color}>
         <UnstyledButton
           onClick={onClick}
-          className={cx(classes.link, { [classes.active]: isActive })}>
+          mod={[{ active: isActive }]}
+          className={styles.link}>
           <Icon stroke={1.5} />
         </UnstyledButton>
       </Tooltip>

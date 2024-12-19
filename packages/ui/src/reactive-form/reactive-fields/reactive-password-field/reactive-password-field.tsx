@@ -7,6 +7,7 @@ import { FC, useCallback } from 'react';
 import { Controller } from 'react-hook-form';
 import { IReactiveField, ReactiveFieldProps } from '../types';
 import { PasswordFieldCustomProps } from './types';
+import { getMantineError } from "../utils";
 
 const ReactivePasswordField: FC<IReactiveField<PasswordFieldCustomProps>> = (
   props
@@ -17,17 +18,17 @@ const ReactivePasswordField: FC<IReactiveField<PasswordFieldCustomProps>> = (
     label,
     options,
     error,
-    customProps = { color: undefined }
+    customProps ={}
   } = props;
 
   const {
     size,
-    color,
     disabled,
     hidden,
     handleChange,
     visibilityToggleIcon,
-    icon
+    leftSection,
+    rightSection
   } = customProps;
 
   type CustomProps = typeof customProps;
@@ -40,17 +41,17 @@ const ReactivePasswordField: FC<IReactiveField<PasswordFieldCustomProps>> = (
     // 'aria-describedby': helperId,
     'data-testid': fieldKey,
     visibilityToggleIcon,
-    icon,
+    leftSection,
+    rightSection,
     size,
     disabled,
     withAsterisk: !!options?.required,
-    sx: {
+    style: {
       width: '100%',
       display: hidden ? 'none' : undefined
     },
-    color: error ? 'error' : color,
-    error: Boolean(error)
-  };
+    error: getMantineError(error)
+  }
   const customHandlechange = useCallback(
     (params: HandleChangeParams) => {
       if (handleChange) {
@@ -64,11 +65,11 @@ const ReactivePasswordField: FC<IReactiveField<PasswordFieldCustomProps>> = (
     <Controller
       control={control}
       name={fieldKey}
-      // defaultValue=""
       rules={{ ...options }}
       render={({ field: { onChange, ref, ...rest } }) => (
         <PasswordInput
           {...fieldProps}
+          
           onChange={(event) => {
             customHandlechange({ form, event });
             onChange(event);

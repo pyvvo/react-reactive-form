@@ -1,51 +1,14 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import { useCallback, useMemo } from 'react';
-import {
-  getError,
-  InputType,
-  ReactiveFieldErrorType
-} from '@/reactive-form/reactive-fields';
+import { useMemo } from 'react';
 import { FormProps, JSONData } from '../../types';
-import FormBuilder from '../form-builder';
 import LayoutFlex from '../form-layout/layout-flex';
 import FormGroup from './form-group';
-import { FieldMeta, IReactiveFieldMeta } from './types';
-
-interface IDynamicField<TFormValues extends JSONData> {
-  field: FieldMeta<TFormValues, InputType>;
-  form: FormProps<TFormValues>;
-  errors: ReactiveFieldErrorType;
-}
-
-const DynamicField = <TFormValues extends JSONData>(
-  props: IDynamicField<TFormValues>
-) => {
-  const { field, form, errors } = props;
-  const MemoizedRenderField = useCallback(() => {
-    const RenderField = FormBuilder.getField<JSONData, TFormValues>(field.type);
-    return RenderField;
-  }, [field.type])();
-  const { type, customProps, ...fieldProps } = field;
-  const error = getError(field.fieldKey, errors);
-
-  return useMemo(
-    () => (
-      <MemoizedRenderField
-        {...fieldProps}
-        form={form}
-        customProps={customProps as never}
-        error={error}
-      />
-    ),
-
-    [MemoizedRenderField, fieldProps, form, customProps, error]
-  );
-};
+import { IReactiveFieldMeta } from './types';
+import DynamicField from "./dynamic-field";
 
 export interface IReactiveForm<TFormValues extends JSONData> {
   meta: IReactiveFieldMeta<TFormValues>[];
   form: FormProps<TFormValues>;
-  // currentBreakpoint?: string;
 }
 
 const ReactiveForm = <TFormValues extends JSONData>(

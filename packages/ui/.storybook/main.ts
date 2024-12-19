@@ -1,37 +1,36 @@
+import { dirname, join } from "path";
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
   staticDirs: ['../public'],
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.tsx'],
+
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    '@storybook/addon-a11y'
+    getAbsolutePath("@storybook/addon-links"),
+    getAbsolutePath("@storybook/addon-essentials"),
+    getAbsolutePath("@storybook/addon-interactions"),
+    getAbsolutePath("@storybook/addon-a11y"),
+    "@chromatic-com/storybook"
   ],
+
   framework: {
-    name: '@storybook/react-vite',
+    name: getAbsolutePath("@storybook/react-vite"),
     options: {
       strictMode: false
     }
   },
-  docs: {
-    autodocs: 'tag'
-  },
-  features: {
-    // interactionsDebugger: true
-  }
+
+  docs: {},
+
   // async viteFinal(config: UserConfig, { configType }) {
   //   // return the customized config
   //   // const newPlugins = config.plugins?.filter(
   //   //   (plugin) => (plugin as any).name !== 'vite-tsconfig-paths'
   //   // );
-
   //   // const { config: mainConfig } = await loadConfigFromFile(
   //   //   configType,
   //   //   path.resolve(__dirname, '../vite-base.config.ts')
   //   // );
-
   //   return mergeConfig(config, {
   //     // customize the Vite config here
   //     // alias not working #85 : https://github.com/storybookjs/builder-vite/issues/85
@@ -49,5 +48,16 @@ const config: StorybookConfig = {
   // docs: {
   //   autodocs: true
   // }
+  features: {
+    // interactionsDebugger: true
+  },
+
+  typescript: {
+    reactDocgen: "react-docgen-typescript"
+  }
 };
 export default config;
+
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, "package.json")));
+}

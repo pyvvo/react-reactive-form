@@ -2,7 +2,7 @@
 module.exports = {
   ignoredRouteFiles: ['**/.*'],
   tailwind: true,
-  serverDependenciesToBundle: ["@hm/ui"],
+  serverDependenciesToBundle: ["@humaapi/ui"],
   // appDirectory: "app",
   // assetsBuildDirectory: "public/build",
   // serverBuildPath: "build/index.js",

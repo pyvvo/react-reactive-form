@@ -14,7 +14,8 @@ export type InputType =
   | 'multi-select'
   | 'radio'
   | 'range'
-  | 'autocomplete';
+  | 'autocomplete'
+  | 'list';
 
 // // | 'list'
 // | 'datepicker'
@@ -24,7 +25,7 @@ export type FormFieldOption<TFieldValues extends JSONData> =
 
 export type ErrorFormType = {
   type: string;
-  message?: string;
+  message: string;
   ref: Ref<HTMLElement>;
 };
 

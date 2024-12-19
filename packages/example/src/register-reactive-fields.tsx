@@ -10,7 +10,7 @@ import {
   ReactiveSelect,
   ReactiveSwitch,
   ReactiveTextField
-} from '@hm/ui';
+} from '@humaapi/ui';
 
 FormBuilder.defineWidget({ name: 'text', component: ReactiveTextField });
 FormBuilder.defineWidget({ name: 'number', component: ReactiveNumberField });

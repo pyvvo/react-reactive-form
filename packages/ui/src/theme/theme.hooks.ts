@@ -13,12 +13,9 @@ function useVariant<T extends keyof IThemeContext>(
 
   /* Fusionner le theme envoyer dans le provider et celui du theme par defaut */
   const theme = useContext(ThemeContext);
-  const mergeTheme = { ...defaultTheme, ...theme };
-  console.log({ mergeTheme });
-  
+  const mergeTheme = { ...defaultTheme, ...theme };  
 
   const variant = mergeTheme[componentName];
-  console.log('here');
 
   // if (!variant) {
   //   throw new Error(`No variants found for component: ${componentName}`);

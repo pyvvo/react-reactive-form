@@ -1,9 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/require-default-props */
-import styled from '@emotion/styled';
-import { CSSProperties, FC, useEffect, useRef } from 'react';
-import { Box, Text } from '@mantine/core';
-import * as echarts from 'echarts/core';
 import {
   BarChart,
   // The series types are defined with the SeriesOption suffix
@@ -14,22 +10,24 @@ import {
   PieSeriesOption
 } from 'echarts/charts';
 import {
+  // Dataset
+  DatasetComponent,
+  DatasetComponentOption,
+  GridComponent,
+  GridComponentOption,
   TitleComponent,
   // The component types are defined with the suffix ComponentOption
   TitleComponentOption,
   TooltipComponent,
   TooltipComponentOption,
-  GridComponent,
-  GridComponentOption,
-  // Dataset
-  DatasetComponent,
-  DatasetComponentOption,
   // Built-in transform (filter, sort)
   TransformComponent
 } from 'echarts/components';
+import * as echarts from 'echarts/core';
+import { ECharts, SetOptionOpts, getInstanceByDom, init } from 'echarts/core';
 import { LabelLayout, UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
-import { ECharts, init, getInstanceByDom, SetOptionOpts } from 'echarts/core';
+import { CSSProperties, FC, useEffect, useRef } from 'react';
 
 // Combine an Option type with only required components and charts via ComposeOption
 export type ECOption = echarts.ComposeOption<

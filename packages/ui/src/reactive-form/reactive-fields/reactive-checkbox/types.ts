@@ -4,12 +4,4 @@ import { MantineSize } from '@mantine/core';
 
 export type CheckCustomProps = {
   size?: MantineSize;
-  color?:
-    | 'default'
-    | 'primary'
-    | 'secondary'
-    | 'error'
-    | 'info'
-    | 'success'
-    | 'warning';
 };

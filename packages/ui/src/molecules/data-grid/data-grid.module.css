@@ -1,0 +1,12 @@
+.rdgCell {
+
+  .rdg-cell {
+    background-color: #9370db;
+    color: white;
+  
+    &:hover {
+      background-color: #800080;
+    }
+  }
+
+}

@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { within } from '@storybook/testing-library';
+import { within } from '@storybook/test';
 import { BoundFunctions, Queries } from '@testing-library/dom';
 
 export const getReactiveRef = (

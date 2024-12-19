@@ -25,6 +25,6 @@ export interface IConditionalProp<TFormValues extends JSONData> {
   radio: ConditionalProp<'radio', TFormValues>;
   range: ConditionalProp<'range', TFormValues>;
   'multi-select': ConditionalProp<'multi-select', TFormValues>;
-  // // list: ConditionalProp<'list'>;
+  list: ConditionalProp<'list'>;
   // datepicker: ConditionalProp<'datepicker', true>;
 }

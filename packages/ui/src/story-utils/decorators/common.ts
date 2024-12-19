@@ -1,10 +1,6 @@
-import { Meta } from '@storybook/react';
-
-type DecoratorParameter<T extends 0 | 1> = Parameters<
-  NonNullable<Meta<any>['decorators']>[0]
->[T];
-
+// import { Meta } from '@storybook/react';
+import { StoryFn, StoryContext } from '@storybook/react';
 export interface IDecoratorParams {
-  Story: DecoratorParameter<0>;
-  props: DecoratorParameter<1>;
+  Story: StoryFn;
+  props: StoryContext;
 }

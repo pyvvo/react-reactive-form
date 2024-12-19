@@ -1,7 +1,7 @@
 /* eslint-disable react/button-has-type */
-import { expect } from '@storybook/jest';
+import { expect } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/react';
-import { userEvent, waitFor } from '@storybook/testing-library';
+import { userEvent, waitFor } from '@storybook/test';
 import { getReactiveRef, ReactiveFieldDecorator } from '@/story-utils';
 import { ReactiveFieldStoryType } from '../types';
 import RTF from './reactive-text-field';
@@ -16,7 +16,7 @@ const meta: Meta<typeof RTF> = {
    */
   title: 'Reactive Field/ReactiveTextField ',
   component: RTF,
-  decorators: [ReactiveFieldDecorator]
+  decorators: [ReactiveFieldDecorator()]
 };
 
 export default meta;
@@ -30,9 +30,7 @@ export const ReactiveTextField: Story = {
 
     await userEvent.type(fieldRef, 'example');
     await userEvent.click(submitRef);
-    // expect(JSON.parse(resultRef.value)).toEqual({
-    //   value: 'example'
-    // });
+
     await waitFor(() => {
       expect(JSON.parse(resultRef.value)).toEqual({
         value: 'example'
@@ -43,7 +41,11 @@ export const ReactiveTextField: Story = {
     fieldKey: 'value',
     label: 'test',
     options: {
-      required: true
+      // required: { message: 'test', value: true },
+      // required: true,
+      minLength: ((val) => {
+        return { message: `min lenght ${val}`, value: val };
+      })(3)
     },
     customProps: {
       disabled: false

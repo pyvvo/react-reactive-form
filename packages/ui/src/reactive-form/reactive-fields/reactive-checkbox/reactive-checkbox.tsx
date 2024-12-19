@@ -7,18 +7,12 @@ import { FC, useCallback } from 'react';
 import { Controller } from 'react-hook-form';
 import { IReactiveField, ReactiveFieldProps } from '../types';
 import { CheckCustomProps } from './types';
+import { getMantineError } from '../utils';
 
 const ReactiveCheckbox: FC<IReactiveField<CheckCustomProps>> = (props) => {
-  const {
-    form,
-    fieldKey,
-    label,
-    options,
-    error,
-    customProps = { color: 'primary' }
-  } = props;
+  const { form, fieldKey, label, options, error, customProps = {} } = props;
 
-  const { size, color, disabled, hidden, handleChange } = customProps;
+  const { size, disabled, hidden, handleChange } = customProps;
 
   type CustomProps = typeof customProps;
   type HandleChangeParams = Parameters<
@@ -33,13 +27,12 @@ const ReactiveCheckbox: FC<IReactiveField<CheckCustomProps>> = (props) => {
     size,
     disabled,
     required: !!options?.required,
-    sx: {
+    style: {
       marginBlock: '12px',
       width: '100%',
       display: hidden ? 'none' : undefined
     },
-    color: error ? 'error' : color,
-    error: Boolean(error)
+    error: getMantineError(error)
   };
   const customHandlechange = useCallback(
     (params: HandleChangeParams) => {
@@ -54,7 +47,6 @@ const ReactiveCheckbox: FC<IReactiveField<CheckCustomProps>> = (props) => {
     <Controller
       control={control}
       name={fieldKey}
-      // defaultValue={false}
       rules={{ ...options }}
       render={({ field: { onChange, value, ref, name, onBlur } }) => (
         <Checkbox

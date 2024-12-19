@@ -8,7 +8,6 @@ export type RangeCustomProps = {
     value: number;
     label?: React.ReactNode;
   }[];
-  color?: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning';
   size?: MantineSize;
   step?: number;
   thumbSize?: number;

@@ -20,21 +20,22 @@ import {
   IReactiveField,
   FieldMeta
 } from '@/reactive-form';
-import { IDecoratorParams } from "./common";
+import { IDecoratorParams } from './common';
 
-interface IFormProvider {
+interface IReactiveFieldWrapper {
   field: FieldMeta<JSONData, InputType>;
   children?: ReactiveField;
-  // defaultValues: Record<string, any>;
+  defaultValues: Record<string, any>;
 }
 
 type ReactiveField = ReactElement<IReactiveField<JSONData, JSONData>>;
-const ReactiveFieldWrapper: FC<IFormProvider> = (props) => {
-  const { children, field } = props;
+const ReactiveFieldWrapper: FC<IReactiveFieldWrapper> = (props) => {
+  const { children, field, defaultValues } = props;
   const [value, setValue] = useState('');
   const form = useForm({
     mode: 'onSubmit',
-    reValidateMode: 'onSubmit'
+    reValidateMode: 'onSubmit',
+    defaultValues
   });
   const {
     formState: { errors }
@@ -68,11 +69,9 @@ const ReactiveFieldWrapper: FC<IFormProvider> = (props) => {
       return child;
     });
 
-  // console.log(modifiedChildren);
-
   return (
     <form
-      style={{ maxWidth: '400px' }}
+      style={{ minWidth: '400px' }}
       onSubmit={form.handleSubmit(handleSubmit)}>
       <Flex
         mih={50}
@@ -97,7 +96,7 @@ const ReactiveFieldWrapper: FC<IFormProvider> = (props) => {
           formatOnBlur
           autosize
           minRows={4}
-          sx={{
+          style={{
             width: '100%'
           }}
           // defaultValue="tt"
@@ -109,17 +108,14 @@ const ReactiveFieldWrapper: FC<IFormProvider> = (props) => {
   );
 };
 
-export const ReactiveFieldDecorator = (
-  Story: IDecoratorParams['Story'],
-  props: IDecoratorParams['props']
-) => {
-  const { args } = props;
-  // console.log({ props });
-
-  return (
-    // @ts-ignore
-    <ReactiveFieldWrapper field={{ ...args }}>
-      <Story />
-    </ReactiveFieldWrapper>
-  );
-};
+export const ReactiveFieldDecorator =
+  (defaultValues: JSONData = {}) =>
+  (Story: IDecoratorParams['Story'], props: IDecoratorParams['props']) => {
+    const { args } = props;
+    return (
+      // @ts-ignore
+      <ReactiveFieldWrapper field={{ ...args }} defaultValues={defaultValues}>
+        <Story />
+      </ReactiveFieldWrapper>
+    );
+  };

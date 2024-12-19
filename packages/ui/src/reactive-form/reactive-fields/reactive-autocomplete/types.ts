@@ -1,16 +1,15 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-cycle */
-import { MantineSize, AutocompleteItem } from '@mantine/core';
+import { ComboboxStringData, MantineSize } from '@mantine/core';
 import { ReactNode } from 'react';
 
 export type AutocompleteCustomProps = {
-  data: (string | AutocompleteItem)[];
+  data: ComboboxStringData;
   size?: MantineSize;
   placeholder?: string;
-  dropdownPosition?: 'bottom' | 'top' | 'flip';
   limit?: number;
   maxDropdownHeight?: number;
-  icon?: ReactNode;
-  color?: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning';
+  leftSection?: ReactNode;
+  rightSection?:ReactNode;
   onDropdownOpen?: () => void;
 };

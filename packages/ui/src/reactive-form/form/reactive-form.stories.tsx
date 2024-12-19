@@ -5,6 +5,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { JSONData } from '@/types';
 import RF, { IReactiveForm } from './reactive-form';
 import { ReactiveFormDecorator } from '@/story-utils';
+import type { IRow } from '../reactive-fields/reactive-list/reactive-list-field.stories';
+import type { ListFieldColumnType } from '../reactive-fields/reactive-list/types';
 
 type Story<TFormValues extends JSONData> = StoryObj<
   Omit<IReactiveForm<TFormValues>, 'form'>
@@ -28,10 +30,40 @@ const defaultValues = {
   isActive: true,
   enabled: true,
   country: 'France',
-  skills: [] as string[],
+  skills: ['Devops'],
   billingRate: 20,
-  billingPeriod: ''
+  billingPeriod: '',
+  chemicalElem: [
+    { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon', id: 'carbon' },
+    { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen', id: 'nitrogen' }
+  ] as unknown as IRow[]
 };
+
+const columns: ListFieldColumnType<IRow>[] = [
+  {
+    fieldKey: 'position',
+    label: 'Element position',
+    type: 'number'
+  },
+  {
+    fieldKey: 'name',
+    label: 'Element name',
+    type: 'text',
+    options: {
+      required: true
+    }
+  },
+  {
+    fieldKey: 'symbol',
+    label: 'Symbol',
+    type: 'text'
+  },
+  {
+    fieldKey: 'mass',
+    label: 'Atomic mass',
+    type: 'number'
+  }
+];
 
 type Data = typeof defaultValues;
 
@@ -83,7 +115,7 @@ export const ReactiveForm: Story<Data> = {
             label: 'Skills',
             type: 'multi-select',
             customProps: {
-              options: ['Devops', 'Full-stack', 'Management']
+              data: ['Devops', 'Full-stack', 'Management']
             }
           },
           {
@@ -112,9 +144,17 @@ export const ReactiveForm: Story<Data> = {
             type: 'radio',
             customProps: {
               data: [
-                { value: 'monthly', label: 'MonthLy' },
+                { value: 'monthly', label: 'Monthly' },
                 { value: 'yearly', label: 'Yearly' }
               ]
+            }
+          },
+          {
+            fieldKey: 'chemicalElem',
+            label: 'Chemical Elements',
+            type: 'list',
+            customProps: {
+              columns: columns as any
             }
           }
         ]

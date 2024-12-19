@@ -1,5 +1,5 @@
 import type { V2_MetaFunction } from "@remix-run/node";
-import { CNDIcon, ButtonCva, PyvvoThemeProvider } from '@hm/ui';
+import { CNDIcon, ButtonCva, PyvvoThemeProvider } from '@humaapi/ui';
 import { cva } from "class-variance-authority";
 import { Theme, useTheme } from '~/utils/theme-provider';
 import { pyTheme } from "~/theme";

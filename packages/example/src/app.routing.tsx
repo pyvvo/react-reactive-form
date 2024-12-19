@@ -1,20 +1,19 @@
-import { AppLayout } from '@hm/ui';
-import { ColorScheme, ColorSchemeProvider } from '@mantine/core';
+import { AppLayout } from '@humaapi/ui';
+import { Spotlight, SpotlightProps } from '@mantine/spotlight';
 import {
-  IconHome2,
-  IconCloudComputing,
   IconAffiliate,
-  IconShieldHalfFilled,
-  IconDots,
-  IconSettings,
+  IconCloudComputing,
   IconDashboard,
+  IconDots,
   IconFileText,
-  IconHome
-} from '@tabler/icons';
-import { FC, useState } from 'react';
-import { useRoutes } from 'react-router-dom';
+  IconHome,
+  IconHome2,
+  IconSettings,
+  IconShieldHalfFilled
+} from '@tabler/icons-react';
 import Chance from 'chance';
-import { SpotlightAction, SpotlightProvider } from '@mantine/spotlight';
+import { FC } from 'react';
+import { useRoutes } from 'react-router-dom';
 import CollectorModule from './collector/collector.module';
 import DashboardModule from './dashboard/dashboard.module';
 
@@ -62,24 +61,27 @@ const avatarUrl = chance.avatar({
   email: 'mail@victorquinn.com'
 });
 
-const actions: SpotlightAction[] = [
+const actions: SpotlightProps["actions"]  = [
   {
+    id: 'home',
     title: 'Home',
     description: 'Get to home page',
-    onTrigger: () => console.log('Home'),
-    icon: <IconHome size={18} />
+    onClick: () => console.log('Home'),
+    leftSection: <IconHome size={18} />
   },
   {
+    id: 'dashboard',
     title: 'Dashboard',
     description: 'Get full information about current system status',
-    onTrigger: () => console.log('Dashboard'),
-    icon: <IconDashboard size={18} />
+    onClick: () => console.log('Dashboard'),
+    leftSection: <IconDashboard size={18} />
   },
   {
+    id: 'documentation',
     title: 'Documentation',
     description: 'Visit documentation to lean more about all features',
-    onTrigger: () => console.log('Documentation'),
-    icon: <IconFileText size={18} />
+    onClick: () => console.log('Documentation'),
+    leftSection: <IconFileText size={18} />
   }
 ];
 const AppRouting: FC = () => {
@@ -88,9 +90,10 @@ const AppRouting: FC = () => {
       path: '/',
       // eslint-disable-next-line react/jsx-no-undef
       element: (
-        <SpotlightProvider actions={actions}>
+        <>
+          <Spotlight actions={actions} />
           <AppLayout offset={60} imageSrc={avatarUrl} modules={modules} />
-        </SpotlightProvider>
+        </>
       ),
       children: [
         {
@@ -105,7 +108,7 @@ const AppRouting: FC = () => {
         {
           path: 'dispatcher',
           element: (
-            <main style={{ padding: '1rem' }}>
+            <main className="bg-slate-500" style={{ padding: '1rem' }}>
               <p>Dispatcher!</p>
             </main>
           )
@@ -113,9 +116,9 @@ const AppRouting: FC = () => {
         {
           path: 'iam',
           element: (
-            <main style={{ padding: '1rem' }}>
-              <p>Iam!</p>
-            </main>
+            // <main style={{ padding: '1rem' }}>
+            <p>Iam!</p>
+            // </main>
           )
         },
         {

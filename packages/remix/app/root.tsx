@@ -15,7 +15,7 @@ import darkStyles from "~/styles/dark.css";
 import clsx from 'clsx';
 import { ThemeProvider, useTheme, NonFlashOfWrongThemeEls, Theme } from '~/utils/theme-provider';
 import { getThemeSession } from "./utils/theme.server";
-import { PyvvoThemeProvider } from "@hm/ui";
+import { PyvvoThemeProvider } from "@humaapi/ui";
 import { pyTheme } from "./theme";
 
 export const links: LinksFunction = () => [

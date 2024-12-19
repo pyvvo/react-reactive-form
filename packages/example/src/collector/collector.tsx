@@ -6,7 +6,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable no-console */
-import { HMDrawer, IReactiveFieldMeta, ReactiveForm } from '@hm/ui';
+import { HMDrawer, IReactiveFieldMeta, ReactiveForm } from '@humaapi/ui';
 import { Box, Button } from '@mantine/core';
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
@@ -14,10 +14,17 @@ import Store from './store.service';
 
 type Data = ReturnType<typeof Store.getRows>[0];
 
+const defaultValues = {
+  email:"",
+  password:"secret"
+
+}
+
 const Collector: FC = () => {
   const form = useForm<Data>({
     mode: 'onSubmit',
-    reValidateMode: 'onSubmit'
+    reValidateMode: 'onSubmit',
+    defaultValues
   });
   console.log('ici');
 

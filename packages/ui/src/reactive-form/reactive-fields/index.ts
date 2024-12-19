@@ -8,5 +8,6 @@ export * from './reactive-range';
 export * from './reactive-select';
 export * from './reactive-switch';
 export * from './reactive-text-field';
+export * from './reactive-list'
 export * from './types';
 export * from './utils';

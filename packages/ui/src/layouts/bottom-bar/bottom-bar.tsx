@@ -1,5 +1,5 @@
 /* eslint-disable react/require-default-props */
-import { Navbar, Portal } from '@mantine/core';
+import { Box, Group, Portal } from '@mantine/core';
 import { FC, useCallback, useEffect } from 'react';
 import { IModuleLink } from '../types';
 import NavbarButton from './bottom-bar-button';
@@ -46,8 +46,9 @@ const BottomBar: FC<IBottomBar> = (props) => {
 
   return (
     <Portal target={container}>
-      <Navbar
-        sx={{
+      <Box
+      component="nav"
+        style={{
           width: '70%',
           boxShadow: '0px 0px 21px 0px #5f5f5f1a',
           borderRadius: '18px',
@@ -58,9 +59,8 @@ const BottomBar: FC<IBottomBar> = (props) => {
           bottom: 0,
           zIndex: 200
         }}>
-        <Navbar.Section
-          grow
-          sx={{
+        <Group grow  component="section"
+          style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center'
@@ -74,8 +74,8 @@ const BottomBar: FC<IBottomBar> = (props) => {
               key={link.label}
             />
           ))}
-        </Navbar.Section>
-      </Navbar>
+        </Group>
+      </Box>
     </Portal>
   );
 };

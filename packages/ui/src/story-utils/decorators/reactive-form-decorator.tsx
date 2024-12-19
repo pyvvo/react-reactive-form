@@ -27,7 +27,8 @@ import {
   ReactiveRange,
   ReactiveSelect,
   ReactiveSwitch,
-  ReactiveTextField
+  ReactiveTextField,
+  ReactiveListField
 } from '@/reactive-form';
 import { IDecoratorParams } from './common';
 
@@ -51,6 +52,8 @@ FormBuilder.defineWidget({
 FormBuilder.defineWidget({ name: 'radio', component: ReactiveRadio });
 FormBuilder.defineWidget({ name: 'range', component: ReactiveRange });
 FormBuilder.defineWidget({ name: 'select', component: ReactiveSelect });
+
+FormBuilder.defineWidget({ name: 'list', component: ReactiveListField });
 
 // ############################ Reactive form ######################
 
@@ -99,7 +102,7 @@ const ReactiveFormWrapper: FC<IReactiveFormWrapper> = (props) => {
 
   return (
     <form
-      style={{ maxWidth: '400px' }}
+      style={{ minWidth: '400px' }}
       onSubmit={form.handleSubmit(handleSubmit)}>
       <Flex
         mih={50}
@@ -124,7 +127,7 @@ const ReactiveFormWrapper: FC<IReactiveFormWrapper> = (props) => {
           formatOnBlur
           autosize
           minRows={4}
-          sx={{
+          style={{
             width: '100%'
           }}
           // defaultValue="tt"
@@ -144,7 +147,7 @@ export const ReactiveFormDecorator =
     } = props;
 
     return (
-      <ReactiveFormWrapper meta={meta} defaultValues={defaultValues}>
+      <ReactiveFormWrapper meta={meta as never} defaultValues={defaultValues}>
         <Story />
       </ReactiveFormWrapper>
     );
